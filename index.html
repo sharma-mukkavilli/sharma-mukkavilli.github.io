@@ -6,32 +6,49 @@
     <title>Sharma Mukkavilli | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Base styles for HTML and Body - essential for full page layout and transitions */
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%; /* Ensures 100vh works correctly */
+            height: 100%; /* Ensures 100vh works correctly for fixed elements */
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #f4f4f4; /* Default light mode background */
+            color: #333; /* Default light mode text color */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for dark mode */
         }
 
+        /* Dark Mode styles applied to the body */
         body.dark-mode {
-            background-color: #1e1e1e;
-            color: #f5f5f5;
+            background-color: #1e1e1e; /* Dark mode background for the entire page */
+            color: #f5f5f5; /* Dark mode text color for the entire page */
         }
 
-        body.dark-mode header,
-        body.dark-mode .skills-grid div,
-        body.dark-mode .project-card,
-        body.dark-mode .exp-details {
-            background-color: #2c2c2c;
+        /* --- Header Styles --- */
+        header {
+            background-color: #0a2540; /* Blue color for header */
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center; /* Center align header content */
+            margin-bottom: 2rem; /* Spacing below header */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
         }
 
-        /* The .container is now mainly for semantic grouping, main layout is done by fixed sidebar and margin on content area */
-        .container {
-            /* No specific flex or grid properties needed directly on .container for this layout */
+        body.dark-mode header {
+            background-color: #2c2c2c; /* Adjust dark mode header background */
+            color: #f5f5f5; /* Light text for header in dark mode */
         }
 
+        header h1 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        /* --- Sidebar Styles --- */
         .sidebar {
             width: 200px; /* Fixed width for the sidebar */
             background-color: #0a2540;
@@ -48,17 +65,31 @@
             gap: 1rem;
             box-shadow: 2px 0 5px rgba(0,0,0,0.2);
             z-index: 100; /* Ensure it stays on top of other content */
+            transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
+        }
+
+        body.dark-mode .sidebar {
+            background-color: #1a1a1a; /* Darker sidebar in dark mode */
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5); /* Stronger shadow in dark mode */
         }
 
         .sidebar a {
             color: white;
             text-decoration: none;
             font-size: 1rem;
-            transition: color 0.2s;
+            transition: color 0.3s ease;
         }
 
         .sidebar a:hover {
-            color: #ff6f00;
+            color: #ff6f00; /* Orange hover for links */
+        }
+
+        body.dark-mode .sidebar a {
+            color: #f5f5f5; /* Light text for links in dark sidebar */
+        }
+
+        body.dark-mode .sidebar a:hover {
+            color: #ffcc80; /* Lighter orange hover for links in dark mode */
         }
 
         .sidebar .toggle-btn {
@@ -69,39 +100,38 @@
             padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
         }
 
-        /* Main content area needs to be pushed to the right to clear the fixed sidebar */
+        body.dark-mode .sidebar .toggle-btn {
+            background-color: #ffcc80; /* Lighter orange for toggle button */
+            color: #1e1e1e; /* Dark text for toggle button */
+        }
+
+        /* --- Main Content Area Styles --- */
         .main-content-area {
             margin-left: 200px; /* This is the key to clear the fixed sidebar */
             display: flex;
             flex-direction: column; /* Stacks header, sections, and footer */
             min-height: 100vh; /* Ensures content area extends to push footer down */
+            transition: background-color 0.4s ease; /* Smooth transition */
         }
 
-        header {
-            background-color: #0a2540; /* Blue color for header */
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center; /* Center align header content */
-            margin-bottom: 2rem; /* Spacing below header */
+        /* --- Section Header Styles --- */
+        h2 {
+            color: #0a2540; /* Default blue for section headings */
+            border-left: 4px solid #ff6f00; /* Orange left border */
+            padding-left: 0.5rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.4s ease, border-color 0.4s ease; /* Smooth transition */
         }
 
-        body.dark-mode header {
-            background-color: #2c2c2c; /* Adjust dark mode header background */
-            color: #f5f5f5;
+        body.dark-mode h2 {
+            color: #ffcc80; /* Lighter orange for headings in dark mode */
+            border-left-color: #ffcc80; /* Lighter orange border in dark mode */
         }
 
-        header h1 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            margin-bottom: 0;
-            font-size: 1.1rem;
-        }
-
+        /* --- Generic Section and Element Styles (Light/Dark Mode) --- */
         .main-sections { /* Wrapper for all content sections, allows flexible height */
             flex-grow: 1; /* Allows sections to take up available vertical space */
             padding: 0 2rem; /* Padding for the main content area */
@@ -111,20 +141,33 @@
             max-width: 900px;
             margin: 0 auto 2rem auto; /* Center sections within their padded area */
             padding: 0 1.5rem; /* Internal padding for sections */
+            /* Removed direct background from here. Let body background apply, or apply to specific inner divs if needed. */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
         }
 
-        h2 {
-            color: #0a2540;
-            border-left: 4px solid #ff6f00;
-            padding-left: 0.5rem;
-            margin-bottom: 1.5rem;
+        /* Specific background and text for card-like elements that should change */
+        .skills-grid div,
+        .project-card,
+        .exp-entry,
+        .exp-details {
+            background: white; /* Default light background */
+            border: 1px solid #ddd; /* Default light border */
+            color: #333; /* Default text color */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px; /* Rounded corners for consistency */
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        body.dark-mode h2 {
-            color: #ffcc80;
+        body.dark-mode .skills-grid div,
+        body.dark-mode .project-card,
+        body.dark-mode .exp-entry,
+        body.dark-mode .exp-details {
+            background-color: #2c2c2c; /* Darker background */
+            border-color: #444; /* Darker border */
+            color: #f5f5f5; /* Light text */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Stronger shadow */
         }
 
-        /* Skills */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -132,34 +175,35 @@
             margin-top: 1rem;
         }
 
-        .skills-grid div {
-            background: white;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
         .skills-grid div:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
+        body.dark-mode .skills-grid div:hover {
+             box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Stronger hover shadow in dark mode */
+        }
 
         .skills-grid i {
             margin-right: 6px;
-            color: #ff6f00;
+            color: #ff6f00; /* Orange icon color */
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .skills-grid i {
+            color: #ffcc80; /* Lighter orange icon in dark mode */
         }
 
         /* Projects */
         .project-card {
-            background: white;
             padding: 1rem;
             margin-bottom: 1rem;
-            border-left: 4px solid #ff6f00;
+            border-left: 4px solid #ff6f00; /* Orange left border */
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-left-color 0.4s ease;
+        }
+
+        body.dark-mode .project-card {
+            border-left-color: #ffcc80; /* Lighter orange border in dark mode */
         }
 
         .project-card:hover {
@@ -169,11 +213,13 @@
         /* Experience */
         .exp-entry {
             margin-bottom: 1rem;
-            border-left: 4px solid #ff6f00;
-            background: #fff;
-            border-radius: 4px;
+            border-left: 4px solid #ff6f00; /* Orange left border */
             padding: 0.5rem 1rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            transition: background-color 0.4s ease, color 0.4s ease, border-left-color 0.4s ease;
+        }
+
+        body.dark-mode .exp-entry {
+            border-left-color: #ffcc80; /* Lighter orange border in dark mode */
         }
 
         .exp-header {
@@ -185,7 +231,12 @@
 
         .exp-title {
             font-weight: bold;
-            color: #0a2540;
+            color: #0a2540; /* Default blue for title */
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .exp-title {
+            color: #f5f5f5; /* Light text for title in dark mode */
         }
 
         .dropdown-btn {
@@ -193,7 +244,12 @@
             border: none;
             font-size: 1rem;
             cursor: pointer;
-            color: #ff6f00;
+            color: #ff6f00; /* Orange dropdown button */
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .dropdown-btn {
+            color: #ffcc80; /* Lighter orange dropdown button in dark mode */
         }
 
         .dropdown-btn:focus {
@@ -203,6 +259,7 @@
         .exp-details {
             display: none;
             padding-top: 0.5rem;
+            /* Inherits background/color from .exp-entry in dark mode */
         }
 
         .exp-details ul {
@@ -215,10 +272,15 @@
             margin-bottom: 0.4rem;
         }
 
-        /* Contact & Resume */
+        /* --- Contact & Resume Styles --- */
         .contact a {
-            color: #ff6f00;
+            color: #ff6f00; /* Orange links */
             text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .contact a {
+            color: #ffcc80; /* Lighter orange links in dark mode */
         }
 
         .contact i {
@@ -230,14 +292,20 @@
         }
 
         .resume-download a {
-            background: #0a2540;
+            background: #0a2540; /* Blue button background */
             color: white;
             padding: 0.6rem 1.2rem;
             border-radius: 5px;
             text-decoration: none;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Footer full width */
+        body.dark-mode .resume-download a {
+            background-color: #1a1a1a; /* Darker background for download button */
+            color: #ffcc80; /* Lighter text for download button */
+        }
+
+        /* --- Footer Styles --- */
         footer {
             text-align: center;
             background: #0a2540;
@@ -246,9 +314,15 @@
             margin-top: 2rem;
             width: 100%; /* Ensure footer spans full width of its parent */
             box-sizing: border-box; /* Include padding in width calculation */
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Responsive adjustments */
+        body.dark-mode footer {
+            background-color: #1a1a1a; /* Darker footer in dark mode */
+            color: #f5f5f5; /* Light text for footer */
+        }
+
+        /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
             .sidebar {
                 position: static; /* Sidebar becomes static (flows with content) */
