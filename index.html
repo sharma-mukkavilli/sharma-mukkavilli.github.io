@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sharma Mukkavilli | Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       background-color: #f4f7fc;
       color: #333;
       margin: 0;
@@ -18,12 +18,11 @@
       background-color: #1e1e1e;
       color: #f5f5f5;
     }
-    body.dark-mode .project-card,
-    body.dark-mode .skills-grid div,
     body.dark-mode header,
-    body.dark-mode .panel {
+    body.dark-mode .skills-grid div,
+    body.dark-mode .project-card,
+    body.dark-mode .exp-details {
       background-color: #2c2c2c;
-      color: #f5f5f5;
     }
     header {
       background: #0a2540;
@@ -31,14 +30,6 @@
       padding: 2rem;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
     }
     .toggle-btn {
       margin-top: 1rem;
@@ -58,22 +49,12 @@
       color: #0a2540;
       border-left: 4px solid #ff6f00;
       padding-left: 0.5rem;
-      font-size: 1.6rem;
     }
     body.dark-mode h2 {
       color: #ffcc80;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 0.8rem;
-    }
-    .job-title {
-      font-weight: bold;
-      color: #ff6f00;
-    }
+
+    /* Skills */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -86,68 +67,80 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s;
     }
     .skills-grid div:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
     }
     .skills-grid i {
       margin-right: 6px;
       color: #ff6f00;
     }
+
+    /* Projects */
     .project-card {
       background: white;
       padding: 1rem;
       margin-bottom: 1rem;
-      border-radius: 8px;
       border-left: 4px solid #ff6f00;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transform: translateY(-4px);
     }
-    .accordion {
-      background-color: #0a2540;
-      color: white;
-      cursor: pointer;
-      padding: 1rem;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-    }
-    .accordion:hover {
-      background-color: #ff6f00;
-    }
-    .panel {
-      padding: 0 1rem;
-      background-color: #f9f9f9;
-      display: none;
-      overflow: hidden;
-      border-left: 4px solid #ff6f00;
+
+    /* Experience */
+    .exp-entry {
       margin-bottom: 1rem;
+      border-left: 4px solid #ff6f00;
+      background: #fff;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
-    .panel ul {
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: default;
+    }
+    .exp-title {
+      font-weight: bold;
+      color: #0a2540;
+    }
+    .dropdown-btn {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #ff6f00;
+    }
+    .dropdown-btn:focus {
+      outline: none;
+    }
+    .exp-details {
+      display: none;
+      padding-top: 0.5rem;
+    }
+    .exp-details ul {
+      margin: 0;
       padding-left: 1.2rem;
     }
-    .panel ul li {
+    .exp-details li {
       list-style-type: disc;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
+
+    /* Contact & Resume */
     .contact a {
       color: #ff6f00;
       text-decoration: none;
     }
     .contact i {
       margin-right: 0.5rem;
-      color: #ff6f00;
     }
     .resume-download {
       margin-top: 1rem;
@@ -158,16 +151,13 @@
       padding: 0.6rem 1.2rem;
       border-radius: 5px;
       text-decoration: none;
-      transition: background 0.3s;
     }
-    .resume-download a:hover {
-      background: #ff6f00;
-    }
+
     footer {
       text-align: center;
-      padding: 1rem;
       background: #0a2540;
       color: white;
+      padding: 1rem;
       margin-top: 2rem;
     }
   </style>
@@ -180,101 +170,113 @@
   <button class="toggle-btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
 </header>
 
-<section class="about">
+<section>
   <h2>About Me</h2>
-  <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking. Known for delivering insights that drive decision-making and marketing effectiveness across global teams.</p>
+  <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
 </section>
 
-<section class="skills">
+<section>
   <h2>Skills</h2>
   <div class="skills-grid">
-    <div><i class="fas fa-bullhorn"></i><strong> Marketing & Campaigns</strong><br/>Demand Generation, Marketing Automation, Paid Media</div>
-    <div><i class="fas fa-chart-line"></i><strong> Research & Analysis</strong><br/>Persona Research, Competitive Benchmarking, Trend Analysis</div>
-    <div><i class="fas fa-toolbox"></i><strong> Tools</strong><br/>Power BI, Zoho Analytics, LinkedIn Campaign Manager</div>
-    <div><i class="fas fa-search"></i><strong> Content & SEO</strong><br/>Keyword Research, Strategy, Optimization</div>
-    <div><i class="fas fa-database"></i><strong> CRM & Data</strong><br/>Zoho CRM, ZoomInfo, RocketReach, Data Mining</div>
-    <div><i class="fas fa-video"></i><strong> Webinars & Events</strong><br/>GoToWebinar, WebEx, MS Teams Coordination</div>
+    <div><i class="fas fa-bullhorn"></i><strong> Marketing & Campaigns</strong><br/>Demand Generation, Marketing Automation</div>
+    <div><i class="fas fa-chart-line"></i><strong> Research & Analysis</strong><br/>Persona Research, Competitive Benchmarking</div>
+    <div><i class="fas fa-toolbox"></i><strong> Tools</strong><br/>Power BI, Zoho Analytics</div>
+    <div><i class="fas fa-search"></i><strong> Content & SEO</strong><br/>Keyword Research, Optimization</div>
+    <div><i class="fas fa-database"></i><strong> CRM & Data</strong><br/>Zoho CRM, ZoomInfo</div>
+    <div><i class="fas fa-video"></i><strong> Webinars & Events</strong><br/>GoToWebinar, WebEx, MS Teams</div>
   </div>
 </section>
 
-<section class="projects">
+<section>
   <h2>Projects</h2>
   <div class="project-card">
     <h3>Global B2B Lead Pipeline Campaign</h3>
-    <p>Designed and executed a multi-channel campaign across email and LinkedIn, generating over 500 qualified leads within a quarter using Zoho Campaigns and LinkedIn Campaign Manager.</p>
+    <p>Generated 500+ qualified leads in 1 quarter using LinkedIn + email campaigns.</p>
   </div>
   <div class="project-card">
-    <h3>Executive Dashboard for Digital Marketing Performance</h3>
-    <p>Built Power BI dashboards for campaign KPIs, email engagement, and webinar analysis to guide leadership decisions.</p>
+    <h3>Executive Dashboard for Marketing</h3>
+    <p>Created Power BI dashboards to track engagement, webinars, and conversion.</p>
   </div>
 </section>
 
-<section class="experience">
+<section>
   <h2>Professional Experience</h2>
 
-  <div class="job">
-    <button class="accordion">Team Lead – Demand Generation & Events (Mar 2023 – Present)</button>
-    <div class="panel">
-      <p><strong>Miracle Software Systems, Inc. – Visakhapatnam</strong></p>
+  <div class="exp-entry">
+    <div class="exp-header">
+      <span class="exp-title">Team Lead – Demand Generation & Events (2023 – Present)</span>
+      <button class="dropdown-btn" onclick="toggleDetails(this)">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+    <div class="exp-details" style="display: block;">
       <ul>
-        <li>Managed 8-member team executing digital marketing strategies.</li>
-        <li>Generated 1,000+ new leads/month via tools like ZoomInfo.</li>
-        <li>Built and tracked campaigns using Zoho Campaigns, Mailchimp.</li>
-        <li>Created enablement materials (persona docs, battle cards).</li>
-        <li>Reported performance insights via Power BI, Zoho Analytics.</li>
-        <li>Hosted webinars via WebEx, GoToWebinar, MS Teams.</li>
-        <li>Scheduled posts via Buffer and monitored engagement.</li>
-        <li>Ran market research to inform content and SEO strategy.</li>
-        <li>Maintained clean CRM data to reduce bounce rate.</li>
+        <li>Led 8-person team in digital marketing execution.</li>
+        <li>Acquired 1,000+ leads/month via Lusha, ZoomInfo.</li>
+        <li>Launched email & LinkedIn campaigns with Zoho, Mailchimp.</li>
+        <li>Created persona docs and battle cards.</li>
+        <li>Built performance reports in Power BI & Zoho Analytics.</li>
+        <li>Hosted webinars using GoToWebinar & WebEx.</li>
+        <li>Improved CRM accuracy and reduced bounce rates.</li>
       </ul>
     </div>
   </div>
 
-  <div class="job">
-    <button class="accordion">Sr. IT Market Research Analyst & Webinar Coordinator (Oct 2019 – Mar 2023)</button>
-    <div class="panel">
-      <p><strong>Miracle Software Systems, Inc. – Visakhapatnam</strong></p>
+  <div class="exp-entry">
+    <div class="exp-header">
+      <span class="exp-title">Sr. IT Market Research Analyst (2019 – 2023)</span>
+      <button class="dropdown-btn" onclick="toggleDetails(this)">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+    <div class="exp-details">
       <ul>
-        <li>Collected 200+ decision-maker contacts weekly.</li>
-        <li>Ran secondary research on competitors and trends.</li>
-        <li>Managed end-to-end webinar execution and reporting.</li>
-        <li>Segmented email campaigns and supported SEO projects.</li>
-        <li>Assisted event logistics and audience feedback tracking.</li>
+        <li>Conducted market research using LinkedIn, Crunchbase, ZoomInfo.</li>
+        <li>Built outbound lists with 200+ contacts weekly.</li>
+        <li>Managed webinars and campaign follow-ups.</li>
+        <li>Tracked webinar performance and feedback metrics.</li>
       </ul>
     </div>
   </div>
 
-  <div class="job">
-    <button class="accordion">Partnerships Executive (Aug 2017 – Oct 2019)</button>
-    <div class="panel">
-      <p><strong>Miracle Software Systems, Inc. – Visakhapatnam</strong></p>
+  <div class="exp-entry">
+    <div class="exp-header">
+      <span class="exp-title">Partnerships Executive (2017 – 2019)</span>
+      <button class="dropdown-btn" onclick="toggleDetails(this)">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+    <div class="exp-details">
       <ul>
-        <li>Forged partner relationships aligned to business strategy.</li>
-        <li>Led joint promotions and co-branded marketing efforts.</li>
-        <li>Managed event logistics and international travel plans.</li>
-        <li>Analyzed partner ROI and shared insights with leadership.</li>
+        <li>Coordinated cross-functional partner strategies.</li>
+        <li>Managed North American event logistics and travel.</li>
+        <li>Built strong, long-term partner relationships.</li>
       </ul>
     </div>
   </div>
 
-  <div class="job">
-    <button class="accordion">Graduate Apprentice Trainee (Dec 2013 – Dec 2014)</button>
-    <div class="panel">
-      <p><strong>Hindustan Shipyard Limited – Visakhapatnam</strong></p>
+  <div class="exp-entry">
+    <div class="exp-header">
+      <span class="exp-title">Graduate Apprentice Trainee (2013 – 2014)</span>
+      <button class="dropdown-btn" onclick="toggleDetails(this)">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+    <div class="exp-details">
       <ul>
-        <li>Monitored project timelines and client communications.</li>
-        <li>Used MS Projects to identify and mitigate delays.</li>
-        <li>Facilitated TNC and PNC meetings with shipbuilding clients.</li>
+        <li>Worked with project managers on shipyard timelines.</li>
+        <li>Used MS Projects to improve project paths.</li>
+        <li>Presented updates and attended client meetings.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="education">
+<section>
   <h2>Education</h2>
   <ul>
-    <li><strong>MBA</strong> in Marketing and Finance, MVGR College of Engineering – 82.65%</li>
-    <li><strong>B.Tech</strong> in Computer Science, Al-Aman College of Engineering – 61.94%</li>
+    <li><strong>MBA</strong> – MVGR College of Engineering – 82.65%</li>
+    <li><strong>B.Tech</strong> – Al-Aman College of Engineering – 61.94%</li>
   </ul>
 </section>
 
@@ -296,14 +298,14 @@
     document.body.classList.toggle('dark-mode');
   }
 
-  const acc = document.querySelectorAll(".accordion");
-  acc.forEach(btn => {
-    btn.addEventListener("click", function () {
-      this.classList.toggle("active");
-      const panel = this.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
-    });
-  });
+  function toggleDetails(btn) {
+    const panel = btn.parentElement.nextElementSibling;
+    const icon = btn.querySelector('i');
+    const isOpen = panel.style.display === 'block';
+
+    panel.style.display = isOpen ? 'none' : 'block';
+    icon.className = isOpen ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+  }
 </script>
 
 </body>
