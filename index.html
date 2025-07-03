@@ -1,50 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <h1>Sharma Mukkavilli</h1>
-    <p>Team Lead – Demand Generation | connectsharma.m@gmail.com | 7893-427-724</p>
-    <button class="toggle-btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sharma Mukkavilli | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background-color: #f4f7fc;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            transition: background 0.3s, color 0.3s;
+            margin: 0; /* Remove default body margin */
         }
         body.dark-mode {
             background-color: #1e1e1e;
             color: #f5f5f5;
         }
-        body.dark-mode header,
         body.dark-mode .skills-grid div,
         body.dark-mode .project-card,
         body.dark-mode .exp-details {
             background-color: #2c2c2c;
         }
+
+        /* Header Styles */
+        header {
+            background-color: #0a2540; /* Blue color as requested */
+            color: white;
+            padding: 1rem 0;
+            text-align: center; /* Center align header content */
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd; /* Keep existing border for consistency */
+        }
+        body.dark-mode header {
+            background-color: #2c2c2c; /* Dark mode header background */
+            color: #f5f5f5;
+            border-bottom-color: #555;
+        }
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .toggle-btn {
+            margin-top: 1rem;
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Container and Main adjusted for sidebar below header */
         .container {
             display: flex;
+            flex-direction: column; /* Stack header, sidebar, and main vertically */
         }
         .sidebar {
-            width: 200px;
+            width: 100%; /* Sidebar takes full width below header */
             background-color: #0a2540;
             color: white;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            padding: 2rem 1rem;
+            position: static; /* Remove fixed position */
+            padding: 1rem 1rem;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex-direction: row; /* Align items horizontally */
+            flex-wrap: wrap;
+            justify-content: center; /* Center align sidebar links */
             gap: 1rem;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow below sidebar */
+            margin-bottom: 2rem; /* Space between sidebar and main content */
         }
         .sidebar a {
             color: white;
@@ -56,31 +80,13 @@
             color: #ff6f00;
         }
         .main {
-            margin-left: 200px; /* Offset for the sidebar */
-            padding: 2rem;
+            margin-left: 0; /* No left margin as sidebar is not fixed */
+            padding: 0 2rem; /* Adjust padding for main content */
             flex: 1;
         }
-        header {
-            color: #0a2540; /* Changed from white as it's not in the dark sidebar */
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #ddd;
-        }
-        body.dark-mode header {
-            color: #f5f5f5;
-            border-bottom-color: #555;
-        }
-        .toggle-btn {
-            margin-top: 1rem;
-            background-color: #ff6f00;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+
         section {
-            max-width: 900px; /* Adjusted from 900px auto to fit within main */
+            max-width: 900px;
             margin: 0 auto 2rem auto;
             padding: 0 1.5rem;
         }
@@ -145,7 +151,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: default;
+            cursor: pointer;
         }
         .exp-title {
             font-weight: bold;
@@ -199,8 +205,9 @@
             color: white;
             padding: 1rem;
             margin-top: 2rem;
-            margin-left: -2rem; /* Account for main padding */
-            margin-right: -2rem;
+            /* Adjust negative margins for footer based on new layout */
+            margin-left: 0;
+            margin-right: 0;
         }
 
         /* Responsive adjustments */
@@ -233,6 +240,12 @@
 <body>
 
     <div class="container">
+        <header>
+            <h1>Sharma Mukkavilli</h1>
+            <p>Team Lead – Demand Generation | connectsharma.m@gmail.com | 7893-427-724</p>
+            <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
+        </header>
+
         <div class="sidebar">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -240,7 +253,6 @@
             <a href="#experience">Experience</a>
             <a href="#education">Education</a>
             <a href="#contact">Contact</a>
-            <button onclick="toggleMode()" class="toggle-btn">Dark/Light Mode</button>
         </div>
 
         <div class="main">
@@ -277,9 +289,9 @@
                 <h2>Professional Experience</h2>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Team Lead – Demand Generation & Events (Mar 2023 – Present)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-up"></i>
                         </button>
                     </div>
@@ -300,9 +312,9 @@
                 </div>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
@@ -323,9 +335,9 @@
                 </div>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Partnerships Executive (Aug 2017 – Oct 2019)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
@@ -346,9 +358,9 @@
                 </div>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Graduate Apprentice Trainee (2013 – 2014)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
@@ -362,18 +374,18 @@
                 </div>
             </section>
 
-            <section id="education">
+            <section class="education">
                 <h2>Education</h2>
                 <ul>
-                    <li><strong>MBA</strong> – MVGR College of Engineering – 82.65%</li>
-                    <li><strong>B.Tech</strong> – Al-Aman College of Engineering – 61.94%</li>
+                    <li><strong>MBA</strong> in Marketing and Finance, MVGR College of Engineering – 82.65%</li>
+                    <li><strong>B.Tech</strong> in Computer Science, Al-Aman College of Engineering – 61.94%</li>
                 </ul>
             </section>
 
-            <section id="contact" class="contact">
+            <section class="contact">
                 <h2>Contact</h2>
-                <p><i class="fas fa-envelope"></i><a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
-                <p><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
+                <p>Email: <a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
                 <div class="resume-download">
                     <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
                 </div>
@@ -382,23 +394,25 @@
             <footer>
                 &copy; 2025 Sharma Mukkavilli. All rights reserved.
             </footer>
-        </div>
-    </div>
-
-    <script>
+        </div> </div> <script>
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
         }
 
-        function toggleDetails(btn) {
-            const panel = btn.parentElement.nextElementSibling;
-            const icon = btn.querySelector('i');
-            const isOpen = panel.style.display === 'block';
+        function toggleDetails(element) {
+            const details = element.nextElementSibling; // Get the .exp-details div
+            const icon = element.querySelector('.dropdown-btn i'); // Get the icon
 
-            panel.style.display = isOpen ? 'none' : 'block';
-            icon.className = isOpen ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                details.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
         }
     </script>
-
 </body>
 </html>
