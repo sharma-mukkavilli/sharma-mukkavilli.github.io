@@ -33,7 +33,6 @@
       padding: 2rem;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: background 0.3s, color 0.3s;
     }
     header h1 {
       margin: 0;
@@ -77,9 +76,6 @@
       font-weight: bold;
       color: #ff6f00;
     }
-    .experience, .education {
-      margin-top: 1.5rem;
-    }
     footer {
       text-align: center;
       padding: 1rem;
@@ -109,9 +105,6 @@
       transform: translateY(-5px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
-    .projects {
-      margin-top: 2rem;
-    }
     .project-card {
       background: white;
       padding: 1rem;
@@ -128,16 +121,38 @@
     .resume-download {
       margin-top: 1rem;
     }
-    .resume-download a {
+    .resume-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .resume-btn {
       background: #0a2540;
       color: white;
       padding: 0.6rem 1.2rem;
       border-radius: 5px;
       text-decoration: none;
-      transition: background 0.3s;
+      cursor: pointer;
     }
-    .resume-download a:hover {
-      background: #ff6f00;
+    .resume-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 6px;
+    }
+    .resume-dropdown-content a {
+      color: #0a2540;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+    }
+    .resume-dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .resume-dropdown:hover .resume-dropdown-content {
+      display: block;
     }
   </style>
 </head>
@@ -148,59 +163,46 @@
     <button class="toggle-btn" onclick="toggleMode()">Toggle Dark/Light Mode</button>
   </header>
 
-  <section class="about">
+  <section>
     <h2>About Me</h2>
-    <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking. Known for delivering insights that drive decision-making and marketing effectiveness across global teams.</p>
+    <p>Marketing and research professional with 7+ years of experience in B2B demand generation, market intelligence, and campaign execution.</p>
   </section>
 
-  <section class="skills">
+  <section>
     <h2>Skills</h2>
     <div class="skills-grid">
-      <div><strong>Marketing & Campaigns</strong><br/>Demand Generation, Marketing Automation, Paid Media</div>
-      <div><strong>Research & Analysis</strong><br/>Persona Research, Competitive Benchmarking, Trend Analysis</div>
-      <div><strong>Tools</strong><br/>Power BI, Zoho Analytics, LinkedIn Campaign Manager</div>
-      <div><strong>Content & SEO</strong><br/>Keyword Research, Strategy, Optimization</div>
-      <div><strong>CRM & Data</strong><br/>Zoho CRM, ZoomInfo, RocketReach, Data Mining</div>
-      <div><strong>Webinars & Events</strong><br/>GoToWebinar, WebEx, MS Teams Coordination</div>
+      <div><strong>Marketing</strong><br/>Zoho Campaigns, Mailchimp</div>
+      <div><strong>Analytics</strong><br/>Power BI, Zoho Analytics</div>
+      <div><strong>CRM</strong><br/>Zoho CRM, ZoomInfo</div>
+      <div><strong>SEO</strong><br/>Keyword Research, Optimization</div>
     </div>
   </section>
 
-  <section class="projects">
+  <section>
     <h2>Projects</h2>
     <div class="project-card">
-      <h3>Global B2B Lead Pipeline Campaign</h3>
-      <p>Designed and executed a multi-channel campaign across email and LinkedIn, generating over 500 qualified leads within a quarter using tools like Zoho Campaigns and LinkedIn Campaign Manager.</p>
+      <h3>Lead Gen Campaign</h3>
+      <p>Created multi-channel outreach generating 500+ qualified leads using email + LinkedIn.</p>
     </div>
     <div class="project-card">
-      <h3>Executive Dashboard for Digital Marketing Performance</h3>
-      <p>Created Power BI dashboards tracking campaign KPIs, email engagement, and webinar attendance to support executive decision-making and strategy refinement.</p>
+      <h3>Power BI Dashboard</h3>
+      <p>Visualized campaign performance and sales funnel metrics for executive reporting.</p>
     </div>
   </section>
 
-  <section class="experience">
-    <h2>Professional Experience</h2>
-    <ul>
-      <li><span class="job-title">Team Lead – Demand Generation & Events</span>, Miracle Software Systems (Mar 2023 – Present)</li>
-      <li><span class="job-title">Sr. IT Market Research Analyst & Webinar Coordinator</span>, Miracle Software Systems (Oct 2019 – Mar 2023)</li>
-      <li><span class="job-title">Partnerships Executive</span>, Miracle Software Systems (Aug 2017 – Oct 2019)</li>
-      <li><span class="job-title">Graduate Apprentice Trainee</span>, Hindustan Shipyard Limited (Dec 2013 – Dec 2014)</li>
-    </ul>
-  </section>
-
-  <section class="education">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>MBA</strong> in Marketing and Finance, MVGR College of Engineering – 82.65%</li>
-      <li><strong>B.Tech</strong> in Computer Science, Al-Aman College of Engineering – 61.94%</li>
-    </ul>
-  </section>
-
-  <section class="contact">
+  <section>
     <h2>Contact</h2>
     <p>Email: <a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
+
     <div class="resume-download">
-      <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
+      <div class="resume-dropdown">
+        <div class="resume-btn">Download Resume ▼</div>
+        <div class="resume-dropdown-content">
+          <a href="Sharma_Mukkavilli_Resume.pdf" download>PDF Version</a>
+          <a href="Sharma_Mukkavilli_Resume.docx" download>DOCX Version</a>
+        </div>
+      </div>
     </div>
   </section>
 
