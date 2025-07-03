@@ -2,19 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sharma Mukkavilli | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background-color: #f4f7fc;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            transition: background 0.3s, color 0.3s;
-        }
         body.dark-mode {
             background-color: #1e1e1e;
             color: #f5f5f5;
@@ -142,7 +133,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: default;
+            cursor: pointer; /* Changed to pointer as it's clickable now */
         }
         .exp-title {
             font-weight: bold;
@@ -279,9 +270,9 @@
                 <h2>Professional Experience</h2>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Team Lead – Demand Generation & Events (Mar 2023 – Present)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-up"></i>
                         </button>
                     </div>
@@ -302,9 +293,9 @@
                 </div>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
@@ -325,9 +316,9 @@
                 </div>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Partnerships Executive (Aug 2017 – Oct 2019)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
@@ -348,9 +339,9 @@
                 </div>
 
                 <div class="exp-entry">
-                    <div class="exp-header">
+                    <div class="exp-header" onclick="toggleDetails(this)">
                         <span class="exp-title">Graduate Apprentice Trainee (2013 – 2014)</span>
-                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                        <button class="dropdown-btn">
                             <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
@@ -364,18 +355,18 @@
                 </div>
             </section>
 
-            <section id="education">
+            <section class="education">
                 <h2>Education</h2>
                 <ul>
-                    <li><strong>MBA</strong> – MVGR College of Engineering – 82.65%</li>
-                    <li><strong>B.Tech</strong> – Al-Aman College of Engineering – 61.94%</li>
+                    <li><strong>MBA</strong> in Marketing and Finance, MVGR College of Engineering – 82.65%</li>
+                    <li><strong>B.Tech</strong> in Computer Science, Al-Aman College of Engineering – 61.94%</li>
                 </ul>
             </section>
 
-            <section id="contact" class="contact">
+            <section class="contact">
                 <h2>Contact</h2>
-                <p><i class="fas fa-envelope"></i><a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
-                <p><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
+                <p>Email: <a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
                 <div class="resume-download">
                     <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
                 </div>
@@ -384,23 +375,25 @@
             <footer>
                 &copy; 2025 Sharma Mukkavilli. All rights reserved.
             </footer>
-        </div>
-    </div>
-
-    <script>
+        </div> </div> <script>
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
         }
 
-        function toggleDetails(btn) {
-            const panel = btn.parentElement.nextElementSibling;
-            const icon = btn.querySelector('i');
-            const isOpen = panel.style.display === 'block';
+        function toggleDetails(element) {
+            const details = element.nextElementSibling; // Get the .exp-details div
+            const icon = element.querySelector('.dropdown-btn i'); // Get the icon
 
-            panel.style.display = isOpen ? 'none' : 'block';
-            icon.className = isOpen ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                details.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
         }
     </script>
-
 </body>
 </html>
