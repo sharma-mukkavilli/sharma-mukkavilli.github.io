@@ -47,10 +47,30 @@
             margin-bottom: 0.5rem;
         }
 
-        header p {
+        header .header-info { /* New class for the p tag to style contact info */
             margin-bottom: 0;
             font-size: 1.1rem;
+            display: flex; /* Use flexbox for horizontal alignment of contact info */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            gap: 15px; /* Space between contact items */
         }
+
+        header .header-info i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+        header .header-info a {
+            color: white; /* Ensure links in header are white */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header .header-info a:hover {
+            color: #ffcc80; /* Lighter orange on hover */
+        }
+
 
         /* --- Sidebar Styles --- */
         .sidebar {
@@ -173,101 +193,67 @@
             max-width: 900px;
             margin: 0 auto 2rem auto; /* Center sections within their padded area */
             padding: 0 1.5rem; /* Internal padding for sections, **reverted for sections themselves** */
-            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for section content */
-            /* Removed card styling from sections themselves */
             background-color: transparent; /* Ensure sections themselves are transparent */
             border: none;
             box-shadow: none;
             border-radius: 0;
         }
 
-        /* Card-like styling for individual content blocks (Skills, Projects, Experience entries, new .info-card) */
-        .skills-grid div,
-        .project-card,
-        .exp-entry,
-        .info-card { /* Added .info-card here */
+        /* Generic card entry for sections that DO use dropdowns (Experience) */
+        .card-entry {
+            margin-bottom: 1rem;
             background: white; /* Default light background */
             border: 1px solid #ddd; /* Default light border */
             color: #333; /* Default text color */
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-radius: 8px; /* Rounded corners for consistency */
-            padding: 1rem; /* Ensure consistent padding */
+            padding: 1rem;
             transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        body.dark-mode .skills-grid div,
-        body.dark-mode .project-card,
-        body.dark-mode .exp-entry,
-        body.dark-mode .info-card { /* Added .info-card here */
+        body.dark-mode .card-entry {
             background-color: #2c2c2c; /* Darker background */
             border-color: #444; /* Darker border */
             color: #f5f5f5; /* Light text */
             box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Stronger shadow */
         }
 
-        /* Hover effects for all card-like elements */
-        .skills-grid div:hover,
-        .project-card:hover,
-        .exp-entry:hover,
-        .info-card:hover { /* Added .info-card here */
+        .card-entry:hover {
             transform: translateY(-4px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
-        body.dark-mode .skills-grid div:hover,
-        body.dark-mode .project-card:hover,
-        body.dark-mode .exp-entry:hover,
-        body.dark-mode .info-card:hover { /* Added .info-card here */
+        body.dark-mode .card-entry:hover {
              box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Stronger hover shadow in dark mode */
         }
 
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .skills-grid i {
-            margin-right: 6px;
-            color: #ff6f00; /* Orange icon color */
-            transition: color 0.4s ease;
-        }
-
-        body.dark-mode .skills-grid i {
-            color: #ffcc80; /* Lighter orange icon in dark mode */
-        }
-
-        /* Projects */
-        .project-card {
-            margin-bottom: 1rem;
-            border-left: 4px solid #ff6f00; /* Orange left border */
-        }
-
-        body.dark-mode .project-card {
-            border-left-color: #ffcc80; /* Lighter orange border in dark mode */
-        }
-
-        /* Experience */
-        .exp-entry {
-            margin-bottom: 1rem;
-        }
-
-        .exp-header {
+        .card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            padding-bottom: 0.5rem; /* Add some space below the header */
         }
 
-        .exp-title {
+        .card-title {
             font-weight: bold;
             color: #0a2540; /* Default blue for title */
             transition: color 0.4s ease;
+            display: flex; /* For icon alignment in skills/education */
+            align-items: center;
         }
 
-        body.dark-mode .exp-title {
+        body.dark-mode .card-title {
             color: #f5f5f5; /* Light text for title in dark mode */
+        }
+
+        .card-title i {
+            margin-right: 8px; /* Space between icon and text in card titles */
+            color: #ff6f00; /* Orange icon color in titles */
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .card-title i {
+            color: #ffcc80; /* Lighter orange icon in dark mode titles */
         }
 
         .dropdown-btn {
@@ -287,53 +273,137 @@
             outline: none;
         }
 
-        .exp-details {
+        .card-details { /* Renamed from .exp-details to be generic */
             max-height: 0; /* Start hidden */
             overflow: hidden; /* Hide overflow during transition */
             transition: max-height 0.7s ease-out, padding-top 0.7s ease-out; /* Smooth transition for height and padding */
             padding-top: 0; /* No padding when closed */
         }
 
-        .exp-details.open {
+        .card-details.open {
             max-height: 500px; /* Adjust this value if content is taller */
             padding-top: 0.5rem; /* Add padding when open */
         }
 
-        .exp-details ul {
+        /* Specific styles for lists within cards if needed */
+        .card-details ul {
             margin: 0;
             padding-left: 1.2rem;
         }
 
-        .exp-details li {
+        .card-details li {
             list-style-type: disc;
             margin-bottom: 0.4rem;
         }
-        .exp-details li:last-child {
+        .card-details li:last-child {
             margin-bottom: 0; /* Remove margin from last list item */
         }
 
+        /* --- Skills Section Styles (no dropdowns, just grid cards) --- */
+        .skills-grid { /* Renamed from .skills-section-grid for clarity */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width for skill cards */
+            gap: 1rem; /* Space between skill cards */
+            margin-top: 1rem;
+        }
 
-        /* --- Contact & Resume Styles --- */
-        /* Changed from section.contact > p > a to .contact-link to target specifically */
-        .contact-link { /* New class to target email/linkedin links within contact section */
-            color: #ff6f00; /* Orange links */
-            text-decoration: none;
-            display: flex; /* For icon alignment */
+        .skill-card { /* Individual skill card structure (similar to .card-entry but without dropdown) */
+            background: white;
+            border: 1px solid #ddd;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        body.dark-mode .skill-card {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .skill-card:hover {
+             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        }
+
+        .skill-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            display: flex;
             align-items: center;
-            margin-bottom: 0.5rem; /* Space between contact links */
+            color: #0a2540; /* Blue color for skill titles */
             transition: color 0.4s ease;
         }
-
-        .contact-link i {
-            margin-right: 0.5rem; /* Space between icon and text */
+        body.dark-mode .skill-card h3 {
+            color: #f5f5f5; /* Light text for skill titles in dark mode */
         }
 
-        body.dark-mode .contact-link {
-            color: #ffcc80; /* Lighter orange links in dark mode */
+        .skill-card h3 i {
+            margin-right: 8px;
+            color: #ff6f00; /* Orange for skill icons */
+            transition: color 0.4s ease;
+        }
+        body.dark-mode .skill-card h3 i {
+            color: #ffcc80; /* Lighter orange for skill icons in dark mode */
         }
 
-        .resume-download {
+
+        /* --- Education/Certification Section Styles (no dropdowns, just grid cards) --- */
+        .education-grid, .certifications-grid { /* Combined for similar layout */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width as needed */
+            gap: 1rem; /* Space between cards */
             margin-top: 1rem;
+        }
+
+        .education-card, .certification-card { /* Combined for similar styling */
+            background: white;
+            border: 1px solid #ddd;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        body.dark-mode .education-card, body.dark-mode .certification-card {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .education-card:hover, .certification-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover {
+             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        }
+
+        .education-card p, .certification-card p {
+            margin: 0; /* Remove default paragraph margin */
+            line-height: 1.4; /* Improve line spacing */
+        }
+        .education-card p i, .certification-card p i {
+            margin-right: 8px; /* Space between icon and text in card */
+            color: #0a2540; /* Blue icon for education/certifications */
+            transition: color 0.4s ease;
+        }
+        body.dark-mode .education-card p i, body.dark-mode .certification-card p i {
+            color: #ffcc80; /* Lighter orange icon in dark mode */
+        }
+        .education-card p strong, .certification-card p strong { /* Style for bolding */
+            font-size: 1.1em;
+        }
+
+
+        /* Resume Download Button (standalone) */
+        .resume-download {
+            margin-top: 2rem; /* More space to separate it visually */
+            text-align: center; /* Center the button */
         }
 
         .resume-download a {
@@ -393,9 +463,9 @@
                 padding: 0 1rem; /* Adjust padding for sections */
             }
 
-            /* Adjust card padding for smaller screens if needed */
-            .info-card {
-                padding: 1rem;
+            header .header-info {
+                flex-direction: column; /* Stack contact info vertically on small screens */
+                gap: 5px; /* Reduce gap */
             }
         }
     </style>
@@ -406,17 +476,21 @@
         <div class="sidebar">
             <a href="#about"><i class="fas fa-user"></i>About</a>
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
-            <a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
-            <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
-            <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
-            <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
+            <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a> <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a> <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
         </div>
 
         <div class="main-content-area">
             <header>
                 <h1>Sharma Mukkavilli</h1>
-                <p>Team Lead – Demand Generation | connectsharma.m@gmail.com | 7893-427-724</p>
+                <p>Team Lead – Demand Generation</p>
+                <p class="header-info">
+                    <a href="mailto:connectsharma.m@gmail.com"><i class="fas fa-envelope"></i>connectsharma.m@gmail.com</a>
+                    <span>|</span>
+                    <i class="fas fa-phone"></i>7893-427-724
+                    <span>|</span>
+                    <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn Profile</a>
+                </p>
             </header>
 
             <div class="main-sections">
@@ -427,39 +501,49 @@
 
                 <section id="skills">
                     <h2>Skills</h2>
-                    <div class="skills-grid">
-                        <div><i class="fas fa-bullhorn"></i><strong> Marketing & Campaigns</strong><br/>Demand Generation, Marketing Automation</div>
-                        <div><i class="fas fa-chart-line"></i><strong> Research & Analysis</strong><br/>Persona Research, Competitive Benchmarking</div>
-                        <div><i class="fas fa-toolbox"></i><strong> Tools</strong><br/>Power BI, Zoho Analytics</div>
-                        <div><i class="fas fa-search"></i><strong> Content & SEO</strong><br/>Keyword Research, Optimization</div>
-                        <div><i class="fas fa-database"></i><strong> CRM & Data</strong><br/>Zoho CRM, ZoomInfo</div>
-                        <div><i class="fas fa-video"></i><strong> Webinars & Events</strong><br/>GoToWebinar, WebEx, MS Teams</div>
-                    </div>
-                </section>
+                    <div class="skills-grid"> <div class="skill-card">
+                            <h3><i class="fas fa-bullhorn"></i>Marketing & Campaigns</h3>
+                            <p>Demand Generation, Marketing Automation</p>
+                        </div>
 
-                <section id="projects">
-                    <h2>Projects</h2>
-                    <div class="project-card">
-                        <h3>Global B2B Lead Pipeline Campaign</h3>
-                        <p>Generated 500+ qualified leads in 1 quarter using LinkedIn + email campaigns.</p>
-                    </div>
-                    <div class="project-card">
-                        <h3>Executive Dashboard for Marketing</h3>
-                        <p>Created Power BI dashboards to track engagement, webinars, and conversion.</p>
+                        <div class="skill-card">
+                            <h3><i class="fas fa-chart-line"></i>Research & Analysis</h3>
+                            <p>Persona Research, Competitive Benchmarking</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-toolbox"></i>Tools</h3>
+                            <p>Power BI, Zoho Analytics</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-search"></i>Content & SEO</h3>
+                            <p>Keyword Research, Optimization</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-database"></i>CRM & Data</h3>
+                            <p>Zoho CRM, ZoomInfo</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-video"></i>Webinars & Events</h3>
+                            <p>GoToWebinar, WebEx, MS Teams</p>
+                        </div>
                     </div>
                 </section>
 
                 <section id="experience">
                     <h2>Professional Experience</h2>
-
-                    <div class="exp-entry">
-                        <div class="exp-header" onclick="toggleDetails(this)">
-                            <span class="exp-title">Team Lead – Demand Generation & Events (Mar 2023 – Present)</span>
+                    <div class="card-entry">
+                        <div class="card-header" onclick="toggleDetails(this)">
+                            <span class="card-title">Team Lead – Demand Generation & Events (Mar 2023 – Present)</span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-up"></i>
                             </button>
                         </div>
-                        <div class="exp-details"> <ul>
+                        <div class="card-details">
+                            <ul>
                                 <li><b>Team Leadership</b>- Managed 8-member team for digital marketing execution and timely delivery</li>
                                 <li><b>Lead Generation</b>- Added 1,000+ decision-makers and 25+ accounts monthly using Lusha, RocketReach, ZoomInfo</li>
                                 <li><b>Email & LinkedIn Campaigns</b>- Launched campaigns via Zoho, Mailchimp, Constant Contact with engagement tracking</li>
@@ -474,14 +558,14 @@
                         </div>
                     </div>
 
-                    <div class="exp-entry">
-                        <div class="exp-header" onclick="toggleDetails(this)">
-                            <span class="exp-title">Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)</span>
+                    <div class="card-entry">
+                        <div class="card-header" onclick="toggleDetails(this)">
+                            <span class="card-title">Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)</span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
-                        <div class="exp-details">
+                        <div class="card-details">
                             <ul>
                                 <li><b>Secondary Research</b>- Analyzed companies, competitors, and industry trends using LinkedIn, Crunchbase, Hoovers, SalesIntel, ZoomInfo</li>
                                 <li><b>Contact Acquisition</b>- Collected 200+ decision-maker contacts weekly for outbound campaigns and database growth</li>
@@ -497,14 +581,14 @@
                         </div>
                     </div>
 
-                    <div class="exp-entry">
-                        <div class="exp-header" onclick="toggleDetails(this)">
-                            <span class="exp-title">Partnerships Executive (Aug 2017 – Oct 2019)</span>
+                    <div class="card-entry">
+                        <div class="card-header" onclick="toggleDetails(this)">
+                            <span class="card-title">Partnerships Executive (Aug 2017 – Oct 2019)</span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
-                        <div class="exp-details">
+                        <div class="card-details">
                             <ul>
                                 <li><b>Partner Identification</b>- Actively sought partners aligned with organizational goals and objectives</li>
                                 <li><b>Primary Liaison</b>- Served as main contact for partners, addressing inquiries and fostering collaborative relationships</li>
@@ -520,14 +604,14 @@
                         </div>
                     </div>
 
-                    <div class="exp-entry">
-                        <div class="exp-header" onclick="toggleDetails(this)">
-                            <span class="exp-title">Graduate Apprentice Trainee (2013 – 2014)</span>
+                    <div class="card-entry">
+                        <div class="card-header" onclick="toggleDetails(this)">
+                            <span class="card-title">Graduate Apprentice Trainee (2013 – 2014)</span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
                         </div>
-                        <div class="exp-details">
+                        <div class="card-details">
                             <ul>
                                 <li>Worked with project managers on shipyard timelines.</li>
                                 <li>Used MS Projects to improve project paths.</li>
@@ -537,23 +621,40 @@
                     </div>
                 </section>
 
-                <section id="education">
-                    <h2>Education</h2>
-                    <div class="info-card"> <ul>
-                            <li><strong>MBA</strong> in Marketing and Finance, MVGR College of Engineering – 82.65%</li>
-                            <li><strong>B.Tech</strong> in Computer Science, Al-Aman College of Engineering – 61.94%</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="contact"> <h2>Contact</h2>
-                    <div class="info-card"> <p><a href="mailto:connectsharma.m@gmail.com" class="contact-link"><i class="fas fa-envelope"></i>connectsharma.m@gmail.com</a></p>
-                        <p><a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank" class="contact-link"><i class="fab fa-linkedin"></i>linkedin.com/in/sharma-mukkavilli</a></p>
-                        <div class="resume-download">
-                            <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
+                <section id="certifications">
+                    <h2>Certifications</h2>
+                    <div class="certifications-grid">
+                        <div class="certification-card">
+                            <p><i class="fas fa-award"></i> <strong>Become an AI-Powered Marketer</strong><br/>
+                            Semrush<br/>
+                            Issued May 2025</p>
+                        </div>
+                        <div class="certification-card">
+                            <p><i class="fas fa-award"></i> <strong>Hubspot Academy Social Media Marketing Certification</strong><br/>
+                            HubSpot Academy<br/>
+                            Issued Apr 2025</p>
                         </div>
                     </div>
                 </section>
+
+                <section id="education">
+                    <h2>Education</h2>
+                    <div class="education-grid"> <div class="education-card">
+                            <p><i class="fas fa-graduation-cap"></i> <strong>MBA</strong><br/>
+                            In Marketing and Finance<br/>
+                            MVGR College of Engineering – 82.65%</p>
+                        </div>
+                        <div class="education-card">
+                            <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
+                            In Computer Science<br/>
+                            Al-Aman College of Engineering – 61.94%</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="resume-download">
+                    <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
+                </div>
             </div> <footer>
                 &copy; 2025 Sharma Mukkavilli. All rights reserved.
             </footer>
@@ -600,19 +701,23 @@
             highlightActiveLink(); // Call on load for initial state
 
             // Initialize the first experience section as open by default
-            const firstExpDetails = document.querySelector('.exp-entry .exp-details');
-            const firstExpIcon = document.querySelector('.exp-entry .dropdown-btn i');
-            if (firstExpDetails && firstExpIcon) {
-                firstExpDetails.classList.add('open');
-                firstExpIcon.classList.remove('fa-chevron-down');
-                firstExpIcon.classList.add('fa-chevron-up');
+            // Find the *first* card-entry for the "Team Lead" experience specifically
+            const teamLeadExpCard = document.querySelector('#experience .card-entry:first-of-type');
+            if (teamLeadExpCard) {
+                const details = teamLeadExpCard.querySelector('.card-details');
+                const icon = teamLeadExpCard.querySelector('.dropdown-btn i');
+                if (details && icon) {
+                    details.classList.add('open');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
             }
         });
         window.addEventListener('scroll', highlightActiveLink); // Call on scroll
 
-        // Toggle Experience Details with smooth transition
+        // Toggle Details for any card with .card-header and .card-details (used by Experience)
         function toggleDetails(element) {
-            const details = element.nextElementSibling; // Get the .exp-details div
+            const details = element.nextElementSibling; // Get the .card-details div
             const icon = element.querySelector('.dropdown-btn i'); // Get the icon
 
             // Toggle the 'open' class
