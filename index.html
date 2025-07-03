@@ -1,133 +1,406 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sharma Mukkavilli | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #f4f7fc;
-      color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode {
-      background-color: #1e1e1e;
-      color: #f5f5f5;
-    }
-    .container {
-      display: flex;
-    }
-    .sidebar {
-      width: 200px;
-      background-color: #0a2540;
-      color: white;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    .sidebar a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.2s;
-    }
-    .sidebar a:hover {
-      color: #ff6f00;
-    }
-    .main {
-      margin-left: 200px;
-      padding: 2rem;
-      flex: 1;
-    }
-    .toggle-btn {
-      margin-top: 1rem;
-      background-color: #ff6f00;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    h2 {
-      color: #0a2540;
-      border-left: 4px solid #ff6f00;
-      padding-left: 0.5rem;
-    }
-    body.dark-mode h2 {
-      color: #ffcc80;
-    }
-    /* Add more styles as discussed previously here... */
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sharma Mukkavilli | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+        }
+        body.dark-mode header,
+        body.dark-mode .skills-grid div,
+        body.dark-mode .project-card,
+        body.dark-mode .exp-details {
+            background-color: #2c2c2c;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #0a2540;
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .sidebar a:hover {
+            color: #ff6f00;
+        }
+        .main {
+            margin-left: 200px; /* Offset for the sidebar */
+            padding: 2rem;
+            flex: 1;
+        }
+        header {
+            color: #0a2540; /* Changed from white as it's not in the dark sidebar */
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        body.dark-mode header {
+            color: #f5f5f5;
+            border-bottom-color: #555;
+        }
+        .toggle-btn {
+            margin-top: 1rem;
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        section {
+            max-width: 900px; /* Adjusted from 900px auto to fit within main */
+            margin: 0 auto 2rem auto;
+            padding: 0 1.5rem;
+        }
+        h2 {
+            color: #0a2540;
+            border-left: 4px solid #ff6f00;
+            padding-left: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        body.dark-mode h2 {
+            color: #ffcc80;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .skills-grid div {
+            background: white;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .skills-grid div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .skills-grid i {
+            margin-right: 6px;
+            color: #ff6f00;
+        }
+
+        /* Projects */
+        .project-card {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff6f00;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Experience */
+        .exp-entry {
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff6f00;
+            background: #fff;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: default;
+        }
+        .exp-title {
+            font-weight: bold;
+            color: #0a2540;
+        }
+        .dropdown-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #ff6f00;
+        }
+        .dropdown-btn:focus {
+            outline: none;
+        }
+        .exp-details {
+            display: none;
+            padding-top: 0.5rem;
+        }
+        .exp-details ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        .exp-details li {
+            list-style-type: disc;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Contact & Resume */
+        .contact a {
+            color: #ff6f00;
+            text-decoration: none;
+        }
+        .contact i {
+            margin-right: 0.5rem;
+        }
+        .resume-download {
+            margin-top: 1rem;
+        }
+        .resume-download a {
+            background: #0a2540;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            background: #0a2540;
+            color: white;
+            padding: 1rem;
+            margin-top: 2rem;
+            margin-left: -2rem; /* Account for main padding */
+            margin-right: -2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 1rem;
+                gap: 0.8rem;
+            }
+            .sidebar .toggle-btn {
+                margin-top: 0;
+            }
+            .main {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            section {
+                padding: 0 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="sidebar">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-    <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
-  </div>
+    <div class="container">
+        <div class="sidebar">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
+        </div>
 
-  <div class="main">
-    <header>
-      <h1>Sharma Mukkavilli</h1>
-      <p>Team Lead – Demand Generation | connectsharma.m@gmail.com | 7893-427-724</p>
-    </header>
+        <div class="main">
+            <header>
+                <h1>Sharma Mukkavilli</h1>
+                <p>Team Lead – Demand Generation | connectsharma.m@gmail.com | 7893-427-724</p>
+            </header>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Marketing professional with 7+ years of experience...</p>
-    </section>
+            <section id="about">
+                <h2>About Me</h2>
+                <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
+            </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <p>...</p>
-    </section>
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div><i class="fas fa-bullhorn"></i><strong> Marketing & Campaigns</strong><br/>Demand Generation, Marketing Automation</div>
+                    <div><i class="fas fa-chart-line"></i><strong> Research & Analysis</strong><br/>Persona Research, Competitive Benchmarking</div>
+                    <div><i class="fas fa-toolbox"></i><strong> Tools</strong><br/>Power BI, Zoho Analytics</div>
+                    <div><i class="fas fa-search"></i><strong> Content & SEO</strong><br/>Keyword Research, Optimization</div>
+                    <div><i class="fas fa-database"></i><strong> CRM & Data</strong><br/>Zoho CRM, ZoomInfo</div>
+                    <div><i class="fas fa-video"></i><strong> Webinars & Events</strong><br/>GoToWebinar, WebEx, MS Teams</div>
+                </div>
+            </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>...</p>
-    </section>
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="project-card">
+                    <h3>Global B2B Lead Pipeline Campaign</h3>
+                    <p>Generated 500+ qualified leads in 1 quarter using LinkedIn + email campaigns.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Executive Dashboard for Marketing</h3>
+                    <p>Created Power BI dashboards to track engagement, webinars, and conversion.</p>
+                </div>
+            </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
-      <p>...</p>
-    </section>
+            <section id="experience">
+                <h2>Professional Experience</h2>
 
-    <section id="education">
-      <h2>Education</h2>
-      <p>...</p>
-    </section>
+                <div class="exp-entry">
+                    <div class="exp-header">
+                        <span class="exp-title">Team Lead – Demand Generation & Events (Mar 2023 – Present)</span>
+                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                            <i class="fas fa-chevron-up"></i>
+                        </button>
+                    </div>
+                    <div class="exp-details" style="display: block;">
+                        <ul>
+                            <li><b>Team Leadership</b>- Managed 8-member team for digital marketing execution and timely delivery</li>
+                            <li><b>Lead Generation</b>- Added 1,000+ decision-makers and 25+ accounts monthly using Lusha, RocketReach, ZoomInfo</li>
+                            <li><b>Email & LinkedIn Campaigns</b>- Launched campaigns via Zoho, Mailchimp, Constant Contact with engagement tracking</li>
+                            <li><b>Sales Enablement</b>- Created persona documents, battle cards, and competitive summaries for sales teams</li>
+                            <li><b>Analytics & Reporting</b>- Built performance reports using Power BI, Zoho Analytics, LinkedIn Campaign Manager</li>
+                            <li><b>Event Management</b>- Coordinated webinars and virtual events using GoTo Webinar, WebEx, Microsoft Teams</li>
+                            <li><b>Social Media Management</b>- Managed LinkedIn, Facebook, Twitter presence with Hootsuite and Buffer</li>
+                            <li><b>Market Research</b>- Conducted research for content strategy using internal and external data sources</li>
+                            <li><b>SEO Support</b>- Performed keyword research and content optimization with dev/design teams</li>
+                            <li><b>CRM Management</b>- Maintained Zoho CRM accuracy, reduced bounce rates, ensured clean segmentation</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
-      <div class="resume-download">
-        <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
-      </div>
-    </section>
-  </div>
+                <div class="exp-entry">
+                    <div class="exp-header">
+                        <span class="exp-title">Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)</span>
+                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="exp-details">
+                        <ul>
+                            <li><b>Secondary Research</b>- Analyzed companies, competitors, and industry trends using LinkedIn, Crunchbase, Hoovers, SalesIntel, ZoomInfo</li>
+                            <li><b>Contact Acquisition</b>- Collected 200+ decision-maker contacts weekly for outbound campaigns and database growth</li>
+                            <li><b>Business Development</b>- Identified new opportunities using LinkedIn Sales Navigator and email outreach</li>
+                            <li><b>Webinar Operations</b>- Managed setup, invitations, reminders, and follow-ups via GoTo Webinar and Zoho Webinars</li>
+                            <li><b>Performance Tracking</b>- Tracked registrations, attendance, and feedback with detailed reporting for internal teams</li>
+                            <li><b>Campaign Targeting</b>- Coordinated email campaigns by segmenting contacts based on industry, technology, and engagement</li>
+                            <li><b>SEO Collaboration</b>- Supported keyword research and content updates for on-page and email optimization</li>
+                            <li><b>Event Coordination</b> Managed logistics and attendee follow-ups for internal and external events</li>
+                            <li><b>Engagement Analysis</b>- Monitored digital response trends to identify campaign improvement opportunities</li>
+                            <li><b>Cross-team Collaboration</b>- Worked with sales and marketing teams to improve data quality and share market insights</li>
+                        </ul>
+                    </div>
+                </div>
 
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-  </script>
+                <div class="exp-entry">
+                    <div class="exp-header">
+                        <span class="exp-title">Partnerships Executive (Aug 2017 – Oct 2019)</span>
+                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="exp-details">
+                        <ul>
+                            <li><b>Partner Identification</b>- Actively sought partners aligned with organizational goals and objectives</li>
+                            <li><b>Primary Liaison</b>- Served as main contact for partners, addressing inquiries and fostering collaborative relationships</li>
+                            <li><b>Strategic Planning</b>- Formulated targeted strategies including networking events and joint promotions for mutual benefit</li>
+                            <li><b>Cross-functional Collaboration</b>- Aligned partnership activities with business strategies across departments</li>
+                            <li><b>Joint Marketing Campaigns</b>- Coordinated marketing initiatives ensuring cohesive approach between teams</li>
+                            <li><b>Relationship Management</b>- Cultivated and maintained strong relationships with key partners, ensuring ongoing satisfaction</li>
+                            <li><b>Performance Analysis</b>- Analyzed partnership metrics and provided strategic insights to senior management</li>
+                            <li><b>Event Coordination</b>- Managed logistics for large-scale partner conferences and networking events in North America</li>
+                            <li><b>Travel Management</b>- Handled all aspects of attendee travel and logistics for international conferences</li>
+                            <li><b>Vendor Coordination</b>- Managed event item shipping, vendor relations, and budget adherence</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-entry">
+                    <div class="exp-header">
+                        <span class="exp-title">Graduate Apprentice Trainee (2013 – 2014)</span>
+                        <button class="dropdown-btn" onclick="toggleDetails(this)">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="exp-details">
+                        <ul>
+                            <li>Worked with project managers on shipyard timelines.</li>
+                            <li>Used MS Projects to improve project paths.</li>
+                            <li>Presented updates and attended client meetings.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <ul>
+                    <li><strong>MBA</strong> – MVGR College of Engineering – 82.65%</li>
+                    <li><strong>B.Tech</strong> – Al-Aman College of Engineering – 61.94%</li>
+                </ul>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Contact</h2>
+                <p><i class="fas fa-envelope"></i><a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
+                <p><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
+                <div class="resume-download">
+                    <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
+                </div>
+            </section>
+
+            <footer>
+                &copy; 2025 Sharma Mukkavilli. All rights reserved.
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function toggleDetails(btn) {
+            const panel = btn.parentElement.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const isOpen = panel.style.display === 'block';
+
+            panel.style.display = isOpen ? 'none' : 'block';
+            icon.className = isOpen ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+        }
+    </script>
 
 </body>
 </html>
