@@ -8,81 +8,67 @@
     <style>
         body {
             margin: 0; /* Remove default body margin */
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
         }
+
         body.dark-mode {
             background-color: #1e1e1e;
             color: #f5f5f5;
         }
+
+        body.dark-mode header,
         body.dark-mode .skills-grid div,
         body.dark-mode .project-card,
         body.dark-mode .exp-details {
             background-color: #2c2c2c;
         }
 
-        /* Header Styles */
+        /* Container remains for overall layout, but now main content will fill the space */
+        .container {
+            display: flex;
+            flex-direction: column; /* Stack main content and sidebar vertically */
+            min-height: 100vh; /* Ensure container takes full viewport height */
+        }
+
+        .main {
+            flex-grow: 1; /* Allow main content to take up available space */
+            padding: 2rem;
+            margin-bottom: 70px; /* Space for the fixed bottom sidebar */
+        }
+
         header {
-            background-color: #0a2540; /* Blue color as requested */
+            background-color: #0a2540; /* Blue color for header */
             color: white;
-            padding: 1rem 0;
+            padding: 2rem 1rem;
             text-align: center; /* Center align header content */
             margin-bottom: 2rem;
-            border-bottom: 1px solid #ddd; /* Keep existing border for consistency */
         }
+
         body.dark-mode header {
-            background-color: #2c2c2c; /* Dark mode header background */
+            background-color: #2c2c2c; /* Adjust dark mode header background */
             color: #f5f5f5;
-            border-bottom-color: #555;
         }
+
         header h1 {
+            margin-top: 0;
             margin-bottom: 0.5rem;
         }
+
         header p {
-            margin-top: 0;
             margin-bottom: 0;
+            font-size: 1.1rem;
         }
 
         .toggle-btn {
-            margin-top: 1rem;
             background-color: #ff6f00;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 5px;
-        }
-
-        /* Container and Main adjusted for sidebar below header */
-        .container {
-            display: flex;
-            flex-direction: column; /* Stack header, sidebar, and main vertically */
-        }
-        .sidebar {
-            width: 100%; /* Sidebar takes full width below header */
-            background-color: #0a2540;
-            color: white;
-            position: static; /* Remove fixed position */
-            padding: 1rem 1rem;
-            display: flex;
-            flex-direction: row; /* Align items horizontally */
-            flex-wrap: wrap;
-            justify-content: center; /* Center align sidebar links */
-            gap: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow below sidebar */
-            margin-bottom: 2rem; /* Space between sidebar and main content */
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.2s;
-        }
-        .sidebar a:hover {
-            color: #ff6f00;
-        }
-        .main {
-            margin-left: 0; /* No left margin as sidebar is not fixed */
-            padding: 0 2rem; /* Adjust padding for main content */
-            flex: 1;
+            margin-top: 1rem; /* Added margin for separation */
         }
 
         section {
@@ -90,12 +76,14 @@
             margin: 0 auto 2rem auto;
             padding: 0 1.5rem;
         }
+
         h2 {
             color: #0a2540;
             border-left: 4px solid #ff6f00;
             padding-left: 0.5rem;
             margin-bottom: 1.5rem;
         }
+
         body.dark-mode h2 {
             color: #ffcc80;
         }
@@ -107,6 +95,7 @@
             gap: 1rem;
             margin-top: 1rem;
         }
+
         .skills-grid div {
             background: white;
             padding: 1rem;
@@ -115,10 +104,12 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: transform 0.3s;
         }
+
         .skills-grid div:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
+
         .skills-grid i {
             margin-right: 6px;
             color: #ff6f00;
@@ -134,6 +125,7 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
+
         .project-card:hover {
             transform: translateY(-4px);
         }
@@ -147,16 +139,19 @@
             padding: 0.5rem 1rem;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
+
         .exp-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
         }
+
         .exp-title {
             font-weight: bold;
             color: #0a2540;
         }
+
         .dropdown-btn {
             background: none;
             border: none;
@@ -164,17 +159,21 @@
             cursor: pointer;
             color: #ff6f00;
         }
+
         .dropdown-btn:focus {
             outline: none;
         }
+
         .exp-details {
             display: none;
             padding-top: 0.5rem;
         }
+
         .exp-details ul {
             margin: 0;
             padding-left: 1.2rem;
         }
+
         .exp-details li {
             list-style-type: disc;
             margin-bottom: 0.4rem;
@@ -185,12 +184,15 @@
             color: #ff6f00;
             text-decoration: none;
         }
+
         .contact i {
             margin-right: 0.5rem;
         }
+
         .resume-download {
             margin-top: 1rem;
         }
+
         .resume-download a {
             background: #0a2540;
             color: white;
@@ -199,37 +201,69 @@
             text-decoration: none;
         }
 
+        /* Sidebar at bottom and left */
+        .sidebar {
+            width: 100%; /* Take full width at the bottom */
+            background-color: #0a2540;
+            color: white;
+            position: fixed; /* Fixed position at the bottom */
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row; /* Align items in a row */
+            justify-content: center; /* Center align navigation items */
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+            z-index: 1000; /* Ensure it stays on top */
+            height: 60px; /* Fixed height for the sidebar */
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .sidebar a:hover {
+            color: #ff6f00;
+        }
+
+        .sidebar .toggle-btn {
+            margin-top: 0; /* No top margin needed here */
+            margin-left: auto; /* Push toggle button to the right */
+        }
+
+        /* Footer full width */
         footer {
             text-align: center;
             background: #0a2540;
             color: white;
             padding: 1rem;
             margin-top: 2rem;
-            /* Adjust negative margins for footer based on new layout */
-            margin-left: 0;
-            margin-right: 0;
+            width: 100%; /* Ensure footer spans full width */
+            box-sizing: border-box; /* Include padding in width calculation */
+            position: relative; /* Changed from absolute to relative, so it pushes content */
+            left: 0;
+            bottom: 0;
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
+            .main {
+                margin-bottom: 120px; /* Adjust margin for mobile sidebar height */
+                padding: 1rem;
             }
             .sidebar {
-                position: static;
-                width: 100%;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column; /* Stack sidebar items vertically on small screens */
+                height: auto; /* Auto height for stacked items */
                 padding: 1rem;
                 gap: 0.8rem;
             }
             .sidebar .toggle-btn {
-                margin-top: 0;
-            }
-            .main {
                 margin-left: 0;
-                padding: 1rem;
             }
             section {
                 padding: 0 1rem;
@@ -243,17 +277,7 @@
         <header>
             <h1>Sharma Mukkavilli</h1>
             <p>Team Lead – Demand Generation | connectsharma.m@gmail.com | 7893-427-724</p>
-            <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
         </header>
-
-        <div class="sidebar">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-        </div>
 
         <div class="main">
             <section id="about">
@@ -390,11 +414,20 @@
                     <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
                 </div>
             </section>
+        </div> <div class="sidebar">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
+        </div>
+    </div> <footer>
+        &copy; 2025 Sharma Mukkavilli. All rights reserved.
+    </footer>
 
-            <footer>
-                &copy; 2025 Sharma Mukkavilli. All rights reserved.
-            </footer>
-        </div> </div> <script>
+    <script>
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
         }
