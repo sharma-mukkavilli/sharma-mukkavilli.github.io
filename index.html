@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Base styles for HTML and Body - essential for full page layout and transitions */
-        html, body {
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        body {
             margin: 0;
             padding: 0;
             height: 100%; /* Ensures 100vh works correctly for fixed elements */
@@ -77,11 +81,21 @@
             color: white;
             text-decoration: none;
             font-size: 1rem;
-            transition: color 0.3s ease;
+            display: flex; /* Allow icon and text to be side-by-side */
+            align-items: center; /* Vertically center icon and text */
+            padding: 0.5rem 0; /* Add some padding for better click area */
+            width: 100%; /* Make links take full width for consistent highlighting */
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 0.8rem; /* Space between icon and text */
+            font-size: 1.2rem; /* Adjust icon size */
         }
 
         .sidebar a:hover {
             color: #ff6f00; /* Orange hover for links */
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
         }
 
         body.dark-mode .sidebar a {
@@ -90,10 +104,26 @@
 
         body.dark-mode .sidebar a:hover {
             color: #ffcc80; /* Lighter orange hover for links in dark mode */
+            background-color: rgba(255, 204, 128, 0.1); /* Subtle background on hover */
+        }
+
+        /* Active sidebar link highlighting */
+        .sidebar a.active {
+            color: #ff6f00; /* Active link color */
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2); /* Stronger background for active */
+            border-left: 4px solid #ff6f00; /* Accent border for active link */
+            padding-left: calc(1rem - 4px); /* Adjust padding due to border */
+        }
+
+        body.dark-mode .sidebar a.active {
+            color: #ffcc80; /* Active link color in dark mode */
+            background-color: rgba(255, 204, 128, 0.2);
+            border-left-color: #ffcc80; /* Accent border in dark mode */
         }
 
         .sidebar .toggle-btn {
-            margin-top: 1rem; /* Spacing below the last navigation link */
+            /* No margin-top: auto; here to keep it with other links */
             background-color: #ff6f00;
             color: white;
             border: none;
@@ -101,12 +131,15 @@
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+            align-self: flex-start; /* Align with other links */
+            margin-top: 1rem; /* Add some space below the last link */
         }
 
         body.dark-mode .sidebar .toggle-btn {
             background-color: #ffcc80; /* Lighter orange for toggle button */
             color: #1e1e1e; /* Dark text for toggle button */
         }
+
 
         /* --- Main Content Area Styles --- */
         .main-content-area {
@@ -141,27 +174,23 @@
             max-width: 900px;
             margin: 0 auto 2rem auto; /* Center sections within their padded area */
             padding: 0 1.5rem; /* Internal padding for sections */
-            /* Removed direct background from here. Let body background apply, or apply to specific inner divs if needed. */
-            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for section content */
         }
 
-        /* Specific background and text for card-like elements that should change */
+        /* Apply consistent background and text for card-like elements */
         .skills-grid div,
-        .project-card,
-        .exp-entry,
-        .exp-details {
+        .project-card { /* Only skills and projects get this specific style */
             background: white; /* Default light background */
             border: 1px solid #ddd; /* Default light border */
             color: #333; /* Default text color */
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             border-radius: 8px; /* Rounded corners for consistency */
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            padding: 1rem; /* Ensure consistent padding */
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         body.dark-mode .skills-grid div,
-        body.dark-mode .project-card,
-        body.dark-mode .exp-entry,
-        body.dark-mode .exp-details {
+        body.dark-mode .project-card {
             background-color: #2c2c2c; /* Darker background */
             border-color: #444; /* Darker border */
             color: #f5f5f5; /* Light text */
@@ -195,10 +224,8 @@
 
         /* Projects */
         .project-card {
-            padding: 1rem;
             margin-bottom: 1rem;
             border-left: 4px solid #ff6f00; /* Orange left border */
-            border-radius: 8px;
             transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-left-color 0.4s ease;
         }
 
@@ -210,23 +237,39 @@
             transform: translateY(-4px);
         }
 
-        /* Experience */
+        /* --- Experience Section Styles (now similar to skills/projects) --- */
         .exp-entry {
             margin-bottom: 1rem;
-            border-left: 4px solid #ff6f00; /* Orange left border */
-            padding: 0.5rem 1rem;
-            transition: background-color 0.4s ease, color 0.4s ease, border-left-color 0.4s ease;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 1rem; /* Consistent padding */
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         body.dark-mode .exp-entry {
-            border-left-color: #ffcc80; /* Lighter orange border in dark mode */
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
+
+        .exp-entry:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .exp-entry:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        }
+
 
         .exp-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            /* No margin-bottom here, controlled by .exp-details padding-top */
         }
 
         .exp-title {
@@ -257,9 +300,16 @@
         }
 
         .exp-details {
-            display: none;
-            padding-top: 0.5rem;
-            /* Inherits background/color from .exp-entry in dark mode */
+            max-height: 0; /* Start hidden */
+            overflow: hidden; /* Hide overflow during transition */
+            transition: max-height 0.7s ease-out, padding-top 0.7s ease-out; /* Smooth transition for height and padding */
+            padding-top: 0; /* No padding when closed */
+            /* Inherits background/color from .exp-entry */
+        }
+
+        .exp-details.open {
+            max-height: 500px; /* Adjust this value if content is taller */
+            padding-top: 0.5rem; /* Add padding when open */
         }
 
         .exp-details ul {
@@ -271,20 +321,27 @@
             list-style-type: disc;
             margin-bottom: 0.4rem;
         }
+        .exp-details li:last-child {
+            margin-bottom: 0; /* Remove margin from last list item */
+        }
+
 
         /* --- Contact & Resume Styles --- */
         .contact a {
             color: #ff6f00; /* Orange links */
             text-decoration: none;
+            display: flex; /* For icon alignment */
+            align-items: center;
+            margin-bottom: 0.5rem; /* Space between contact links */
             transition: color 0.4s ease;
+        }
+
+        .contact a i {
+            margin-right: 0.5rem; /* Space between icon and text */
         }
 
         body.dark-mode .contact a {
             color: #ffcc80; /* Lighter orange links in dark mode */
-        }
-
-        .contact i {
-            margin-right: 0.5rem;
         }
 
         .resume-download {
@@ -297,6 +354,7 @@
             padding: 0.6rem 1.2rem;
             border-radius: 5px;
             text-decoration: none;
+            display: inline-block; /* Crucial for controlling its width */
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
@@ -334,6 +392,9 @@
                 padding: 1rem;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow on bottom */
             }
+             .sidebar .toggle-btn {
+                margin-top: 0; /* Remove top margin when sidebar is horizontal */
+             }
 
             .main-content-area {
                 margin-left: 0; /* Remove left margin on small screens */
@@ -350,12 +411,12 @@
 
     <div class="container">
         <div class="sidebar">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
+            <a href="#about"><i class="fas fa-user"></i>About</a>
+            <a href="#skills"><i class="fas fa-code"></i>Skills</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a>
+            <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
+            <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
+            <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
             <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
         </div>
 
@@ -405,7 +466,7 @@
                                 <i class="fas fa-chevron-up"></i>
                             </button>
                         </div>
-                        <div class="exp-details" style="display: block;">
+                        <div class="exp-details open" style="max-height: 500px; padding-top: 0.5rem;">
                             <ul>
                                 <li><b>Team Leadership</b>- Managed 8-member team for digital marketing execution and timely delivery</li>
                                 <li><b>Lead Generation</b>- Added 1,000+ decision-makers and 25+ accounts monthly using Lusha, RocketReach, ZoomInfo</li>
@@ -493,8 +554,8 @@
 
                 <section class="contact">
                     <h2>Contact</h2>
-                    <p>Email: <a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
-                    <p>LinkedIn: <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
+                    <p><a href="mailto:connectsharma.m@gmail.com"><i class="fas fa-envelope"></i>connectsharma.m@gmail.com</a></p>
+                    <p><a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank"><i class="fab fa-linkedin"></i>linkedin.com/in/sharma-mukkavilli</a></p>
                     <div class="resume-download">
                         <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
                     </div>
@@ -507,18 +568,57 @@
             document.body.classList.toggle('dark-mode');
         }
 
+        // Function to highlight active sidebar link based on scroll position
+        function highlightActiveLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.sidebar a');
+            let currentActive = null;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Offset for when the section should become active in the sidebar
+                const offset = 150; 
+
+                // Check if the section is currently in or past the viewport, considering the offset
+                if (window.scrollY >= sectionTop - offset && window.scrollY < sectionTop + sectionHeight - offset) {
+                    currentActive = section.getAttribute('id');
+                }
+            });
+
+            // Handle the case when at the very top of the page, before the first section's active zone
+            if (window.scrollY < sections[0].offsetTop - 100 && sections[0]) { // Check if sections[0] exists
+                 currentActive = sections[0].getAttribute('id');
+            }
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Remove active from all links first
+                // Check if the link's href matches the current active section ID
+                if (currentActive && link.getAttribute('href').includes(currentActive)) {
+                    link.classList.add('active'); // Add active to the current one
+                }
+            });
+        }
+
+        // Initial call and event listener for scroll
+        document.addEventListener('DOMContentLoaded', highlightActiveLink); // Call on load for initial state
+        window.addEventListener('scroll', highlightActiveLink); // Call on scroll
+
+        // Toggle Experience Details with smooth transition
         function toggleDetails(element) {
             const details = element.nextElementSibling; // Get the .exp-details div
             const icon = element.querySelector('.dropdown-btn i'); // Get the icon
 
-            if (details.style.display === 'block') {
-                details.style.display = 'none';
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                details.style.display = 'block';
+            // Toggle the 'open' class
+            details.classList.toggle('open');
+
+            if (details.classList.contains('open')) {
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
             }
         }
     </script>
