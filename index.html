@@ -15,11 +15,16 @@
     }
     body.dark-mode {
       background-color: #1e1e1e;
-      color: #ddd;
+      color: #f5f5f5;
     }
-    body.dark-mode .project-card {
+    body.dark-mode .project-card,
+    body.dark-mode .skills-grid div,
+    body.dark-mode header {
       background-color: #2c2c2c;
-      color: #f1f1f1;
+      color: #f5f5f5;
+    }
+    body.dark-mode .project-card,
+    body.dark-mode .skills-grid div {
       border-color: #ffa726;
     }
     header {
@@ -28,6 +33,7 @@
       padding: 2rem;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s, color 0.3s;
     }
     header h1 {
       margin: 0;
@@ -97,6 +103,11 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skills-grid div:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
     .projects {
       margin-top: 2rem;
@@ -108,7 +119,11 @@
       border-radius: 8px;
       border-left: 4px solid #ff6f00;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: background 0.3s, color 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     .resume-download {
       margin-top: 1rem;
@@ -119,6 +134,10 @@
       padding: 0.6rem 1.2rem;
       border-radius: 5px;
       text-decoration: none;
+      transition: background 0.3s;
+    }
+    .resume-download a:hover {
+      background: #ff6f00;
     }
   </style>
 </head>
@@ -131,7 +150,7 @@
 
   <section class="about">
     <h2>About Me</h2>
-    <p>Market intelligence and research professional with over 7 years of experience in supporting B2B marketing through primary and secondary research, persona analysis, and competitive benchmarking. Proven ability to collect, analyze, and present structured insights to inform campaign strategy, positioning, and executive decision-making. Skilled in developing audience profiles, tracking digital engagement, conducting landscape assessments, and preparing social media audits and share-of-voice reports. Proficient in tools including Power BI, LinkedIn Campaign Manager, Zoho Analytics with working knowledge of platforms such as Semrush, Hootsuite, Buffer and QUID. Experienced in managing multiple deadlines across concurrent projects while ensuring accuracy and timely delivery. Comfortable working independently or as part of virtual teams, with a strong focus on detail, clarity, and alignment with business objectives. Regularly collaborate with US-based marketing and business teams to support research-driven marketing programs.</p>
+    <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking. Known for delivering insights that drive decision-making and marketing effectiveness across global teams.</p>
   </section>
 
   <section class="skills">
