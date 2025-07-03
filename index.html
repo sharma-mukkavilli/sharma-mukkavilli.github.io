@@ -33,6 +33,7 @@
       padding: 2rem;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s, color 0.3s;
     }
     header h1 {
       margin: 0;
@@ -76,6 +77,20 @@
       font-weight: bold;
       color: #ff6f00;
     }
+    .experience, .education {
+      margin-top: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0a2540;
+      color: white;
+      margin-top: 2rem;
+    }
+    .contact a {
+      color: #ff6f00;
+      text-decoration: none;
+    }
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -94,6 +109,9 @@
       transform: translateY(-5px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
+    .projects {
+      margin-top: 2rem;
+    }
     .project-card {
       background: white;
       padding: 1rem;
@@ -107,52 +125,19 @@
       transform: translateY(-5px);
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #0a2540;
-      color: white;
-      margin-top: 2rem;
-    }
-    .contact a {
-      color: #ff6f00;
-      text-decoration: none;
-    }
     .resume-download {
       margin-top: 1rem;
     }
-    .resume-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .resume-btn {
+    .resume-download a {
       background: #0a2540;
       color: white;
       padding: 0.6rem 1.2rem;
       border-radius: 5px;
       text-decoration: none;
-      cursor: pointer;
+      transition: background 0.3s;
     }
-    .resume-dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 180px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 6px;
-    }
-    .resume-dropdown-content a {
-      color: #0a2540;
-      padding: 10px 15px;
-      text-decoration: none;
-      display: block;
-    }
-    .resume-dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-    .resume-dropdown:hover .resume-dropdown-content {
-      display: block;
+    .resume-download a:hover {
+      background: #ff6f00;
     }
   </style>
 </head>
@@ -215,13 +200,7 @@
     <p>Email: <a href="mailto:connectsharma.m@gmail.com">connectsharma.m@gmail.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank">linkedin.com/in/sharma-mukkavilli</a></p>
     <div class="resume-download">
-      <div class="resume-dropdown">
-        <div class="resume-btn">Download Resume ▼</div>
-        <div class="resume-dropdown-content">
-          <a href="Sharma_Mukkavilli_Resume.pdf" download>PDF Version</a>
-          <a href="Sharma_Mukkavilli_Resume.docx" download>DOCX Version</a>
-        </div>
-      </div>
+      <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
     </div>
   </section>
 
