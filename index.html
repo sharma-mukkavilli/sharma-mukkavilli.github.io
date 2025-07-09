@@ -484,10 +484,20 @@ body.dark-mode .profile-pic {
                 padding: 0 1rem; /* Adjust padding for sections */
             }
 
-            header .header-info {
-                flex-direction: column; /* Stack contact info vertically on small screens */
-                gap: 5px; /* Reduce gap */
-            }
+             header .header-info {
+        flex-direction: column; /* Stack contact info vertically on small screens */
+        gap: 5px; /* Reduce gap */
+    }
+
+    /* NEW: Adjust profile picture for smaller screens */
+    .profile-pic {
+        width: 60px; /* Make it smaller */
+        height: 60px; /* Make it smaller */
+        top: 10px; /* Move it closer to the top */
+        right: 10px; /* Move it closer to the right */
+        border-width: 2px; /* Optionally reduce border width */
+    }
+}
         }
     </style>
 </head>
