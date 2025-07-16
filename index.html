@@ -363,6 +363,9 @@
             overflow: visible; /* No hidden overflow */
             padding-top: 0.5rem; /* Consistent padding below title */
             transition: none; /* No transition on these, they're always open */
+            min-height: 40px; /* Added: Set a minimum height for the details content */
+            display: flex; /* Added: Use flexbox to vertically align content if it's short */
+            align-items: center; /* Added: Vertically center the content */
         }
 
 
@@ -855,32 +858,27 @@
             const navLinks = document.querySelectorAll('.sidebar a');
             let currentActive = null;
 
-            // Offset to consider a section "active" when its top is within this range from the viewport top.
-            const offset = 150; // Adjusted offset for more consistent highlighting
+            // Use a smaller, more dynamic offset for better accuracy.
+            // The viewport height divided by a factor (e.g., 3 or 4) can work well.
+            const viewportMid = window.innerHeight / 2; // Midpoint of the viewport
 
-            // Find the section that is currently most in view
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = sections[i];
+            sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // Check if the section's top is visible or has just passed the offset
-                // and if the section's bottom is still below the offset (meaning it's significantly in view)
-                if (rect.top <= offset && rect.bottom > offset) {
+                // A section is "active" if its top is above the viewport midpoint
+                // and its bottom is below the viewport midpoint.
+                if (rect.top <= viewportMid && rect.bottom >= viewportMid) {
                     currentActive = section.getAttribute('id');
-                    break; // Found the active section, stop
                 }
-            }
+            });
 
-            // Fallback for the very top of the page (ensure 'about' is active when scrolled to top)
-            if (window.scrollY < sections[0].offsetTop + offset && sections.length > 0) {
-                 currentActive = sections[0].getAttribute('id');
+            // Fallback for when no section is exactly at the midpoint (e.g., at the very top or bottom)
+            // If scrolled to the very top, make 'about' active.
+            if (window.scrollY === 0 && sections.length > 0) {
+                currentActive = sections[0].getAttribute('id');
             }
-
-            // Fallback for the very bottom of the page (last section)
-            // If the user scrolls to the very end and no other section is active based on the above logic
-            // (e.g., if the last section is short), activate the last section.
-            // Using a small tolerance (e.g., +1) for document.body.offsetHeight to account for fractional pixel issues.
+            // If scrolled to the very bottom, make the last section active.
             const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (totalScrollHeight > 0 && window.scrollY >= totalScrollHeight - 5) { // -5px tolerance
+            if (totalScrollHeight > 0 && Math.abs(window.scrollY - totalScrollHeight) < 5) { // Small tolerance
                 currentActive = sections[sections.length - 1].getAttribute('id');
             }
 
