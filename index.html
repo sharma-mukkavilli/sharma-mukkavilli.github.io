@@ -100,17 +100,17 @@
             color: white;
             position: fixed; /* Keep sidebar fixed */
             left: 0;
-            top: 0; /* Position at the top-left */
-            height: 100vh; /* Make it full viewport height */
-            overflow-y: auto; /* Enable scrolling if content overflows vertically */
-            padding: 2rem 1rem;
+            top: 0; /* Keep top at 0, padding will push content */
+            height: 100vh;
+            overflow-y: auto;
+            padding: 8rem 1rem 2rem 1rem; /* Adjusted top padding to 8rem, keeps others the same */
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Align items to the left (start) */
+            align-items: flex-start;
             gap: 1rem;
             box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-            z-index: 100; /* Ensure it stays on top of other content */
-            transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
+            z-index: 100;
+            transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
         }
 
         body.dark-mode .sidebar {
@@ -534,7 +534,8 @@
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
-            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a> <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
+            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
+            <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
             <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
         </div>
 
@@ -723,6 +724,7 @@
                         </ul>
                     </div>
                 </section>
+
                 <section id="education">
                     <h2>Education</h2>
                     <div class="education-grid">
