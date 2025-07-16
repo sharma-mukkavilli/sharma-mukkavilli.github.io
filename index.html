@@ -33,7 +33,7 @@
             color: white;
             padding: 2rem 1rem;
             text-align: center; /* Center align header content */
-            margin-bottom: 2rem; /* Spacing below header */
+            margin-bottom: 4rem; /* Increased spacing below header for "About Me" alignment */
             transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
             position: relative; /* Essential for positioning the child image */
         }
@@ -321,14 +321,14 @@
         }
 
         /* --- Skills Section Styles (no dropdowns, just grid cards) --- */
-        .skills-grid { /* Renamed from .skills-section-grid for clarity */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width for skill cards */
-            gap: 1rem; /* Space between skill cards */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
         }
 
-        .skill-card { /* Individual skill card structure (similar to .card-entry but without dropdown) */
+        .skill-card {
             background: white;
             border: 1px solid #ddd;
             color: #333;
@@ -356,48 +356,59 @@
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            color: #0a2540; /* Blue color for skill titles */
+            color: #0a2540;
             transition: color 0.4s ease;
         }
         body.dark-mode .skill-card h3 {
-            color: #f5f5f5; /* Light text for skill titles in dark mode */
+            color: #f5f5f5;
         }
 
         .skill-card h3 i {
             margin-right: 8px;
-            color: #ff6f00; /* Orange for skill icons */
+            color: #ff6f00;
             transition: color 0.4s ease;
         }
         body.dark-mode .skill-card h3 i {
-            color: #ffcc80; /* Lighter orange for skill icons in dark mode */
+            color: #ffcc80;
+        }
+
+        /* NEW: Styles for skills cards within the grid to remove dropdown elements */
+        .skills-grid .skill-card .card-header {
+            cursor: default; /* No pointer cursor */
+            padding-bottom: 0; /* No extra padding for header */
+        }
+        .skills-grid .skill-card .dropdown-btn {
+            display: none; /* Hide dropdown button */
+        }
+        .skills-grid .skill-card .card-details {
+            max-height: none; /* Always open */
+            overflow: visible; /* No hidden overflow */
+            padding-top: 0.5rem; /* Consistent padding below title */
         }
 
         /* Styling for lists within skill cards (specifically for hobbies) */
-        .skill-card ul {
-            list-style: none; /* Remove default bullet points */
-            padding: 0;      /* Remove default left padding */
-            margin: 0;       /* Remove default top/bottom margin */
+        /* Modified: Specific targeting for hobbies to remove individual item icons if desired */
+        .skill-card.hobbies-card ul { /* Add a new class to the hobby skill-card if needed */
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .skill-card li {
-            margin-bottom: 0.4rem; /* Space between list items */
-            display: flex;         /* For icon alignment */
-            align-items: center;   /* Vertically align icon and text */
+        .skill-card.hobbies-card li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
         }
 
-        .skill-card li:last-child {
-            margin-bottom: 0; /* Remove margin from the last item */
+        .skill-card.hobbies-card li:last-child {
+            margin-bottom: 0;
         }
 
-        .skill-card li i {
-            margin-right: 8px; /* Space between icon and text */
-            color: #ff6f00;     /* Orange color for hobby icons */
-            transition: color 0.4s ease;
+        /* IMPORTANT: Hide icons for individual hobby list items */
+        .skill-card.hobbies-card li i {
+            display: none; /* This will hide the icons next to "Playing Cricket", etc. */
         }
 
-        body.dark-mode .skill-card li i {
-            color: #ffcc80; /* Lighter orange in dark mode */
-        }
 
         /* --- Education/Certification Section Styles (no dropdowns, just grid cards) --- */
         .education-grid, .certifications-grid { /* Combined for similar layout */
@@ -715,12 +726,12 @@
 
                 <section id="hobbies">
                     <h2>Hobbies & Interests</h2>
-                    <div class="skill-card">
+                    <div class="skill-card hobbies-card">
                         <h3><i class="fas fa-heart"></i> My Interests</h3>
                         <ul>
-                            <li><i class="fas fa-baseball-ball"></i> Playing Cricket</li>
-                            <li><i class="fas fa-book-reader"></i> Reading Novels</li>
-                            <li><i class="fas fa-chess"></i> Chess</li>
+                            <li>Playing Cricket</li>
+                            <li>Reading Novels</li>
+                            <li>Chess</li>
                         </ul>
                     </div>
                 </section>
@@ -762,22 +773,22 @@
             const navLinks = document.querySelectorAll('.sidebar a');
             let currentActive = null;
 
-            // Iterate over sections to find which one is currently in view
+            // Define a more generous offset for when a section becomes "active"
+            // This needs to account for the fixed header and sidebar.
+            const offset = 120; // Pixels from the top of the viewport
+
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // A section is considered "active" if its top is within a certain range from the viewport top
-                // and its bottom is not too far above the viewport bottom.
-                // Adjust this offset based on your header/fixed elements.
-                const offset = 100; // Pixels from the top of the viewport to consider the section active
-
-                if (rect.top <= offset && rect.bottom >= offset) {
+                // A section is considered active if its top is near or above the offset
+                // and its bottom is below the offset.
+                if (rect.top <= offset && rect.bottom > offset) {
                     currentActive = section.getAttribute('id');
                 }
             });
 
-            // If no section is in view (e.g., at the very top of the page), default to the first one.
-            // This also helps if the first section is very short.
-            if (!currentActive && sections.length > 0 && window.scrollY < sections[0].offsetTop + 50) {
+            // Special handling for the very top of the page: if no other section is active,
+            // assume 'about' is active if we're near the top.
+            if (!currentActive && window.scrollY < sections[0].offsetTop + offset) {
                 currentActive = sections[0].getAttribute('id');
             }
 
@@ -791,18 +802,23 @@
             });
         }
 
-        // Smooth scroll for sidebar links
+        // Smooth scroll for sidebar links (improved to use behavior)
         document.querySelectorAll('.sidebar a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start' // Scroll to the top of the section
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100, // Adjust this value to stop above the section for better alignment
+                        behavior: 'smooth'
+                    });
+                }
 
                 // Manually trigger highlight after a small delay to allow scroll to start
-                setTimeout(highlightActiveLink, 100);
+                setTimeout(highlightActiveLink, 300); // Increased delay
             });
         });
 
@@ -812,7 +828,6 @@
             highlightActiveLink(); // Call on load for initial state
 
             // Initialize the first experience section as open by default
-            // Find the *first* card-entry for the "Team Lead" experience specifically
             const teamLeadExpCard = document.querySelector('#experience .card-entry:first-of-type');
             if (teamLeadExpCard) {
                 const details = teamLeadExpCard.querySelector('.card-details');
@@ -828,10 +843,9 @@
 
         // Toggle Details for any card with .card-header and .card-details (used by Experience)
         function toggleDetails(element) {
-            const details = element.nextElementSibling; // Get the .card-details div
-            const icon = element.querySelector('.dropdown-btn i'); // Get the icon
+            const details = element.nextElementSibling;
+            const icon = element.querySelector('.dropdown-btn i');
 
-            // Toggle the 'open' class
             details.classList.toggle('open');
 
             if (details.classList.contains('open')) {
