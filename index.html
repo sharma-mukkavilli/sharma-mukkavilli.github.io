@@ -266,12 +266,25 @@
             font-weight: bold;
             color: #0a2540; /* Default blue for title */
             transition: color 0.4s ease;
-            display: flex; /* For icon alignment in skills/education */
-            align-items: center;
+            /* Changed to block for easier company name styling */
+            display: block; 
         }
 
         body.dark-mode .card-title {
             color: #f5f5f5; /* Light text for title in dark mode */
+        }
+
+        /* New: Style for company name below the job title */
+        .card-company {
+            font-weight: normal; /* Less bold than title */
+            font-size: 0.9em; /* Slightly smaller text */
+            color: #555; /* A bit lighter color */
+            margin-top: 0.2em; /* Small space above company name */
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .card-company {
+            color: #bbb; /* Lighter color in dark mode */
         }
 
         .card-title i {
@@ -398,6 +411,18 @@
         }
 
         /* Styling for lists within hobby cards */
+        .hobbies-card {
+            width: fit-content; /* Make the card width fit its content */
+            justify-self: start; /* Align to the start (left) of the grid cell */
+            /* Ensure its content (list) also shrinks to fit */
+            padding: 1rem; /* Re-apply padding if it was removed by previous width changes */
+            background: white; /* Ensure background is set */
+            border: 1px solid #ddd; /* Ensure border is set */
+            border-radius: 8px; /* Ensure border-radius is set */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
         .hobbies-card ul {
             list-style: none; /* Remove default bullet points */
             padding: 0;      /* Remove default left padding */
@@ -406,16 +431,20 @@
 
         .hobbies-card li {
             margin-bottom: 0.4rem; /* Space between list items */
-            /* Removed display: flex and align-items: center if you don't want icons for each hobby */
+            display: flex; /* Use flexbox to align icon and text */
+            align-items: center; /* Vertically center icon and text */
         }
 
         .hobbies-card li:last-child {
             margin-bottom: 0; /* Remove margin from the last item */
         }
 
-        /* Hide icons for individual hobby list items */
+        /* Style for icons within hobby list items */
         .hobbies-card li i {
-            display: none; /* This will hide the icons next to "Playing Cricket", etc. */
+            margin-right: 8px; /* Space between icon and text */
+            color: #ff6f00; /* Icon color for hobbies */
+            font-size: 1.1rem; /* Slightly larger icon size */
+            display: inline-block; /* Ensure icon is visible */
         }
 
 
@@ -582,11 +611,10 @@
                 <section id="hobbies">
                     <h2>Hobbies & Interests</h2>
                     <div class="skill-card hobbies-card">
-                        <h3><i class="fas fa-heart"></i> My Interests</h3>
                         <ul>
-                            <li>Playing Cricket</li>
-                            <li>Reading Novels</li>
-                            <li>Chess</li>
+                            <li><i class="fas fa-baseball-ball"></i> Playing Cricket</li>
+                            <li><i class="fas fa-book-open"></i> Reading Novels</li>
+                            <li><i class="fas fa-chess-knight"></i> Chess</li>
                         </ul>
                     </div>
                 </section>
@@ -595,48 +623,84 @@
                     <h2>Skills</h2>
                     <div class="skills-grid">
                         <div class="skill-card">
-                            <h3><i class="fas fa-bullhorn"></i>Marketing & Campaigns</h3>
-                            <p>Demand Generation, Marketing Automation, Campaign Strategy</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-bullhorn"></i>Marketing & Campaigns</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>Demand Generation, Marketing Automation, Campaign Strategy</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fas fa-chart-line"></i>Research & Analysis</h3>
-                            <p>Market Research, Persona Analysis, Competitive Intelligence</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-chart-line"></i>Research & Analysis</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>Market Research, Persona Analysis, Competitive Intelligence</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fas fa-toolbox"></i>Tools</h3>
-                            <p>Power BI, Zoho Analytics</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-toolbox"></i>Tools</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>Power BI, Zoho Analytics</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fas fa-search"></i>Content & SEO</h3>
-                            <p>Keyword Research, Optimization</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-search"></i>Content & SEO</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>Keyword Research, Optimization</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fas fa-database"></i>CRM & Data</h3>
-                            <p>Zoho CRM, ZoomInfo</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-database"></i>CRM & Data</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>Zoho CRM, ZoomInfo</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fas fa-video"></i>Webinars & Events</h3>
-                            <p>GoToWebinar, WebEx, MS Teams</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-video"></i>Webinars & Events</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>GoToWebinar, WebEx, MS Teams</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fab fa-html5"></i>Web Development Basics</h3>
-                            <p>HTML</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fab fa-html5"></i>Web Development Basics</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>HTML</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fab fa-css3-alt"></i>Web Styling</h3>
-                            <p>CSS</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fab fa-css3-alt"></i>Web Styling</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>CSS</p>
+                            </div>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fas fa-database"></i>Database Management</h3>
-                            <p>SQL</p>
+                            <div class="card-header">
+                                <span class="card-title"><h3><i class="fas fa-database"></i>Database Management</h3></span>
+                            </div>
+                            <div class="card-details open">
+                                <p>SQL</p>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -645,7 +709,10 @@
                     <h2>Professional Experience</h2>
                     <div class="card-entry">
                         <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">Team Lead – Demand Generation & Events (Mar 2023 – Present)</span>
+                            <span class="card-title">
+                                Team Lead – Demand Generation & Events (Mar 2023 – Present)
+                                <span class="card-company">Miracle Software Systems, Inc.</span>
+                            </span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-up"></i>
                             </button>
@@ -668,7 +735,10 @@
 
                     <div class="card-entry">
                         <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)</span>
+                            <span class="card-title">
+                                Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)
+                                <span class="card-company">Miracle Software Systems, Inc.</span>
+                            </span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
@@ -691,7 +761,10 @@
 
                     <div class="card-entry">
                         <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">Partnerships Executive (Aug 2017 – Oct 2019)</span>
+                            <span class="card-title">
+                                Partnerships Executive (Aug 2017 – Oct 2019)
+                                <span class="card-company">Miracle Software Systems, Inc.</span>
+                            </span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
@@ -714,7 +787,10 @@
 
                     <div class="card-entry">
                         <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">Graduate Apprentice Trainee (2013 – 2014)</span>
+                            <span class="card-title">
+                                Graduate Apprentice Trainee (2013 – 2014)
+                                <span class="card-company">Hindustan Shipyard Limited</span>
+                            </span>
                             <button class="dropdown-btn">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
@@ -805,7 +881,8 @@
             // If the user scrolls to the very end and no other section is active based on the above logic
             // (e.g., if the last section is short), activate the last section.
             const lastSection = sections[sections.length - 1];
-            if (lastSection && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            // Check if we are at the very bottom of the scrollable area
+            if (lastSection && (window.innerHeight + window.scrollY + 1 >= document.body.offsetHeight)) {
                 currentActive = lastSection.getAttribute('id');
             }
 
@@ -830,7 +907,7 @@
                 if (targetElement) {
                     // Calculate the scroll position: target's top position minus an offset.
                     // This offset prevents the section title from being hidden by the fixed header.
-                    const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
+                    // const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
                     const scrollOffset = 100; // Adjust as needed to provide padding below header
                     window.scrollTo({
                         top: targetElement.offsetTop - scrollOffset,
