@@ -762,21 +762,23 @@
             const navLinks = document.querySelectorAll('.sidebar a');
             let currentActive = null;
 
+            // Iterate over sections to find which one is currently in view
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                // Offset for when the section should become active in the sidebar
-                const offset = 150;
+                const rect = section.getBoundingClientRect();
+                // A section is considered "active" if its top is within a certain range from the viewport top
+                // and its bottom is not too far above the viewport bottom.
+                // Adjust this offset based on your header/fixed elements.
+                const offset = 100; // Pixels from the top of the viewport to consider the section active
 
-                // Check if the section is currently in or past the viewport, considering the offset
-                if (window.scrollY >= sectionTop - offset && window.scrollY < sectionTop + sectionHeight - offset) {
+                if (rect.top <= offset && rect.bottom >= offset) {
                     currentActive = section.getAttribute('id');
                 }
             });
 
-            // Handle the case when at the very top of the page, before the first section's active zone
-            if (window.scrollY < sections[0].offsetTop - 100 && sections[0]) {
-                 currentActive = sections[0].getAttribute('id');
+            // If no section is in view (e.g., at the very top of the page), default to the first one.
+            // This also helps if the first section is very short.
+            if (!currentActive && sections.length > 0 && window.scrollY < sections[0].offsetTop + 50) {
+                currentActive = sections[0].getAttribute('id');
             }
 
 
@@ -788,6 +790,22 @@
                 }
             });
         }
+
+        // Smooth scroll for sidebar links
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start' // Scroll to the top of the section
+                });
+
+                // Manually trigger highlight after a small delay to allow scroll to start
+                setTimeout(highlightActiveLink, 100);
+            });
+        });
+
 
         // Initial call and event listener for scroll
         document.addEventListener('DOMContentLoaded', () => {
