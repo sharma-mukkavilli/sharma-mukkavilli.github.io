@@ -103,7 +103,8 @@
             top: 0; /* Keep top at 0, padding will push content */
             height: 100vh;
             overflow-y: auto;
-            padding: 8rem 1rem 2rem 1rem; /* Adjusted top padding to 8rem, keeps others the same */
+            /* Adjusted padding to push content down from the very top */
+            padding: 20px 1rem 2rem 1rem; /* Reduced top padding, let margin-top handle initial spacing */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -117,6 +118,12 @@
             background-color: #1a1a1a; /* Darker sidebar in dark mode */
             box-shadow: 2px 0 10px rgba(0,0,0,0.5); /* Stronger shadow in dark mode */
         }
+
+        /* Added margin-top to the first link to create space below header line */
+        .sidebar a:first-of-type {
+            margin-top: 6rem; /* Adjust this value to push "About" down further */
+        }
+
 
         .sidebar a {
             color: white;
@@ -328,6 +335,24 @@
             margin-top: 1rem;
         }
 
+        /* IMPORTANT: Ensure skill-cards DO NOT have dropdown behavior */
+        .skill-card .card-header { /* Targeting the header within a skill-card */
+            display: block; /* Remove flex, so button doesn't align */
+            cursor: default; /* No pointer cursor */
+            padding-bottom: 0; /* No extra padding for header if it had it from .card-header */
+        }
+
+        .skill-card .dropdown-btn {
+            display: none; /* Hide dropdown button for all skill cards */
+        }
+        .skill-card .card-details {
+            max-height: none; /* Always open */
+            overflow: visible; /* No hidden overflow */
+            padding-top: 0.5rem; /* Consistent padding below title */
+            transition: none; /* No transition on these, they're always open */
+        }
+
+
         .skill-card {
             background: white;
             border: 1px solid #ddd;
@@ -372,40 +397,24 @@
             color: #ffcc80;
         }
 
-        /* NEW: Styles for skills cards within the grid to remove dropdown elements */
-        .skills-grid .skill-card .card-header {
-            cursor: default; /* No pointer cursor */
-            padding-bottom: 0; /* No extra padding for header */
-        }
-        .skills-grid .skill-card .dropdown-btn {
-            display: none; /* Hide dropdown button */
-        }
-        .skills-grid .skill-card .card-details {
-            max-height: none; /* Always open */
-            overflow: visible; /* No hidden overflow */
-            padding-top: 0.5rem; /* Consistent padding below title */
+        /* Styling for lists within hobby cards */
+        .hobbies-card ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;      /* Remove default left padding */
+            margin: 0;       /* Remove default top/bottom margin */
         }
 
-        /* Styling for lists within skill cards (specifically for hobbies) */
-        /* Modified: Specific targeting for hobbies to remove individual item icons if desired */
-        .skill-card.hobbies-card ul { /* Add a new class to the hobby skill-card if needed */
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .hobbies-card li {
+            margin-bottom: 0.4rem; /* Space between list items */
+            /* Removed display: flex and align-items: center if you don't want icons for each hobby */
         }
 
-        .skill-card.hobbies-card li {
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
+        .hobbies-card li:last-child {
+            margin-bottom: 0; /* Remove margin from the last item */
         }
 
-        .skill-card.hobbies-card li:last-child {
-            margin-bottom: 0;
-        }
-
-        /* IMPORTANT: Hide icons for individual hobby list items */
-        .skill-card.hobbies-card li i {
+        /* Hide icons for individual hobby list items */
+        .hobbies-card li i {
             display: none; /* This will hide the icons next to "Playing Cricket", etc. */
         }
 
@@ -542,10 +551,10 @@
     <div class="container">
         <div class="sidebar">
             <a href="#about"><i class="fas fa-user"></i>About</a>
+            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
-            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
             <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
         </div>
@@ -568,6 +577,18 @@
                 <section id="about">
                     <h2>About Me</h2>
                     <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
+                </section>
+
+                <section id="hobbies">
+                    <h2>Hobbies & Interests</h2>
+                    <div class="skill-card hobbies-card">
+                        <h3><i class="fas fa-heart"></i> My Interests</h3>
+                        <ul>
+                            <li>Playing Cricket</li>
+                            <li>Reading Novels</li>
+                            <li>Chess</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <section id="skills">
@@ -724,18 +745,6 @@
                     </div>
                 </section>
 
-                <section id="hobbies">
-                    <h2>Hobbies & Interests</h2>
-                    <div class="skill-card hobbies-card">
-                        <h3><i class="fas fa-heart"></i> My Interests</h3>
-                        <ul>
-                            <li>Playing Cricket</li>
-                            <li>Reading Novels</li>
-                            <li>Chess</li>
-                        </ul>
-                    </div>
-                </section>
-
                 <section id="education">
                     <h2>Education</h2>
                     <div class="education-grid">
@@ -773,23 +782,31 @@
             const navLinks = document.querySelectorAll('.sidebar a');
             let currentActive = null;
 
-            // Define a more generous offset for when a section becomes "active"
-            // This needs to account for the fixed header and sidebar.
-            const offset = 120; // Pixels from the top of the viewport
+            // Offset to consider a section "active" when its top is within this range from the viewport top.
+            // Adjust this if your fixed header/other elements affect ideal scroll position.
+            const offset = 150; // A bit more generous to avoid flicker between sections
 
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // A section is considered active if its top is near or above the offset
-                // and its bottom is below the offset.
+
+                // If the section's top is visible AND its top is above the offset line
+                // AND its bottom is below the offset line (meaning it crosses the "active zone")
                 if (rect.top <= offset && rect.bottom > offset) {
                     currentActive = section.getAttribute('id');
                 }
             });
 
-            // Special handling for the very top of the page: if no other section is active,
-            // assume 'about' is active if we're near the top.
-            if (!currentActive && window.scrollY < sections[0].offsetTop + offset) {
-                currentActive = sections[0].getAttribute('id');
+            // Fallback for the very top of the page, ensuring 'about' is active
+            if (window.scrollY < sections[0].offsetTop + offset && sections.length > 0) {
+                 currentActive = sections[0].getAttribute('id');
+            }
+
+            // Fallback for the very bottom of the page (last section)
+            // If the user scrolls to the very end and no other section is active based on the above logic
+            // (e.g., if the last section is short), activate the last section.
+            const lastSection = sections[sections.length - 1];
+            if (lastSection && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                currentActive = lastSection.getAttribute('id');
             }
 
 
@@ -802,7 +819,7 @@
             });
         }
 
-        // Smooth scroll for sidebar links (improved to use behavior)
+        // Smooth scroll for sidebar links (improved to use behavior and adjust scroll target)
         document.querySelectorAll('.sidebar a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -811,14 +828,18 @@
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
+                    // Calculate the scroll position: target's top position minus an offset.
+                    // This offset prevents the section title from being hidden by the fixed header.
+                    const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
+                    const scrollOffset = 100; // Adjust as needed to provide padding below header
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100, // Adjust this value to stop above the section for better alignment
+                        top: targetElement.offsetTop - scrollOffset,
                         behavior: 'smooth'
                     });
                 }
 
                 // Manually trigger highlight after a small delay to allow scroll to start
-                setTimeout(highlightActiveLink, 300); // Increased delay
+                setTimeout(highlightActiveLink, 300); // Increased delay for smoother transition
             });
         });
 
