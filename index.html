@@ -35,28 +35,8 @@
             text-align: center; /* Center align header content */
             margin-bottom: 2rem; /* Spacing below header */
             transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
-            position: relative; /* THIS IS NEW: Essential for positioning the child image */
+            position: relative; /* Essential for positioning the child image */
         }
-        
-        /* NEW: Styles for the profile picture */
-        .profile-pic {
-            position: absolute; /* Position relative to the header */
-            top: 20px; /* Distance from the top of the header */
-            right: 20px; /* Distance from the right of the header */
-            width: 80px; /* Adjust size as needed */
-            height: 80px; /* Adjust size as needed */
-            border-radius: 50%; /* Makes the image circular */
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            border: 3px solid white; /* White border around the image */
-            box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Subtle shadow */
-            z-index: 10; /* Ensures it stays on top of other elements if overlapping */
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-body.dark-mode .profile-pic {
-    border-color: #ffcc80; /* Lighter orange border in dark mode */
-    box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
-}
 
         body.dark-mode header {
             background-color: #2c2c2c; /* Adjust dark mode header background */
@@ -90,6 +70,26 @@ body.dark-mode .profile-pic {
 
         header .header-info a:hover {
             color: #ffcc80; /* Lighter orange on hover */
+        }
+
+        /* Styles for the profile picture */
+        .profile-pic {
+            position: absolute; /* Position relative to the header */
+            top: 20px; /* Distance from the top of the header */
+            right: 20px; /* Distance from the right of the header */
+            width: 80px; /* Adjust size as needed */
+            height: 80px; /* Adjust size as needed */
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            border: 3px solid white; /* White border around the image */
+            box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Subtle shadow */
+            z-index: 10; /* Ensures it stays on top of other elements if overlapping */
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        body.dark-mode .profile-pic {
+            border-color: #ffcc80; /* Lighter orange border in dark mode */
+            box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
         }
 
 
@@ -213,7 +213,7 @@ body.dark-mode .profile-pic {
         section {
             max-width: 900px;
             margin: 0 auto 2rem auto; /* Center sections within their padded area */
-            padding: 0 1.5rem; /* Internal padding for sections, **reverted for sections themselves** */
+            padding: 0 1.5rem; /* Internal padding for sections */
             background-color: transparent; /* Ensure sections themselves are transparent */
             border: none;
             box-shadow: none;
@@ -372,6 +372,32 @@ body.dark-mode .profile-pic {
             color: #ffcc80; /* Lighter orange for skill icons in dark mode */
         }
 
+        /* Styling for lists within skill cards (specifically for hobbies) */
+        .skill-card ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;      /* Remove default left padding */
+            margin: 0;       /* Remove default top/bottom margin */
+        }
+
+        .skill-card li {
+            margin-bottom: 0.4rem; /* Space between list items */
+            display: flex;         /* For icon alignment */
+            align-items: center;   /* Vertically align icon and text */
+        }
+
+        .skill-card li:last-child {
+            margin-bottom: 0; /* Remove margin from the last item */
+        }
+
+        .skill-card li i {
+            margin-right: 8px; /* Space between icon and text */
+            color: #ff6f00;     /* Orange color for hobby icons */
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .skill-card li i {
+            color: #ffcc80; /* Lighter orange in dark mode */
+        }
 
         /* --- Education/Certification Section Styles (no dropdowns, just grid cards) --- */
         .education-grid, .certifications-grid { /* Combined for similar layout */
@@ -484,29 +510,29 @@ body.dark-mode .profile-pic {
                 padding: 0 1rem; /* Adjust padding for sections */
             }
 
-             header .header-info {
-        flex-direction: column; /* Stack contact info vertically on small screens */
-        gap: 5px; /* Reduce gap */
-    }
+            header .header-info {
+                flex-direction: column; /* Stack contact info vertically on small screens */
+                gap: 5px; /* Reduce gap */
+            }
 
-    /* NEW: Adjust profile picture for smaller screens */
-    .profile-pic {
-        width: 60px; /* Make it smaller */
-        height: 60px; /* Make it smaller */
-        top: 10px; /* Move it closer to the top */
-        right: 10px; /* Move it closer to the right */
-        border-width: 2px; /* Optionally reduce border width */
-    }
-}
+            /* Adjust profile picture for smaller screens */
+            .profile-pic {
+                width: 60px; /* Make it smaller */
+                height: 60px; /* Make it smaller */
+                top: 10px; /* Move it closer to the top */
+                right: 10px; /* Move it closer to the right */
+                border-width: 2px; /* Optionally reduce border width */
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-       <div class="sidebar">
+        <div class="sidebar">
             <a href="#about"><i class="fas fa-user"></i>About</a>
-            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a> <a href="#skills"><i class="fas fa-code"></i>Skills</a>
+            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
+            <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
@@ -514,9 +540,9 @@ body.dark-mode .profile-pic {
         </div>
 
         <div class="main-content-area">
-           <header>
+            <header>
                 <h1>Sharma Mukkavilli</h1>
-                <img src="smukkavilli.png" alt="Sharma Mukkavilli Profile" class="profile-pic">
+                <img src="image_1936e0.png" alt="Sharma Mukkavilli Profile" class="profile-pic">
                 <p>Team Lead – Demand Generation</p>
                 <p class="header-info">
                     <a href="mailto:connectsharma.m@gmail.com"><i class="fas fa-envelope"></i>connectsharma.m@gmail.com</a>
@@ -527,21 +553,28 @@ body.dark-mode .profile-pic {
                 </p>
             </header>
 
-            <section id="about">
-                <h2>About Me</h2>
-                <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
-            </section>
-            
-            <section id="hobbies">
-                <h2>Hobbies & Interests</h2>
-                <p><i class="fas fa-baseball-ball" style="margin-right: 8px;"></i> Playing Cricket</p>
-                <p><i class="fas fa-book-reader" style="margin-right: 8px;"></i> Reading Novels</p>
-                <p><i class="fas fa-chess" style="margin-right: 8px;"></i> Chess</p>
-            </section>
-            
+            <div class="main-sections">
+                <section id="about">
+                    <h2>About Me</h2>
+                    <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
+                </section>
+
+                <section id="hobbies">
+                    <h2>Hobbies & Interests</h2>
+                    <div class="skill-card">
+                        <h3><i class="fas fa-heart"></i> My Interests</h3>
+                        <ul>
+                            <li><i class="fas fa-baseball-ball"></i> Playing Cricket</li>
+                            <li><i class="fas fa-book-reader"></i> Reading Novels</li>
+                            <li><i class="fas fa-chess"></i> Chess</li>
+                        </ul>
+                    </div>
+                </section>
+
                 <section id="skills">
                     <h2>Skills</h2>
-                    <div class="skills-grid"> <div class="skill-card">
+                    <div class="skills-grid">
+                        <div class="skill-card">
                             <h3><i class="fas fa-bullhorn"></i>Marketing & Campaigns</h3>
                             <p>Demand Generation, Marketing Automation, Campaign Strategy</p>
                         </div>
@@ -553,26 +586,37 @@ body.dark-mode .profile-pic {
 
                         <div class="skill-card">
                             <h3><i class="fas fa-toolbox"></i>Tools</h3>
-                            <p>Power BI, Zoho Analytics, CRM Management</p>
+                            <p>Power BI, Zoho Analytics</p>
                         </div>
 
                         <div class="skill-card">
                             <h3><i class="fas fa-search"></i>Content & SEO</h3>
-                            <p>Keyword Research, Content Optimization, SEO Strategy</p>
+                            <p>Keyword Research, Optimization</p>
                         </div>
 
                         <div class="skill-card">
-                            <h3><i class="fab fa-html5"></i>Web Development Basics</h3>
-                            <p>HTML, CSS, SQL</p>
-                        </div>
-                        <div class="skill-card">
-                            <h3><i class="fas fa-database"></i>Team Leadership</h3>
-                            <p>Team Management, Cross-functional Collaboration</p>
+                            <h3><i class="fas fa-database"></i>CRM & Data</h3>
+                            <p>Zoho CRM, ZoomInfo</p>
                         </div>
 
                         <div class="skill-card">
                             <h3><i class="fas fa-video"></i>Webinars & Events</h3>
                             <p>GoToWebinar, WebEx, MS Teams</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fab fa-html5"></i>Web Development Basics</h3>
+                            <p>HTML</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fab fa-css3-alt"></i>Web Styling</h3>
+                            <p>CSS</p>
+                        </div>
+
+                        <div class="skill-card">
+                            <h3><i class="fas fa-database"></i>Database Management</h3>
+                            <p>SQL</p>
                         </div>
                     </div>
                 </section>
@@ -683,14 +727,15 @@ body.dark-mode .profile-pic {
 
                 <section id="education">
                     <h2>Education</h2>
-                    <div class="education-grid"> <div class="education-card">
+                    <div class="education-grid">
+                        <div class="education-card">
                             <p><i class="fas fa-graduation-cap"></i> <strong>MBA</strong><br/>
-                            Marketing and Finance<br/>
+                            In Marketing and Finance<br/>
                             MVGR College of Engineering – 82.65%</p>
                         </div>
                         <div class="education-card">
                             <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
-                            Computer Science and Engineering<br/>
+                            In Computer Science<br/>
                             Al-Aman College of Engineering – 61.94%</p>
                         </div>
                     </div>
@@ -699,10 +744,14 @@ body.dark-mode .profile-pic {
                 <div class="resume-download">
                     <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
                 </div>
-            </div> <footer>
+            </div>
+            <footer>
                 &copy; 2025 Sharma Mukkavilli. All rights reserved.
             </footer>
-        </div> </div> <script>
+        </div>
+    </div>
+
+    <script>
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
         }
@@ -717,7 +766,7 @@ body.dark-mode .profile-pic {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 // Offset for when the section should become active in the sidebar
-                const offset = 150; 
+                const offset = 150;
 
                 // Check if the section is currently in or past the viewport, considering the offset
                 if (window.scrollY >= sectionTop - offset && window.scrollY < sectionTop + sectionHeight - offset) {
@@ -726,7 +775,7 @@ body.dark-mode .profile-pic {
             });
 
             // Handle the case when at the very top of the page, before the first section's active zone
-            if (window.scrollY < sections[0].offsetTop - 100 && sections[0]) { // Check if sections[0] exists
+            if (window.scrollY < sections[0].offsetTop - 100 && sections[0]) {
                  currentActive = sections[0].getAttribute('id');
             }
 
