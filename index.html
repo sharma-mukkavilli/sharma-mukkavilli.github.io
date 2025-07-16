@@ -267,7 +267,7 @@
             color: #0a2540; /* Default blue for title */
             transition: color 0.4s ease;
             /* Changed to block for easier company name styling */
-            display: block; 
+            display: block;
         }
 
         body.dark-mode .card-title {
@@ -580,10 +580,10 @@
     <div class="container">
         <div class="sidebar">
             <a href="#about"><i class="fas fa-user"></i>About</a>
-            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
+            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
             <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
         </div>
@@ -606,17 +606,6 @@
                 <section id="about">
                     <h2>About Me</h2>
                     <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
-                </section>
-
-                <section id="hobbies">
-                    <h2>Hobbies & Interests</h2>
-                    <div class="skill-card hobbies-card">
-                        <ul>
-                            <li><i class="fas fa-baseball-ball"></i> Playing Cricket</li>
-                            <li><i class="fas fa-book-open"></i> Reading Novels</li>
-                            <li><i class="fas fa-chess-knight"></i> Chess</li>
-                        </ul>
-                    </div>
                 </section>
 
                 <section id="skills">
@@ -821,6 +810,17 @@
                     </div>
                 </section>
 
+                <section id="hobbies">
+                    <h2>Hobbies & Interests</h2>
+                    <div class="skill-card hobbies-card">
+                        <ul>
+                            <li><i class="fas fa-baseball-ball"></i> Playing Cricket</li>
+                            <li><i class="fas fa-book-open"></i> Reading Novels</li>
+                            <li><i class="fas fa-chess-knight"></i> Chess</li>
+                        </ul>
+                    </div>
+                </section>
+
                 <section id="education">
                     <h2>Education</h2>
                     <div class="education-grid">
@@ -859,20 +859,21 @@
             let currentActive = null;
 
             // Offset to consider a section "active" when its top is within this range from the viewport top.
-            // Adjust this if your fixed header/other elements affect ideal scroll position.
-            const offset = 150; // A bit more generous to avoid flicker between sections
+            const offset = 150; // Adjusted offset for more consistent highlighting
 
-            sections.forEach(section => {
+            // Find the section that is currently most in view
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
                 const rect = section.getBoundingClientRect();
-
-                // If the section's top is visible AND its top is above the offset line
-                // AND its bottom is below the offset line (meaning it crosses the "active zone")
+                // Check if the section's top is visible or has just passed the offset
+                // and if the section's bottom is still below the offset (meaning it's significantly in view)
                 if (rect.top <= offset && rect.bottom > offset) {
                     currentActive = section.getAttribute('id');
+                    break; // Found the active section, stop
                 }
-            });
+            }
 
-            // Fallback for the very top of the page, ensuring 'about' is active
+            // Fallback for the very top of the page (ensure 'about' is active when scrolled to top)
             if (window.scrollY < sections[0].offsetTop + offset && sections.length > 0) {
                  currentActive = sections[0].getAttribute('id');
             }
@@ -880,10 +881,10 @@
             // Fallback for the very bottom of the page (last section)
             // If the user scrolls to the very end and no other section is active based on the above logic
             // (e.g., if the last section is short), activate the last section.
-            const lastSection = sections[sections.length - 1];
-            // Check if we are at the very bottom of the scrollable area
-            if (lastSection && (window.innerHeight + window.scrollY + 1 >= document.body.offsetHeight)) {
-                currentActive = lastSection.getAttribute('id');
+            // Using a small tolerance (e.g., +1) for document.body.offsetHeight to account for fractional pixel issues.
+            const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (totalScrollHeight > 0 && window.scrollY >= totalScrollHeight - 5) { // -5px tolerance
+                currentActive = sections[sections.length - 1].getAttribute('id');
             }
 
 
