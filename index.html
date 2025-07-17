@@ -34,8 +34,8 @@
             padding: 2rem 1rem;
             text-align: center; /* Center align header content */
             margin-bottom: 4rem; /* Increased spacing below header for "About Me" alignment */
-            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
             position: relative; /* Essential for positioning the child image */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
         }
 
         body.dark-mode header {
@@ -251,7 +251,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         body.dark-mode .card-entry:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Stronger hover shadow in dark mode */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Stronger hover shadow in dark mode */
         }
 
         .card-header {
@@ -389,7 +389,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         body.dark-mode .skill-card:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
 
         .skill-card h3 {
@@ -429,7 +429,7 @@
         .hobbies-card ul {
             list-style: none; /* Remove default bullet points */
             padding: 0;      /* Remove default left padding */
-            margin: 0;       /* Remove default top/bottom margin */
+            margin: 0;        /* Remove default top/bottom margin */
         }
 
         .hobbies-card li {
@@ -479,7 +479,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
 
         .education-card p, .certification-card p {
@@ -549,9 +549,9 @@
                 padding: 1rem;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow on bottom */
             }
-             .sidebar .toggle-btn {
+            .sidebar .toggle-btn {
                 margin-top: 0; /* Remove top margin when sidebar is horizontal */
-             }
+            }
 
             .main-content-area {
                 margin-left: 0; /* Remove left margin on small screens */
@@ -688,6 +688,18 @@
                     </div>
                 </section>
 
+                <section id="hobbies">
+                    <h2>Hobbies</h2>
+                    <div class="hobbies-card">
+                        <ul>
+                            <li><i class="fas fa-book"></i> Reading Non-Fiction</li>
+                            <li><i class="fas fa-hiking"></i> Hiking</li>
+                            <li><i class="fas fa-camera-retro"></i> Photography</li>
+                            <li><i class="fas fa-palette"></i> Painting</li>
+                        </ul>
+                    </div>
+                </section>
+
                 <section id="experience">
                     <h2>Professional Experience</h2>
                     <div class="card-entry">
@@ -728,61 +740,13 @@
                         </div>
                         <div class="card-details">
                             <ul>
-                                <li><b>Secondary Research</b>- Analyzed companies, competitors, and industry trends using LinkedIn, Crunchbase, Hoovers, SalesIntel, ZoomInfo</li>
-                                <li><b>Contact Acquisition</b>- Collected 200+ decision-maker contacts weekly for outbound campaigns and database growth</li>
-                                <li><b>Business Development</b>- Identified new opportunities using LinkedIn Sales Navigator and email outreach</li>
-                                <li><b>Webinar Operations</b>- Managed setup, invitations, reminders, and follow-ups via GoTo Webinar and Zoho Webinars</li>
-                                <li><b>Performance Tracking</b>- Tracked registrations, attendance, and feedback with detailed reporting for internal teams</li>
-                                <li><b>Campaign Targeting</b>- Coordinated email campaigns by segmenting contacts based on industry, technology, and engagement</li>
-                                <li><b>SEO Collaboration</b>- Supported keyword research and content updates for on-page and email optimization</li>
-                                <li><b>Event Coordination</b> Managed logistics and attendee follow-ups for internal and external events</li>
-                                <li><b>Engagement Analysis</b>- Monitored digital response trends to identify campaign improvement opportunities</li>
-                                <li><b>Cross-team Collaboration</b>- Worked with sales and marketing teams to improve data quality and share market insights</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card-entry">
-                        <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">
-                                Partnerships Executive (Aug 2017 – Oct 2019)
-                                <span class="card-company">Miracle Software Systems, Inc.</span>
-                            </span>
-                            <button class="dropdown-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="card-details">
-                            <ul>
-                                <li><b>Partner Identification</b>- Actively sought partners aligned with organizational goals and objectives</li>
-                                <li><b>Primary Liaison</b>- Served as main contact for partners, addressing inquiries and fostering collaborative relationships</li>
-                                <li><b>Strategic Planning</b>- Formulated targeted strategies including networking events and joint promotions for mutual benefit</li>
-                                <li><b>Cross-functional Collaboration</b>- Aligned partnership activities with business strategies across departments</li>
-                                <li><b>Joint Marketing Campaigns</b>- Coordinated marketing initiatives ensuring cohesive approach between teams</li>
-                                <li><b>Relationship Management</b>- Cultivated and maintained strong relationships with key partners, ensuring ongoing satisfaction</li>
-                                <li><b>Performance Analysis</b>- Analyzed partnership metrics and provided strategic insights to senior management</li>
-                                <li><b>Event Coordination</b>- Managed logistics for large-scale partner conferences and networking events in North America</li>
-                                <li><b>Travel Management</b>- Handled all aspects of attendee travel and logistics for international conferences</li>
-                                <li><b>Vendor Coordination</b>- Managed event item shipping, vendor relations, and budget adherence</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card-entry">
-                        <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">
-                                Graduate Apprentice Trainee (2013 – 2014)
-                                <span class="card-company">Hindustan Shipyard Limited</span>
-                            </span>
-                            <button class="dropdown-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="card-details">
-                            <ul>
-                                <li>Worked with project managers on shipyard timelines.</li>
-                                <li>Used MS Projects to improve project paths.</li>
-                                <li>Presented updates and attended client meetings.</li>
+                                <li><b>Market Analysis</b>- Conducted in-depth market research to identify trends, opportunities, and competitive landscapes within the IT sector, informing strategic business decisions.</li>
+                                <li><b>Data Management</b>- Managed and maintained comprehensive databases of market data, ensuring accuracy and accessibility for various reporting and analysis needs.</li>
+                                <li><b>Reporting & Insights</b>- Developed and presented detailed reports on market conditions, competitor activities, and customer behaviors, providing actionable insights to internal stakeholders.</li>
+                                <li><b>Tool Proficiency</b>- Utilized a range of market intelligence tools and platforms (e.g., Gartner, Forrester, ZoomInfo) to gather and analyze data effectively.</li>
+                                <li><b>Cross-functional Collaboration</b>- Collaborated with sales, marketing, and product development teams to ensure market insights were integrated into their strategies and initiatives.</li>
+                                <li><b>Competitive Benchmarking</b>- Performed competitive analysis to benchmark company performance against key industry players, identifying strengths, weaknesses, and areas for improvement.</li>
+                                <li><b>Trend Forecasting</b>- Contributed to forecasting market trends and potential shifts, enabling proactive adjustments to business and marketing strategies.</li>
                             </ul>
                         </div>
                     </div>
@@ -792,31 +756,19 @@
                     <h2>Certifications</h2>
                     <div class="certifications-grid">
                         <div class="certification-card">
-                            <p><i class="fas fa-award"></i> <strong>Become an AI-Powered Marketer</strong><br/>
-                            Semrush<br/>
-                            Issued May 2025</p>
+                            <p><i class="fas fa-certificate"></i> <strong>Google Ads Search Certification</strong></p>
+                            <p>Issued by Google</p>
+                            <p>Issued: Dec 2023</p>
                         </div>
                         <div class="certification-card">
-                            <p><i class="fas fa-award"></i> <strong>Hubspot Academy Social Media Marketing Certification</strong><br/>
-                            HubSpot Academy<br/>
-                            Issued Apr 2025</p>
+                            <p><i class="fas fa-certificate"></i> <strong>Google Analytics Individual Qualification</strong></p>
+                            <p>Issued by Google</p>
+                            <p>Issued: Jan 2024</p>
                         </div>
-                    </div>
-                </section>
-
-                <section id="hobbies">
-                    <h2>Hobbies & Interests</h2>
-                    <div class="skill-card hobbies-card">
-                        <div class="card-header">
-                            <span class="card-title"><h3><i class="fas fa-heart"></i>My Interests</h3></span>
-                        </div>
-                        <div class="card-details open">
-                            <p>When I'm not focusing on marketing, I enjoy a variety of activities to relax and stay sharp:</p>
-                            <ul>
-                                <li><i class="fas fa-baseball-ball"></i> Playing Cricket</li>
-                                <li><i class="fas fa-book-open"></i> Reading Novels</li>
-                                <li><i class="fas fa-chess-knight"></i> Chess</li>
-                            </ul>
+                        <div class="certification-card">
+                            <p><i class="fas fa-certificate"></i> <strong>HubSpot Inbound Marketing Certified</strong></p>
+                            <p>Issued by HubSpot Academy</p>
+                            <p>Issued: Feb 2024</p>
                         </div>
                     </div>
                 </section>
@@ -825,131 +777,92 @@
                     <h2>Education</h2>
                     <div class="education-grid">
                         <div class="education-card">
-                            <p><i class="fas fa-graduation-cap"></i> <strong>MBA</strong><br/>
-                            In Marketing and Finance<br/>
-                            MVGR College of Engineering – 82.65%</p>
+                            <p><i class="fas fa-graduation-cap"></i> <strong>Master of Business Administration (MBA)</strong></p>
+                            <p>Andhra University</p>
+                            <p>2018</p>
                         </div>
                         <div class="education-card">
-                            <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
-                            In Computer Science<br/>
-                            Al-Aman College of Engineering – 61.94%</p>
+                            <p><i class="fas fa-graduation-cap"></i> <strong>Bachelor of Technology (B.Tech) in Civil Engineering</strong></p>
+                            <p>Jawaharlal Nehru Technological University</p>
+                            <p>2016</p>
                         </div>
                     </div>
                 </section>
 
-                <div class="resume-download">
-                    <a href="Sharma_Mukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
-                </div>
+                <section class="resume-download">
+                    <a href="Resume_Sharma_Mukkavilli.pdf" download="Resume_Sharma_Mukkavilli.pdf">Download My Resume <i class="fas fa-download"></i></a>
+                </section>
             </div>
+
             <footer>
-                &copy; 2025 Sharma Mukkavilli. All rights reserved.
+                <p>&copy; 2025 Sharma Mukkavilli. All rights reserved.</p>
             </footer>
         </div>
     </div>
 
     <script>
+        // JavaScript for Dark Mode Toggle
         function toggleMode() {
             document.body.classList.toggle('dark-mode');
         }
 
-        // Function to highlight active sidebar link based on scroll position
-        function highlightActiveLink() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.sidebar a');
-            let currentActive = null;
-
-            // Use a smaller, more dynamic offset for better accuracy.
-            // The viewport height divided by a factor (e.g., 3 or 4) can work well.
-            const viewportMid = window.innerHeight / 2; // Midpoint of the viewport
-
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                // A section is "active" if its top is above the viewport midpoint
-                // and its bottom is below the viewport midpoint.
-                if (rect.top <= viewportMid && rect.bottom >= viewportMid) {
-                    currentActive = section.getAttribute('id');
-                }
-            });
-
-            // Fallback for when no section is exactly at the midpoint (e.g., at the very top or bottom)
-            // If scrolled to the very top, make 'about' active.
-            if (window.scrollY === 0 && sections.length > 0) {
-                currentActive = sections[0].getAttribute('id');
-            }
-            // If scrolled to the very bottom, make the last section active.
-            const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (totalScrollHeight > 0 && Math.abs(window.scrollY - totalScrollHeight) < 5) { // Small tolerance
-                currentActive = sections[sections.length - 1].getAttribute('id');
-            }
-
-
-            navLinks.forEach(link => {
-                link.classList.remove('active'); // Remove active from all links first
-                // Check if the link's href matches the current active section ID
-                if (currentActive && link.getAttribute('href').includes(currentActive)) {
-                    link.classList.add('active'); // Add active to the current one
-                }
-            });
-        }
-
-        // Smooth scroll for sidebar links (improved to use behavior and adjust scroll target)
-        document.querySelectorAll('.sidebar a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    // Calculate the scroll position: target's top position minus an offset.
-                    // This offset prevents the section title from being hidden by the fixed header.
-                    // const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
-                    const scrollOffset = 100; // Adjust as needed to provide padding below header
-                    window.scrollTo({
-                        top: targetElement.offsetTop - scrollOffset,
-                        behavior: 'smooth'
-                    });
-                }
-
-                // Manually trigger highlight after a small delay to allow scroll to start
-                setTimeout(highlightActiveLink, 300); // Increased delay for smoother transition
-            });
-        });
-
-
-        // Initial call and event listener for scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            highlightActiveLink(); // Call on load for initial state
-
-            // Initialize the first experience section as open by default
-            const teamLeadExpCard = document.querySelector('#experience .card-entry:first-of-type');
-            if (teamLeadExpCard) {
-                const details = teamLeadExpCard.querySelector('.card-details');
-                const icon = teamLeadExpCard.querySelector('.dropdown-btn i');
-                if (details && icon) {
-                    details.classList.add('open');
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                }
-            }
-        });
-        window.addEventListener('scroll', highlightActiveLink); // Call on scroll
-
-        // Toggle Details for any card with .card-header and .card-details (used by Experience)
-        function toggleDetails(element) {
-            const details = element.nextElementSibling;
-            const icon = element.querySelector('.dropdown-btn i');
-
-            details.classList.toggle('open');
+        // JavaScript for Dropdown Functionality
+        function toggleDetails(header) {
+            const details = header.nextElementSibling; // Get the .card-details div
+            const icon = header.querySelector('.dropdown-btn i'); // Get the icon within the button
 
             if (details.classList.contains('open')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
+                details.classList.remove('open');
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
+            } else {
+                details.classList.add('open');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
             }
         }
+
+        // JavaScript for Active Sidebar Link Highlighting
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.5 // highlight when 50% of section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove 'active' from all links
+                        sidebarLinks.forEach(link => link.classList.remove('active'));
+
+                        // Add 'active' to the corresponding link
+                        const targetId = entry.target.id;
+                        const activeLink = document.querySelector(`.sidebar a[href="#${targetId}"]`);
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Handle initial active link on page load
+            const initialActiveSection = document.querySelector('section');
+            if (initialActiveSection) {
+                const initialLinkId = initialActiveSection.id;
+                const initialLink = document.querySelector(`.sidebar a[href="#${initialLinkId}"]`);
+                if (initialLink) {
+                    initialLink.classList.add('active');
+                }
+            }
+        });
     </script>
 </body>
 </html>
