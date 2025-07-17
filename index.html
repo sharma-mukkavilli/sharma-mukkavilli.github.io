@@ -31,66 +31,68 @@
         header {
             background-color: #0a2540; /* Blue color for header */
             color: white;
-            padding: 2rem 1rem;
+            padding: 2rem 140px 2rem 1rem; /* Increased right padding to make space for image */
+            /* top, right, bottom, left */
             text-align: center; /* Center align header content */
             margin-bottom: 4rem; /* Increased spacing below header for "About Me" alignment */
-            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
             position: relative; /* Essential for positioning the child image */
+            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
         }
-
+        
+        /* New style for the text content within the header */
+        .header-text-content {
+            /* text-align: center; This might be redundant if header is text-align center */
+            margin-right: 120px; /* Push text to the left to avoid image */
+            /* You might need to adjust max-width if text is too wide */
+        }
+        
         body.dark-mode header {
             background-color: #2c2c2c; /* Adjust dark mode header background */
             color: #f5f5f5; /* Light text for header in dark mode */
         }
-
-        header h1 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-
-        header .header-info { /* New class for the p tag to style contact info */
-            margin-bottom: 0;
-            font-size: 1.1rem;
-            display: flex; /* Use flexbox for horizontal alignment of contact info */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-            gap: 15px; /* Space between contact items */
-        }
-
-        header .header-info i {
-            margin-right: 5px; /* Space between icon and text */
-        }
-
-        header .header-info a {
-            color: white; /* Ensure links in header are white */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        header .header-info a:hover {
-            color: #ffcc80; /* Lighter orange on hover */
-        }
-
+        
         /* Styles for the profile picture */
-         .profile-pic {
-            position: absolute;
-            top: 50%; /* Vertically center the image /
-            right: 20px;
-            width: 100px; / Adjust size as needed /
-            height: 100px; / Adjust size as needed (should match width for circle) /
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            z-index: 10;
-            transform: translateY(-50%); / Fine-tune vertical centering */
+        .profile-pic {
+            position: absolute; /* Position relative to the header */
+            top: 50%; /* Center vertically relative to the header */
+            right: 20px; /* Distance from the right edge of the header */
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            border: 3px solid white; /* White border around the image */
+            box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Subtle shadow */
+            z-index: 10; /* Ensures it stays on top of other elements if overlapping */
+            transform: translateY(-50%); /* Adjust to truly center vertically */
             transition: border-color 0.4s ease, box-shadow 0.4s ease;
-            }
-
+        }
+        
         body.dark-mode .profile-pic {
             border-color: #ffcc80; /* Lighter orange border in dark mode */
             box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
+        }
+        
+        /* Responsive adjustments for profile pic on smaller screens */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1rem 1rem 1rem; /* Revert padding for small screens */
+                text-align: center;
+            }
+            .header-text-content {
+                margin-right: 0; /* Remove margin on small screens */
+            }
+            .profile-pic {
+                position: static; /* Image flows with content */
+                margin: 10px auto 0 auto; /* Center it below text */
+                display: block; /* Make it a block element to center with margin auto */
+                width: 80px; /* Smaller size on mobile */
+                height: 80px;
+                transform: none; /* Remove transform */
+            }
+            header .header-info {
+                flex-direction: column; /* Stack contact info vertically on small screens */
+                gap: 5px; /* Reduce gap */
+            }
         }
 
 
