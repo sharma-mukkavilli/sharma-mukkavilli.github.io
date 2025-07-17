@@ -89,9 +89,10 @@
                 height: 80px;
                 transform: none; /* Remove transform */
             }
-            header .header-info {
-                flex-direction: column; /* Stack contact info vertically on small screens */
-                gap: 5px; /* Reduce gap */
+            header .header-info a {
+                color: white; /* Force text color to white */
+                text-decoration: none; /* Remove underline */
+                transition: color 0.3s ease; /* Keep smooth color transition on hover */
             }
         }
 
