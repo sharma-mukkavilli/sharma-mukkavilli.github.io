@@ -78,33 +78,33 @@
             transition: color 0.3s ease; /* Keep smooth color transition on hover */
         }
 
-header .header-info a:hover {
-    color: #ffcc80; /* Lighter orange on hover */
-}
-        /* Responsive adjustments for profile pic on smaller screens */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem 1rem 1rem 1rem; /* Revert padding for small screens */
-                text-align: center;
-            }
-            .header-text-content {
-                margin-right: 0; /* Remove margin on small screens */
-            }
-            .profile-pic {
-                position: static; /* Image flows with content */
-                margin: 10px auto 0 auto; /* Center it below text */
-                display: block; /* Make it a block element to center with margin auto */
-                width: 80px; /* Smaller size on mobile */
-                height: 80px;
-                transform: none; /* Remove transform */
-            }
-            header .header-info a {
-                color: white; /* Force text color to white */
-                text-decoration: none; /* Remove underline */
-                transition: color 0.3s ease; /* Keep smooth color transition on hover */
-            }
+        header .header-info a:hover {
+            color: #ffcc80; /* Lighter orange on hover */
         }
-
+        /* Responsive adjustments for profile pic on smaller screens */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1rem 1rem 1rem; /* Revert padding for small screens */
+                text-align: center;
+            }
+            .header-text-content {
+                margin-right: 0; /* Remove margin on small screens */
+            }
+            .profile-pic {
+                position: static; /* Image flows with content */
+                margin: 10px auto 0 auto; /* Center it below text */
+                display: block; /* Make it a block element to center with margin auto */
+                width: 80px; /* Smaller size on mobile */
+                height: 80px;
+                transform: none; /* Remove transform */
+            }
+            /* THIS IS THE RULE TO REMOVE from inside the media query: */
+            header .header-info a {
+                color: white; /* Force text color to white */
+                text-decoration: none; /* Remove underline */
+                transition: color 0.3s ease; /* Keep smooth color transition on hover */
+            }
+        }
 
         /* --- Sidebar Styles --- */
         .sidebar {
