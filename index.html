@@ -231,21 +231,58 @@
             border-left-color: #ffcc80; /* Accent border in dark mode */
         }
 
-        .sidebar .toggle-btn {
-            background-color: #ff6f00;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
+        /* Styles for the new mode toggle icons */
+        .mode-toggle-icons {
+            margin-top: 1rem; /* Space below last link */
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-            align-self: flex-start; /* Align with other links */
-            margin-top: 1rem; /* Add some space below the last link */
+            font-size: 1.5rem; /* Adjust icon size */
+            color: white; /* Default color for icons */
+            display: flex; /* Arrange icons side by side */
+            gap: 0.8rem; /* Space between icons */
+            align-items: center;
+            justify-content: flex-start; /* Align with sidebar links */
+            padding: 0.5rem 0; /* Match link padding */
+            width: 100%; /* Ensure it takes full width for consistent layout */
+            transition: color 0.3s ease;
         }
 
-        body.dark-mode .sidebar .toggle-btn {
-            background-color: #ffcc80; /* Lighter orange for toggle button */
-            color: #1e1e1e; /* Dark text for toggle button */
+        body.dark-mode .mode-toggle-icons {
+            color: #f5f5f5; /* Light color for icons in dark mode */
+        }
+
+        .mode-toggle-icons i {
+            transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+            opacity: 0.5; /* Default less prominent */
+        }
+
+        .mode-toggle-icons i.active-icon {
+            opacity: 1; /* Fully visible when active */
+            color: #ff6f00; /* Active icon color (orange) */
+        }
+
+        body.dark-mode .mode-toggle-icons i.active-icon {
+            color: #ffcc80; /* Lighter orange in dark mode */
+        }
+
+        /* More robust approach to hide/show: */
+        .mode-toggle-icons .dark-mode-icon {
+            display: none; /* Hide moon by default (light mode active) */
+        }
+        .mode-toggle-icons .light-mode-icon {
+            display: block; /* Show sun by default */
+        }
+
+        body.dark-mode .mode-toggle-icons .dark-mode-icon {
+            display: block; /* Show moon in dark mode */
+        }
+        body.dark-mode .mode-toggle-icons .light-mode-icon {
+            display: none; /* Hide sun in dark mode */
+        }
+
+
+        /* Remove or adjust old .toggle-btn styles if not used elsewhere */
+        .sidebar .toggle-btn {
+            display: none; /* Hide the button if you replaced it */
         }
 
 
@@ -667,7 +704,10 @@
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
             <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
-            <button onclick="toggleMode()" class="toggle-btn">Toggle Mode</button>
+            <div class="mode-toggle-icons" onclick="toggleMode()">
+                <i class="fas fa-sun light-mode-icon active-icon"></i>
+                <i class="fas fa-moon dark-mode-icon"></i>
+            </div>
         </div>
 
         <div class="main-content-area">
@@ -962,7 +1002,21 @@
 
     <script>
         function toggleMode() {
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            const sunIcon = document.querySelector('.light-mode-icon');
+            const moonIcon = document.querySelector('.dark-mode-icon');
+
+            if (body.classList.contains('dark-mode')) {
+                sunIcon.classList.remove('active-icon');
+                moonIcon.classList.add('active-icon');
+                // If using the hide/show method in CSS, no direct JS display change needed
+            } else {
+                sunIcon.classList.add('active-icon');
+                moonIcon.classList.remove('active-icon');
+                // If using the hide/show method in CSS, no direct JS display change needed
+            }
         }
 
         // Function to highlight active sidebar link based on scroll position
