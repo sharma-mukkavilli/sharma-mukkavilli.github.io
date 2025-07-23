@@ -658,6 +658,7 @@
 
     <div class="container">
         <div class="sidebar">
+            <a href="#professional-summary"><i class="fas fa-file-alt"></i>Summary</a>
             <a href="#about"><i class="fas fa-user"></i>About</a>
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
@@ -684,9 +685,14 @@
             </header>
 
             <div class="main-sections">
+                <section id="professional-summary">
+                    <h2>Professional Summary</h2>
+                    <p>Results-driven demand generation and market research professional with 7+ years of B2B marketing experience. Skilled in leading cross-functional teams, designing data-driven campaigns, and translating market insights into high-impact strategies. Adept in persona development, SEO, and performance analytics using tools such as Power BI, SmartLead, and LinkedIn Campaign Manager. Known for consistently improving lead quality, campaign efficiency, and marketing ROI through research-backed initiatives.</p>
+                </section>
+
                 <section id="about">
                     <h2>About Me</h2>
-                    <p>Market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking.</p>
+                    <p>I am a highly motivated market intelligence and research professional with over 7 years of experience in B2B marketing, campaign strategy, persona analysis, and competitive benchmarking. My passion extends beyond professional life into diverse hobbies such as playing cricket, swimming, reading novels, and playing chess. Academically, I hold an MBA in Marketing and Finance from MVGR College of Engineering, where I proudly achieved a ranking in the top 10 of my class, and a B.Tech in Computer Science from Al-Aman College of Engineering. I thrive on translating insights into actionable strategies that drive measurable results, consistently improving lead quality, campaign efficiency, and marketing ROI through research-backed initiatives.</p>
                 </section>
 
                <section id="skills">
@@ -980,9 +986,9 @@
             });
 
             // Fallback for when no section is exactly at the midpoint (e.g., at the very top or bottom)
-            // If scrolled to the very top, make 'about' active.
+            // If scrolled to the very top, make 'professional-summary' or 'about' active.
             if (window.scrollY === 0 && sections.length > 0) {
-                currentActive = sections[0].getAttribute('id');
+                currentActive = sections[0].getAttribute('id'); // This should be 'professional-summary' now
             }
             // If scrolled to the very bottom, make the last section active.
             const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
