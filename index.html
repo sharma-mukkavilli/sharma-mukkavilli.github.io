@@ -72,16 +72,38 @@
             box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
         }
 
-           header .header-info a {
-                color: white; /* Force text color to white */
-                text-decoration: none; /* Remove underline */
-                transition: color 0.3s ease; /* Keep smooth color transition on hover */
-            }
-            
-            /* This hover rule is already correctly placed here */
-            header .header-info a:hover {
-                color: #ffcc80; /* Lighter orange on hover */
-            }
+          header .header-info a {
+            color: white; /* Force text color to white */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease; /* Keep smooth color transition on hover */
+        }
+        
+        header .header-info a:hover {
+            color: #ffcc80; /* Lighter orange on hover */
+        }
+        
+        /* --- ADD THESE NEW RULES HERE to style the non-link elements --- */
+        
+        header .header-info {
+            /* This rule already exists, but ensure it has 'color: white;' */
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px; /* Adjust this value (e.g., 20px, 40px) for spacing between items */
+            color: white; /* NEW: Ensures any direct text/span children are white */
+        }
+        
+        header .header-info span {
+            color: white; /* NEW: Make the '|' separators white */
+        }
+        
+        header .header-info .phone-number { /* NEW: Style for the phone number span */
+            color: white; /* Ensures it's white even if auto-linked by browser */
+            text-decoration: none; /* Prevents underline if auto-linked */
+        }
             
             /* Responsive adjustments for profile pic on smaller screens */
             @media (max-width: 768px) {
@@ -575,7 +597,7 @@
 
             header .header-info {
                 flex-direction: column; /* Stack contact info vertically on small screens */
-                gap: 5px; /* Reduce gap */
+                gap: 30px; /* Reduce gap */
             }
 
             /* Adjust profile picture for smaller screens */
@@ -610,7 +632,7 @@
                     <p class="header-info">
                         <a href="mailto:connectsharma.m@gmail.com"><i class="fas fa-envelope"></i>connectsharma.m@gmail.com</a>
                         <span>|</span>
-                        <i class="fas fa-phone"></i>7893-427-724
+                        <i class="fas fa-phone"></i><span class="phone-number">7893-427-724</span>
                         <span>|</span>
                         <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn Profile</a>
                     </p>
