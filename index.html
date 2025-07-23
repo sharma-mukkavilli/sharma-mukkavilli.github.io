@@ -45,8 +45,7 @@
         
         /* New style for the text content within the header */
         .header-text-content {
-            margin-right: 120px; /* Push text to the left to avoid image */
-            /* Adjusted for mobile where no margin-right is needed */
+            margin-right: 0; /* REMOVED margin-right to allow centering */
             text-align: center; /* Ensure text is centered within its own div */
         }
         
@@ -108,10 +107,10 @@
             text-decoration: none; /* Prevents underline if auto-linked */
         }
             
-        /* Removed: margin-right from icons within header info as per user request to revert */
-        /* header .header-info i {
-            margin-right: 5px; 
-        } */
+        /* Added to reduce gap between phone icon and number */
+        header .header-info .fa-phone {
+            margin-right: -5px; /* Adjust as needed, negative margin pulls it closer */
+        }
 
         /* Responsive adjustments for profile pic on smaller screens */
         @media (max-width: 768px) {
@@ -150,7 +149,7 @@
                 align-items: center; /* Vertically align content */
             }
             .header-text-content {
-                text-align: left; /* Align text left on desktop */
+                text-align: center; /* ENSURE text is centered on desktop too */
             }
         }
 
