@@ -68,21 +68,23 @@
         }
         
         body.dark-mode .profile-pic {
-            border-color: #ffcc80; /* Lighter orange border in dark mode */
-            box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
-        }
+            border-color: #ffcc80; /* Lighter orange border in dark mode */
+            box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
+        }
 
-        header .header-info a {
-            color: white; /* Force text color to white */
-            text-decoration: none; /* Remove underline */
-            transition: color 0.3s ease; /* Keep smooth color transition on hover */
-        }
-
-        header .header-info a:hover {
-            color: #ffcc80; /* Lighter orange on hover */
-        }
-        /* Responsive adjustments for profile pic on smaller screens */
-        @media (max-width: 768px) {
+           header .header-info a {
+                color: white; /* Force text color to white */
+                text-decoration: none; /* Remove underline */
+                transition: color 0.3s ease; /* Keep smooth color transition on hover */
+            }
+            
+            /* This hover rule is already correctly placed here */
+            header .header-info a:hover {
+                color: #ffcc80; /* Lighter orange on hover */
+            }
+            
+            /* Responsive adjustments for profile pic on smaller screens */
+            @media (max-width: 768px) {
             header {
                 padding: 1rem 1rem 1rem 1rem; /* Revert padding for small screens */
                 text-align: center;
@@ -98,12 +100,8 @@
                 height: 80px;
                 transform: none; /* Remove transform */
             }
-            /* THIS IS THE RULE TO REMOVE from inside the media query: */
-            header .header-info a {
-                color: white; /* Force text color to white */
-                text-decoration: none; /* Remove underline */
-                transition: color 0.3s ease; /* Keep smooth color transition on hover */
-            }
+            /* REMOVE THIS RULE FROM HERE. It's now applied globally above. */
+            /* header .header-info a { ... } */
         }
 
         /* --- Sidebar Styles --- */
