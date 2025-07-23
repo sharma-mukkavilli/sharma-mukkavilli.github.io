@@ -71,7 +71,16 @@
             border-color: #ffcc80; /* Lighter orange border in dark mode */
             box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
         }
-        
+
+        header .header-info a {
+            color: white; /* Force text color to white */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease; /* Keep smooth color transition on hover */
+        }
+
+header .header-info a:hover {
+    color: #ffcc80; /* Lighter orange on hover */
+}
         /* Responsive adjustments for profile pic on smaller screens */
         @media (max-width: 768px) {
             header {
