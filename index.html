@@ -37,13 +37,17 @@
             margin-bottom: 4rem; /* Increased spacing below header for "About Me" alignment */
             position: relative; /* Essential for positioning the child image */
             transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
+            display: flex; /* Added for better mobile stacking */
+            flex-direction: column; /* Default to column for consistency, will be row on desktop via media query */
+            align-items: center; /* Center items for column layout */
+            justify-content: center; /* Center items for column layout */
         }
         
         /* New style for the text content within the header */
         .header-text-content {
-            /* text-align: center; This might be redundant if header is text-align center */
             margin-right: 120px; /* Push text to the left to avoid image */
-            /* You might need to adjust max-width if text is too wide */
+            /* Adjusted for mobile where no margin-right is needed */
+            text-align: center; /* Ensure text is centered within its own div */
         }
         
         body.dark-mode header {
@@ -72,7 +76,7 @@
             box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
         }
 
-          header .header-info a {
+        header .header-info a {
             color: white; /* Force text color to white */
             text-decoration: none; /* Remove underline */
             transition: color 0.3s ease; /* Keep smooth color transition on hover */
@@ -82,10 +86,9 @@
             color: #ffcc80; /* Lighter orange on hover */
         }
         
-        /* --- ADD THESE NEW RULES HERE to style the non-link elements --- */
+        /* --- ADDED/ADJUSTED RULES for header info spacing and appearance --- */
         
         header .header-info {
-            /* This rule already exists, but ensure it has 'color: white;' */
             margin-bottom: 0;
             font-size: 1.1rem;
             display: flex;
@@ -93,38 +96,64 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 30px; /* Adjust this value (e.g., 20px, 40px) for spacing between items */
-            color: white; /* NEW: Ensures any direct text/span children are white */
+            color: white; /* Ensures any direct text/span children are white */
         }
         
         header .header-info span {
-            color: white; /* NEW: Make the '|' separators white */
+            color: white; /* Make the '|' separators white */
         }
         
-        header .header-info .phone-number { /* NEW: Style for the phone number span */
+        header .header-info .phone-number { /* Style for the phone number span */
             color: white; /* Ensures it's white even if auto-linked by browser */
             text-decoration: none; /* Prevents underline if auto-linked */
         }
             
-            /* Responsive adjustments for profile pic on smaller screens */
-            @media (max-width: 768px) {
-            header {
-                padding: 1rem 1rem 1rem 1rem; /* Revert padding for small screens */
-                text-align: center;
-            }
-            .header-text-content {
-                margin-right: 0; /* Remove margin on small screens */
-            }
-            .profile-pic {
-                position: static; /* Image flows with content */
-                margin: 10px auto 0 auto; /* Center it below text */
-                display: block; /* Make it a block element to center with margin auto */
-                width: 80px; /* Smaller size on mobile */
-                height: 80px;
-                transform: none; /* Remove transform */
-            }
-            /* REMOVE THIS RULE FROM HERE. It's now applied globally above. */
-            /* header .header-info a { ... } */
-        }
+        /* Removed: margin-right from icons within header info as per user request to revert */
+        /* header .header-info i {
+            margin-right: 5px; 
+        } */
+
+        /* Responsive adjustments for profile pic on smaller screens */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem; /* Adjust padding for small screens */
+                flex-direction: column; /* Stack name, info, and pic vertically */
+                align-items: center; /* Center items horizontally */
+                gap: 0.5rem; /* Small gap between header elements */
+                margin-bottom: 2rem; /* Reduce margin below header on mobile */
+            }
+            .header-text-content {
+                margin-right: 0; /* Remove margin on small screens */
+                width: 100%; /* Ensure text content takes full width */
+            }
+            .profile-pic {
+                position: static; /* Image flows with content */
+                margin: 10px auto 0 auto; /* Center it below text */
+                display: block; /* Make it a block element to center with margin auto */
+                width: 80px; /* Smaller size on mobile */
+                height: 80px;
+                transform: none; /* Remove transform */
+                order: -1; /* Place picture at the top in flex order */
+            }
+            /* Ensure header info also stacks well on mobile */
+            header .header-info {
+                flex-direction: column; /* Stack contact info vertically */
+                gap: 5px; /* Smaller gap for stacked items */
+                font-size: 0.9rem; /* Slightly smaller font for mobile contact info */
+            }
+        }
+        /* Desktop specific header styles */
+        @media (min-width: 769px) {
+            header {
+                flex-direction: row; /* Layout items horizontally on desktop */
+                justify-content: center; /* Center content horizontally */
+                align-items: center; /* Vertically align content */
+            }
+            .header-text-content {
+                text-align: left; /* Align text left on desktop */
+            }
+        }
+
 
         /* --- Sidebar Styles --- */
         .sidebar {
@@ -459,6 +488,13 @@
             transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
+        body.dark-mode .hobbies-card {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
         .hobbies-card ul {
             list-style: none; /* Remove default bullet points */
             padding: 0;      /* Remove default left padding */
@@ -582,31 +618,39 @@
                 padding: 1rem;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow on bottom */
             }
-             .sidebar .toggle-btn {
+            .sidebar a:first-of-type {
+                margin-top: 0 !important; /* Override the desktop margin for mobile */
+            }
+            .sidebar .toggle-btn {
                 margin-top: 0; /* Remove top margin when sidebar is horizontal */
-             }
+            }
+            /* Ensure links have proper horizontal padding */
+            .sidebar a {
+                padding: 0.5rem 0.5rem; /* Adjusted padding for horizontal layout */
+            }
+            .sidebar a i {
+                 margin-right: 0.5rem; /* Slightly reduce space between icon and text if needed */
+            }
+
 
             .main-content-area {
                 margin-left: 0; /* Remove left margin on small screens */
-                padding: 1rem 0; /* Adjust padding */
+                padding: 1rem 0; /* Adjust padding around the whole content area */
             }
 
             .main-sections {
-                padding: 0 1rem; /* Adjust padding for sections */
+                padding: 0 1rem; /* Ensure sections have horizontal padding on mobile */
             }
-
-            header .header-info {
-                flex-direction: column; /* Stack contact info vertically on small screens */
-                gap: 30px; /* Reduce gap */
+            section {
+                 padding: 0 0.5rem; /* Even smaller internal padding for sections on very small screens */
             }
-
-            /* Adjust profile picture for smaller screens */
-            .profile-pic {
-                width: 60px; /* Make it smaller */
-                height: 60px; /* Make it smaller */
-                top: 10px; /* Move it closer to the top */
-                right: 10px; /* Move it closer to the right */
-                border-width: 2px; /* Optionally reduce border width */
+            /* Adjust the gap in the skills, education, certification grids */
+            .skills-grid, .education-grid, .certifications-grid {
+                gap: 0.8rem; /* Slightly smaller gap between cards on mobile */
+            }
+            /* Adjust padding for individual cards if they look too large */
+            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card {
+                padding: 0.8rem; /* Slightly reduced padding inside cards on mobile */
             }
         }
     </style>
