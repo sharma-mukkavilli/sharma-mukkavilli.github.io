@@ -9,6 +9,7 @@
     <meta property="og:title" content="Sharma Mukkavilli - Demand Generation Lead" />
     <meta property="og:image" content="smukkavilli.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts - Merriweather -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Base styles for HTML and Body - essential for full page layout and transitions */
@@ -346,10 +347,10 @@
         }
 
         body.dark-mode .card-entry {
-            background-color: #2c2c2c; /* Darker background */
-            border-color: #444; /* Darker border */
-            color: #f5f5f5; /* Light text */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Stronger shadow */
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .card-entry:hover {
@@ -565,14 +566,14 @@
 
 
         /* --- Education/Certification Section Styles (no dropdowns, just grid cards) --- */
-        .education-grid, .certifications-grid { /* Combined for similar layout */
+        .education-grid, .certifications-grid, .awards-grid { /* Combined for similar layout */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width as needed */
             gap: 1rem; /* Space between cards */
             margin-top: 1rem;
         }
 
-        .education-card, .certification-card { /* Combined for similar styling */
+        .education-card, .certification-card, .award-card { /* Combined for similar styling */
             background: white;
             border: 1px solid #ddd;
             color: #333;
@@ -581,33 +582,33 @@
             padding: 1rem;
             transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
-        body.dark-mode .education-card, body.dark-mode .certification-card {
+        body.dark-mode .education-card, body.dark-mode .certification-card, body.dark-mode .award-card {
             background-color: #2c2c2c;
             border-color: #444;
             color: #f5f5f5;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
-        .education-card:hover, .certification-card:hover {
+        .education-card:hover, .certification-card:hover, .award-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
-        body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover {
+        body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover, body.dark-mode .award-card:hover {
              box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
 
-        .education-card p, .certification-card p {
+        .education-card p, .certification-card p, .award-card p {
             margin: 0; /* Remove default paragraph margin */
             line-height: 1.4; /* Improve line spacing */
         }
-        .education-card p i, .certification-card p i {
+        .education-card p i, .certification-card p i, .award-card p i {
             margin-right: 8px; /* Space between icon and text in card */
             color: #0a2540; /* Blue icon for education/certifications */
             transition: color 0.4s ease;
         }
-        body.dark-mode .education-card p i, body.dark-mode .certification-card p i {
+        body.dark-mode .education-card p i, body.dark-mode .certification-card p i, body.dark-mode .award-card p i {
             color: #ffcc80; /* Lighter orange icon in dark mode */
         }
-        .education-card p strong, .certification-card p strong { /* Style for bolding */
+        .education-card p strong, .certification-card p strong, .award-card p strong { /* Style for bolding */
             font-size: 1.1em;
         }
 
@@ -763,11 +764,11 @@
                  padding: 0 0.5rem; /* Even smaller internal padding for sections on very small screens */
             }
             /* Adjust the gap in the skills, education, certification grids */
-            .skills-grid, .education-grid, .certifications-grid {
+            .skills-grid, .education-grid, .certifications-grid, .awards-grid {
                 gap: 0.8rem; /* Slightly smaller gap between cards on mobile */
             }
             /* Adjust padding for individual cards if they look too large */
-            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card {
+            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card, .award-card {
                 padding: 0.8rem; /* Slightly reduced padding inside cards on mobile */
             }
              #contact input[type="submit"] {
@@ -784,6 +785,7 @@
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
+            <a href="#awards"><i class="fas fa-trophy"></i>Awards</a> <!-- New sidebar link -->
             <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
             <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
@@ -872,6 +874,7 @@
                             </div>
                         </div>
                 
+                        <!-- New: Events Skill Card -->
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-calendar-alt"></i>Event Management</h3></span>
@@ -885,6 +888,7 @@
                             </div>
                         </div>
                 
+                        <!-- New: Webinars Skill Card -->
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-video"></i>Webinar Specialist</h3></span>
@@ -906,7 +910,7 @@
                                 <ul>
                                     <li>Zoho CRM</li>
                                     <li>Marketing Automation</li>
-                                    <li>ABM Trailblazer - ZoomInfo, Apollo.io, RocketReach</li>
+                                    <li>ABM Trailblazer - ZoomInfo, Lusha, RocketReach</li>
                                 </ul>
                             </div>
                         </div>
@@ -957,7 +961,7 @@
                                 <li><b>Email & LinkedIn Campaigns</b>- Launched campaigns via Zoho, Mailchimp, Constant Contact with engagement tracking</li>
                                 <li><b>Sales Enablement</b>- Created persona documents, battle cards, and competitive summaries for sales teams</li>
                                 <li><b>Analytics & Reporting</b>- Built performance reports using Power BI, Zoho Analytics, LinkedIn Campaign Manager</li>
-                                <li><b>Event Management</b>- Coordinated various events across the USA, such as IBM Think, Microsoft Ignite, SAP SAPPHIRE, GCP Next, and ASUG events, along with multiple internal and external webinars.</li>
+                                <li><b>Event Management</b>- Coordinated various events across USA such as IBM Think, Microsoft Ignite, SAP SAPPHIRE, GCP Next and ASUG events along with multiple internal and external webinars.</li>
                                 <li><b>Social Media Management</b>- Managed LinkedIn, Facebook, Twitter presence with Hootsuite and Buffer</li>
                                 <li><b>Market Research</b>- Conducted research for content strategy using internal and external data sources</li>
                                 <li><b>SEO Support</b>- Performed keyword research and content optimization with dev/design teams</li>
@@ -1054,6 +1058,24 @@
                     </div>
                 </section>
 
+                <section id="awards">
+                    <h2>Awards</h2>
+                    <div class="awards-grid">
+                        <div class="award-card">
+                            <p><i class="fas fa-trophy"></i> <strong>Best Performer for Quarter</strong><br/>
+                            Q3'2023 | July - Sept 2023</p>
+                        </div>
+                        <div class="award-card">
+                            <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
+                            Sept 2018</p>
+                        </div>
+                        <div class="award-card">
+                            <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
+                            Aug 2021</p>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="hobbies">
                     <h2>Hobbies</h2>
                     <div class="skill-card hobbies-card">
@@ -1075,12 +1097,12 @@
                     <div class="education-grid">
                         <div class="education-card">
                             <p><i class="fas fa-graduation-cap"></i> <strong>MBA</strong><br/>
-                            Marketing and Finance<br/>
+                            In Marketing and Finance<br/>
                             MVGR College of Engineering – 82.65%</p>
                         </div>
                         <div class="education-card">
                             <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
-                            Computer Science and Engineering<br/>
+                            In Computer Science<br/>
                             Al-Aman College of Engineering – 61.94%</p>
                         </div>
                     </div>
@@ -1093,7 +1115,7 @@
                         <input type="email" name="email" placeholder="Your Email" required>
                         <textarea name="message" placeholder="Your Message" required></textarea>
                         <input type="hidden" name="_captcha" value="false">
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Send">
                     </form>
                 </section>
 
