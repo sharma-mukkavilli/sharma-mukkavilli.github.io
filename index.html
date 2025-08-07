@@ -48,18 +48,18 @@
             align-items: center; /* Center items for column layout */
             justify-content: center; /* Center items for column layout */
         }
-        
+
         /* New style for the text content within the header */
         .header-text-content {
             margin-right: 0; /* REMOVED margin-right to allow centering */
             text-align: center; /* Ensure text is centered within its own div */
         }
-        
+
         body.dark-mode header {
             background-color: #2c2c2c; /* Adjust dark mode header background */
             color: #f5f5f5; /* Light text for header in dark mode */
         }
-        
+
         /* Styles for the profile picture */
         .profile-pic {
             position: absolute; /* Position relative to the header */
@@ -75,24 +75,24 @@
             transform: translateY(-50%); /* Adjust to truly center vertically */
             transition: border-color 0.4s ease, box-shadow 0.4s ease;
         }
-        
+
         body.dark-mode .profile-pic {
-            border-color: #ffcc80; /* Lighter orange border in dark mode */
-            box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
-        }
+            border-color: #ffcc80; /* Lighter orange border in dark mode */
+            box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
+        }
 
         header .header-info a {
             color: white; /* Force text color to white */
             text-decoration: none; /* Remove underline */
             transition: color 0.3s ease; /* Keep smooth color transition on hover */
         }
-        
+
         header .header-info a:hover {
             color: #ffcc80; /* Lighter orange on hover */
         }
-        
+
         /* --- ADDED/ADJUSTED RULES for header info spacing and appearance --- */
-        
+
         header .header-info {
             margin-bottom: 0;
             font-size: 1.1rem;
@@ -103,16 +103,16 @@
             gap: 30px; /* Adjust this value (e.g., 20px, 40px) for spacing between items */
             color: white; /* Ensures any direct text/span children are white */
         }
-        
+
         header .header-info span {
             color: white; /* Make the '|' separators white */
         }
-        
+
         header .header-info .phone-number { /* Style for the phone number span */
             color: white; /* Ensures it's white even if auto-linked by browser */
             text-decoration: none; /* Prevents underline if auto-linked */
         }
-            
+
         /* Added to reduce gap between phone icon and number */
         header .header-info .fa-phone {
             margin-right: -5px; /* Adjust as needed, negative margin pulls it closer */
@@ -565,15 +565,15 @@
         }
 
 
-        /* --- Education/Certification Section Styles (no dropdowns, just grid cards) --- */
-        .education-grid, .certifications-grid, .awards-grid { /* Combined for similar layout */
+        /* --- Education/Certification/Awards Section Styles (no dropdowns, just grid cards) --- */
+        .education-grid, .certifications-grid, .awards-grid, .articles-grid { /* Added .articles-grid */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width as needed */
             gap: 1rem; /* Space between cards */
             margin-top: 1rem;
         }
 
-        .education-card, .certification-card, .award-card { /* Combined for similar styling */
+        .education-card, .certification-card, .award-card, .article-card { /* Added .article-card */
             background: white;
             border: 1px solid #ddd;
             color: #333;
@@ -582,34 +582,48 @@
             padding: 1rem;
             transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
-        body.dark-mode .education-card, body.dark-mode .certification-card, body.dark-mode .award-card {
+        body.dark-mode .education-card, body.dark-mode .certification-card, body.dark-mode .award-card, body.dark-mode .article-card {
             background-color: #2c2c2c;
             border-color: #444;
             color: #f5f5f5;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
-        .education-card:hover, .certification-card:hover, .award-card:hover {
+        .education-card:hover, .certification-card:hover, .award-card:hover, .article-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
-        body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover, body.dark-mode .award-card:hover {
+        body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover, body.dark-mode .award-card:hover, body.dark-mode .article-card:hover {
              box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
 
-        .education-card p, .certification-card p, .award-card p {
+        .education-card p, .certification-card p, .award-card p, .article-card p {
             margin: 0; /* Remove default paragraph margin */
             line-height: 1.4; /* Improve line spacing */
         }
-        .education-card p i, .certification-card p i, .award-card p i {
+        .education-card p i, .certification-card p i, .award-card p i, .article-card a i {
             margin-right: 8px; /* Space between icon and text in card */
             color: #0a2540; /* Blue icon for education/certifications */
             transition: color 0.4s ease;
         }
-        body.dark-mode .education-card p i, body.dark-mode .certification-card p i, body.dark-mode .award-card p i {
+        body.dark-mode .education-card p i, body.dark-mode .certification-card p i, body.dark-mode .award-card p i, body.dark-mode .article-card a i {
             color: #ffcc80; /* Lighter orange icon in dark mode */
         }
-        .education-card p strong, .certification-card p strong, .award-card p strong { /* Style for bolding */
+        .education-card p strong, .certification-card p strong, .award-card p strong, .article-card a { /* Style for bolding */
             font-size: 1.1em;
+            color: #0a2540; /* Default link color to match heading */
+            text-decoration: none; /* Remove underline from links */
+            transition: color 0.4s ease;
+        }
+        body.dark-mode .article-card a {
+             color: #f5f5f5; /* Light text color for links in dark mode */
+        }
+
+        .article-card a:hover {
+            text-decoration: underline; /* Add underline on hover */
+            color: #ff6f00; /* Orange hover effect for links */
+        }
+        body.dark-mode .article-card a:hover {
+            color: #ffcc80; /* Lighter orange in dark mode */
         }
 
         /* --- Contact Form Styles --- */
@@ -710,7 +724,6 @@
 
         /* --- Footer Styles --- */
         footer {
-            text-align: center;
             background: #0a2540;
             color: white;
             padding: 1rem;
@@ -724,7 +737,54 @@
             background-color: #1a1a1a; /* Darker footer in dark mode */
             color: #f5f5f5; /* Light text for footer */
         }
+        
+        /* New: Footer layout to match the requested style */
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
+        .footer-content .copyright {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            text-align: left; /* Align copyright text to the left */
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 1.2rem; /* Space between icons */
+        }
+
+        .footer-social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social-icons a:hover {
+            color: #ff6f00; /* Orange hover effect for icons */
+        }
+
+        body.dark-mode .footer-social-icons a:hover {
+            color: #ffcc80; /* Lighter orange in dark mode */
+        }
+
+        /* Horizontal line for the footer */
+        footer hr {
+            border: 0;
+            height: 1px;
+            background-color: #555;
+            margin: 0 0 1rem 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
             .sidebar {
@@ -764,16 +824,25 @@
                  padding: 0 0.5rem; /* Even smaller internal padding for sections on very small screens */
             }
             /* Adjust the gap in the skills, education, certification grids */
-            .skills-grid, .education-grid, .certifications-grid, .awards-grid {
+            .skills-grid, .education-grid, .certifications-grid, .awards-grid, .articles-grid {
                 gap: 0.8rem; /* Slightly smaller gap between cards on mobile */
             }
             /* Adjust padding for individual cards if they look too large */
-            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card, .award-card {
+            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card, .award-card, .article-card {
                 padding: 0.8rem; /* Slightly reduced padding inside cards on mobile */
             }
              #contact input[type="submit"] {
                 font-size: 1rem; /* Adjust font size for mobile */
                 padding: 0.7rem 1.2rem; /* Adjust padding for mobile */
+            }
+             .footer-content {
+                flex-direction: column; /* Stack elements vertically on mobile */
+                text-align: center;
+                gap: 1rem;
+            }
+            .footer-content .copyright {
+                text-align: center;
+                margin-bottom: 0.5rem; /* Add some space below the copyright text */
             }
         }
     </style>
@@ -785,7 +854,8 @@
             <a href="#skills"><i class="fas fa-code"></i>Skills</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
-            <a href="#awards"><i class="fas fa-trophy"></i>Awards</a> <!-- New sidebar link -->
+            <a href="#awards"><i class="fas fa-trophy"></i>Awards</a>
+            <a href="#articles"><i class="fas fa-newspaper"></i>Articles</a> <!-- New sidebar link -->
             <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
             <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
@@ -834,7 +904,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-chart-pie"></i>Analysis & Reporting</h3></span>
@@ -847,7 +917,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-bullhorn"></i>Campaign Management</h3></span>
@@ -860,7 +930,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-search"></i>Market Intelligence</h3></span>
@@ -873,7 +943,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <!-- New: Events Skill Card -->
                         <div class="skill-card">
                             <div class="card-header">
@@ -887,7 +957,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <!-- New: Webinars Skill Card -->
                         <div class="skill-card">
                             <div class="card-header">
@@ -901,7 +971,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-sync-alt"></i>CRM & Automation</h3></span>
@@ -914,7 +984,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-code-branch"></i>Web & Database Basics</h3></span>
@@ -927,7 +997,7 @@
                                 </ul>
                             </div>
                         </div>
-                
+
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-share-alt"></i>Social Media</h3></span>
@@ -1062,16 +1132,50 @@
                     <h2>Awards</h2>
                     <div class="awards-grid">
                         <div class="award-card">
-                            <p><i class="fas fa-trophy"></i> <strong>Best Performer for Quarter</strong><br/>
-                            Q3'2023 | July - Sept 2023</p>
+                            <p><i class="fas fa-trophy"></i> <strong>Best Performer for Quarter #3</strong><br/>
+                            2023 - Oct 2023</p>
+                        </div>
+                        <div class="award-card">
+                            <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
+                            Sep 2018</p>
                         </div>
                         <div class="award-card">
                             <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
                             Aug 2021</p>
                         </div>
-                        <div class="award-card">
-                            <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
-                            Sept 2018</p>
+                    </div>
+                </section>
+
+                <section id="articles">
+                    <h2>LinkedIn Articles</h2>
+                    <div class="articles-grid">
+                        <div class="article-card">
+                            <p>
+                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_google-android-chromeos-activity-7353801112182829057-sw6e" target="_blank">
+                                    <i class="fab fa-linkedin"></i> Google Android & ChromeOS
+                                </a>
+                            </p>
+                        </div>
+                        <div class="article-card">
+                            <p>
+                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_airtel-perplexityai-productivitytools-activity-7352997759995580417-EeF9" target="_blank">
+                                    <i class="fab fa-linkedin"></i> Perplexity AI & Productivity Tools
+                                </a>
+                            </p>
+                        </div>
+                        <div class="article-card">
+                            <p>
+                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_googleio2025-ondeviceai-opensource-activity-7335360673540964353-G0dY" target="_blank">
+                                    <i class="fab fa-linkedin"></i> Highlights from Google I/O 2025
+                                </a>
+                            </p>
+                        </div>
+                        <div class="article-card">
+                            <p>
+                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_sunitawilliams-nasa-starliner-activity-7308172758025154560-Ts9v" target="_blank">
+                                    <i class="fab fa-linkedin"></i> Sunita Williams & NASA's Starliner
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -1124,16 +1228,21 @@
                 </div>
             </div>
             <footer>
-                <p>&copy; 2025 Sharma Mukkavilli. All rights reserved.</p>
-                <p>
-                  <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank" style="color:white; text-decoration:none;">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                  </a>
-                  &nbsp;|&nbsp;
-                  <a href="mailto:connectsharma.m@gmail.com" style="color:white; text-decoration:none;">
-                    <i class="fas fa-envelope"></i> Email
-                  </a>
-                </p>
+                <hr>
+                <div class="footer-content">
+                    <p class="copyright">&copy; 2025 Sharma Mukkavilli. All rights reserved.</p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank" aria-label="LinkedIn Profile">
+                          <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.twitter.com/im_harish_harry" target = "_blank" aria-label="Twitter Profile">
+                          <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:connectsharma.m@gmail.com" aria-label="Email Address">
+                          <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
             </footer>
         </div>
     </div>
