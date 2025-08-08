@@ -9,7 +9,6 @@
     <meta property="og:title" content="Sharma Mukkavilli - Demand Generation Lead" />
     <meta property="og:image" content="smukkavilli.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Google Fonts - Merriweather -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Base styles for HTML and Body - essential for full page layout and transitions */
@@ -572,6 +571,14 @@
             gap: 1rem; /* Space between cards */
             margin-top: 1rem;
         }
+        /* New: Testimonials Section Styles (no dropdowns, just grid cards) */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem; /* Space between cards */
+            margin-top: 1rem;
+        }
+
 
         .education-card, .certification-card, .award-card, .article-card { /* Added .article-card */
             background: white;
@@ -582,23 +589,56 @@
             padding: 1rem;
             transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
+        .testimonial-card {
+            background: white;
+            border: 1px solid #ddd;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 1.5rem; /* Increased padding for better readability */
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
         body.dark-mode .education-card, body.dark-mode .certification-card, body.dark-mode .award-card, body.dark-mode .article-card {
             background-color: #2c2c2c;
             border-color: #444;
             color: #f5f5f5;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
+        body.dark-mode .testimonial-card {
+            background-color: #2c2c2c;
+            border-color: #444;
+            color: #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
         .education-card:hover, .certification-card:hover, .award-card:hover, .article-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
         body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover, body.dark-mode .award-card:hover, body.dark-mode .article-card:hover {
+             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+        }
+        body.dark-mode .testimonial-card:hover {
              box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
 
         .education-card p, .certification-card p, .award-card p, .article-card p {
             margin: 0; /* Remove default paragraph margin */
             line-height: 1.4; /* Improve line spacing */
+        }
+        .testimonial-card p {
+            margin: 0 0 1rem 0; /* Add bottom margin for paragraphs */
+            line-height: 1.6; /* Improved line spacing */
+            font-style: italic; /* Italicize the quote text */
+        }
+        .testimonial-card p:last-child {
+            margin-bottom: 0;
         }
         .education-card p i, .certification-card p i, .award-card p i, .article-card a i {
             margin-right: 8px; /* Space between icon and text in card */
@@ -614,8 +654,20 @@
             text-decoration: none; /* Remove underline from links */
             transition: color 0.4s ease;
         }
+        .testimonial-card .author {
+            display: block; /* Make the author name a block element for its own line */
+            font-weight: bold;
+            font-style: normal; /* Override the italic style for the name */
+            color: #0a2540; /* Match the title color */
+            margin-top: 1rem; /* Space above the name */
+            transition: color 0.4s ease;
+        }
+
         body.dark-mode .article-card a {
              color: #f5f5f5; /* Light text color for links in dark mode */
+        }
+        body.dark-mode .testimonial-card .author {
+            color: #f5f5f5; /* Light color for the author name in dark mode */
         }
 
         .article-card a:hover {
@@ -824,11 +876,11 @@
                  padding: 0 0.5rem; /* Even smaller internal padding for sections on very small screens */
             }
             /* Adjust the gap in the skills, education, certification grids */
-            .skills-grid, .education-grid, .certifications-grid, .awards-grid, .articles-grid {
+            .skills-grid, .education-grid, .certifications-grid, .awards-grid, .articles-grid, .testimonials-grid {
                 gap: 0.8rem; /* Slightly smaller gap between cards on mobile */
             }
             /* Adjust padding for individual cards if they look too large */
-            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card, .award-card, .article-card {
+            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card, .award-card, .article-card, .testimonial-card {
                 padding: 0.8rem; /* Slightly reduced padding inside cards on mobile */
             }
              #contact input[type="submit"] {
@@ -855,9 +907,9 @@
             <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
             <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
             <a href="#awards"><i class="fas fa-trophy"></i>Awards</a>
-            <a href="#articles"><i class="fas fa-newspaper"></i>Articles</a> <!-- New sidebar link -->
-            <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
+            <a href="#articles"><i class="fas fa-newspaper"></i>Articles</a> <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
             <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
+            <a href="#testimonials"><i class="fas fa-quote-right"></i>Testimonials</a>
             <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
             <div class="mode-toggle-icons" onclick="toggleMode()">
                 <i class="fas fa-sun light-mode-icon active-icon"></i>
@@ -944,7 +996,6 @@
                             </div>
                         </div>
 
-                        <!-- New: Events Skill Card -->
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-calendar-alt"></i>Event Management</h3></span>
@@ -958,7 +1009,6 @@
                             </div>
                         </div>
 
-                        <!-- New: Webinars Skill Card -->
                         <div class="skill-card">
                             <div class="card-header">
                                 <span class="card-title"><h3><i class="fas fa-video"></i>Webinar Specialist</h3></span>
@@ -1208,6 +1258,20 @@
                             <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
                             In Computer Science<br/>
                             Al-Aman College of Engineering – 61.94%</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="testimonials">
+                    <h2>Testimonials</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <p>"I had the pleasure of working with Sharma for the last 6 years at Miracle Software Systems, Inc, and I can confidently recommend him as a dedicated and talented professional. Sharma's commitment towards his work is truly commendable. During our time working together, he consistently demonstrated a strong work ethic and a keen attention to detail. Sharma takes on challenges with enthusiasm and consistently delivers his best. He is very good at leading the team."</p>
+                            <span class="author">Gary Sala</span>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"As a skilled Market Research Analyst, Sharma Mukkavilli shows strong dedication in conducting comprehensive market research and consistently delivers valuable insights. He is a continuous learner, a diligent hard worker, and has ability to find effective solutions to complex situations. With a proactive approach, he fosters a collaborative environment, empowering team members to take on challenges and excel in their roles. His journey, from a valuable team member to a Team Lead, stands as a testament of his work."</p>
+                            <span class="author">Sowmya Maremanda</span>
                         </div>
                     </div>
                 </section>
