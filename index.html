@@ -9,355 +9,344 @@
     <meta property="og:title" content="Sharma Mukkavilli - Demand Generation Lead" />
     <meta property="og:image" content="smukkavilli.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Base styles for HTML and Body - essential for full page layout and transitions */
+        :root {
+            /* Color Palette - Modern & Professional */
+            --primary-color: #00897b; /* Vibrant Teal */
+            --secondary-color: #263238; /* Deep Charcoal */
+            --bg-light: #f5f5f5;
+            --text-light: #424242;
+            --card-bg-light: #ffffff;
+            --border-light: #e0e0e0;
+            --shadow-light: rgba(0,0,0,0.08);
+
+            --bg-dark: #1e1e1e;
+            --text-dark: #e0e0e0;
+            --card-bg-dark: #2c2c2c;
+            --border-dark: #424242;
+            --shadow-dark: rgba(0,0,0,0.3);
+
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
         html {
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             padding: 0;
-            height: 100%; /* Ensures 100vh works correctly for fixed elements */
-            font-family: 'Merriweather', serif; /* Merriweather font applied here */
-            background-color: #f4f4f4; /* Default light mode background */
-            color: #333; /* Default light mode text color */
-            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition for dark mode */
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.6;
         }
 
-        /* Dark Mode styles applied to the body */
         body.dark-mode {
-            background-color: #1e1e1e; /* Dark mode background for the entire page */
-            color: #f5f5f5; /* Dark mode text color for the entire page */
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
         }
 
         /* --- Header Styles --- */
         header {
-            background-color: #0a2540; /* Blue color for header */
+            background-color: var(--primary-color);
             color: white;
-            padding: 2rem 140px 2rem 1rem; /* Increased right padding to make space for image */
-            /* top, right, bottom, left */
-            text-align: center; /* Center align header content */
-            margin-bottom: 4rem; /* Increased spacing below header for "About Me" alignment */
-            position: relative; /* Essential for positioning the child image */
-            transition: background-color 0.4s ease, color 0.4s ease; /* Smooth transition */
-            display: flex; /* Added for better mobile stacking */
-            flex-direction: column; /* Default to column for consistency, will be row on desktop via media query */
-            align-items: center; /* Center items for column layout */
-            justify-content: center; /* Center items for column layout */
+            padding: 4rem 2rem;
+            position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.4s ease;
+            text-align: center;
         }
-
-        /* New style for the text content within the header */
-        .header-text-content {
-            margin-right: 0; /* REMOVED margin-right to allow centering */
-            text-align: center; /* Ensure text is centered within its own div */
-        }
-
+        
         body.dark-mode header {
-            background-color: #2c2c2c; /* Adjust dark mode header background */
-            color: #f5f5f5; /* Light text for header in dark mode */
+            background-color: #005a50;
         }
 
-        /* Styles for the profile picture */
-        .profile-pic {
-            position: absolute; /* Position relative to the header */
-            top: 50%; /* Center vertically relative to the header */
-            right: 20px; /* Distance from the right edge of the header */
-            width: 100px; /* Adjust size as needed */
-            height: 100px; /* Adjust size as needed */
-            border-radius: 50%; /* Makes the image circular */
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            border: 3px solid white; /* White border around the image */
-            box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Subtle shadow */
-            z-index: 10; /* Ensures it stays on top of other elements if overlapping */
-            transform: translateY(-50%); /* Adjust to truly center vertically */
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 700;
         }
 
-        body.dark-mode .profile-pic {
-            border-color: #ffcc80; /* Lighter orange border in dark mode */
-            box-shadow: 0 0 15px rgba(255,204,128,0.2); /* Subtle glow in dark mode */
+        header p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
-        header .header-info a {
-            color: white; /* Force text color to white */
-            text-decoration: none; /* Remove underline */
-            transition: color 0.3s ease; /* Keep smooth color transition on hover */
-        }
-
-        header .header-info a:hover {
-            color: #ffcc80; /* Lighter orange on hover */
-        }
-
-        /* --- ADDED/ADJUSTED RULES for header info spacing and appearance --- */
-
-        header .header-info {
-            margin-bottom: 0;
-            font-size: 1.1rem;
+        .header-info {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 30px; /* Adjust this value (e.g., 20px, 40px) for spacing between items */
-            color: white; /* Ensures any direct text/span children are white */
-        }
-
-        header .header-info span {
-            color: white; /* Make the '|' separators white */
-        }
-
-        header .header-info .phone-number { /* Style for the phone number span */
-            color: white; /* Ensures it's white even if auto-linked by browser */
-            text-decoration: none; /* Prevents underline if auto-linked */
-        }
-
-        /* Added to reduce gap between phone icon and number */
-        header .header-info .fa-phone {
-            margin-right: -5px; /* Adjust as needed, negative margin pulls it closer */
-        }
-
-        /* Responsive adjustments for profile pic on smaller screens */
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem; /* Adjust padding for small screens */
-                flex-direction: column; /* Stack name, info, and pic vertically */
-                align-items: center; /* Center items horizontally */
-                gap: 0.5rem; /* Small gap between header elements */
-                margin-bottom: 2rem; /* Reduce margin below header on mobile */
-            }
-            .header-text-content {
-                margin-right: 0; /* Remove margin on small screens */
-                width: 100%; /* Ensure text content takes full width */
-            }
-            .profile-pic {
-                position: static; /* Image flows with content */
-                margin: 10px auto 0 auto; /* Center it below text */
-                display: block; /* Make it a block element to center with margin auto */
-                width: 80px; /* Smaller size on mobile */
-                height: 80px;
-                transform: none; /* Remove transform */
-                order: -1; /* Place picture at the top in flex order */
-            }
-            /* Ensure header info also stacks well on mobile */
-            header .header-info {
-                flex-direction: column; /* Stack contact info vertically */
-                gap: 5px; /* Smaller gap for stacked items */
-                font-size: 0.9rem; /* Slightly smaller font for mobile contact info */
-            }
-        }
-        /* Desktop specific header styles */
-        @media (min-width: 769px) {
-            header {
-                flex-direction: row; /* Layout items horizontally on desktop */
-                justify-content: center; /* Center content horizontally */
-                align-items: center; /* Vertically align content */
-            }
-            .header-text-content {
-                text-align: center; /* ENSURE text is centered on desktop too */
-            }
-        }
-
-
-        /* --- Sidebar Styles --- */
-        .sidebar {
-            width: 200px; /* Fixed width for the sidebar */
-            background-color: #0a2540;
-            color: white;
-            position: fixed; /* Keep sidebar fixed */
-            left: 0;
-            top: 0; /* Keep top at 0, padding will push content */
-            height: 100vh;
-            overflow-y: auto;
-            /* Adjusted padding to push content down from the very top */
-            padding: 20px 1rem 2rem 1rem; /* Reduced top padding, let margin-top handle initial spacing */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        body.dark-mode .sidebar {
-            background-color: #1a1a1a; /* Darker sidebar in dark mode */
-            box-shadow: 2px 0 10px rgba(0,0,0,0.5); /* Stronger shadow in dark mode */
-        }
-
-        /* Added margin-top to the first link to create space below header line */
-        .sidebar a:first-of-type {
-            margin-top: 9rem; /* Adjust this value to push "About" down further */
-        }
-
-
-        .sidebar a {
-            color: white;
-            text-decoration: none;
+            gap: 20px;
             font-size: 1rem;
-            display: flex; /* Allow icon and text to be side-by-side */
-            align-items: center; /* Vertically center icon and text */
-            padding: 0.5rem 0; /* Add some padding for better click area */
-            width: 100%; /* Make links take full width for consistent highlighting */
-            transition: color 0.3s ease, background-color 0.3s ease;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1rem;
         }
 
-        .sidebar a i {
-            margin-right: 0.8rem; /* Space between icon and text */
-            font-size: 1.2rem; /* Adjust icon size */
-        }
-
-        .sidebar a:hover {
-            color: #ff6f00; /* Orange hover for links */
-            background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
-        }
-
-        body.dark-mode .sidebar a {
-            color: #f5f5f5; /* Light text for links in dark sidebar */
-        }
-
-        body.dark-mode .sidebar a:hover {
-            color: #ffcc80; /* Lighter orange hover for links in dark mode */
-            background-color: rgba(255, 204, 128, 0.1); /* Subtle background on hover */
-        }
-
-        /* Active sidebar link highlighting */
-        .sidebar a.active {
-            color: #ff6f00; /* Active link color */
-            font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.2); /* Stronger background for active */
-            border-left: 4px solid #ff6f00; /* Accent border for active link */
-            padding-left: calc(1rem - 4px); /* Adjust padding due to border */
-        }
-
-        body.dark-mode .sidebar a.active {
-            color: #ffcc80; /* Active link color in dark mode */
-            background-color: rgba(255, 204, 128, 0.2);
-            border-left-color: #ffcc80; /* Accent border in dark mode */
-        }
-
-        /* Styles for the new mode toggle icons */
-        .mode-toggle-icons {
-            margin-top: 1rem; /* Space below last link */
-            cursor: pointer;
-            font-size: 1.5rem; /* Adjust icon size */
-            color: white; /* Default color for icons */
-            display: flex; /* Arrange icons side by side */
-            gap: 0.8rem; /* Space between icons */
-            align-items: center;
-            justify-content: flex-start; /* Align with sidebar links */
-            padding: 0.5rem 0; /* Match link padding */
-            width: 100%; /* Ensure it takes full width for consistent layout */
+        .header-info a {
+            color: inherit;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        body.dark-mode .mode-toggle-icons {
-            color: #f5f5f5; /* Light color for icons in dark mode */
+        .header-info a:hover {
+            color: white;
         }
 
-        .mode-toggle-icons i {
-            transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-            opacity: 0.5; /* Default less prominent */
+        .profile-pic {
+            position: absolute;
+            bottom: -60px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--bg-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+            transition: border-color 0.4s ease;
         }
 
-        .mode-toggle-icons i.active-icon {
-            opacity: 1; /* Fully visible when active */
-            color: #ff6f00; /* Active icon color (orange) */
+        body.dark-mode .profile-pic {
+            border-color: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
-
-        body.dark-mode .mode-toggle-icons i.active-icon {
-            color: #ffcc80; /* Lighter orange in dark mode */
-        }
-
-        /* More robust approach to hide/show: */
-        .mode-toggle-icons .dark-mode-icon {
-            display: none; /* Hide moon by default (light mode active) */
-        }
-        .mode-toggle-icons .light-mode-icon {
-            display: block; /* Show sun by default */
-        }
-
-        body.dark-mode .mode-toggle-icons .dark-mode-icon {
-            display: block; /* Show moon in dark mode */
-        }
-        body.dark-mode .mode-toggle-icons .light-mode-icon {
-            display: none; /* Hide sun in dark mode */
-        }
-
-
-        /* Remove or adjust old .toggle-btn styles if not used elsewhere */
-        .sidebar .toggle-btn {
-            display: none; /* Hide the button if you replaced it */
-        }
-
 
         /* --- Main Content Area Styles --- */
         .main-content-area {
-            margin-left: 200px; /* This is the key to clear the fixed sidebar */
-            display: flex;
-            flex-direction: column; /* Stacks header, sections, and footer */
-            min-height: 100vh; /* Ensures content area extends to push footer down */
-            transition: background-color 0.4s ease; /* Smooth transition */
-        }
-
-        /* --- Section Header Styles --- */
-        h2 {
-            color: #0a2540; /* Default blue for section headings */
-            border-left: 4px solid #ff6f00; /* Orange left border */
-            padding-left: 0.5rem;
-            margin-bottom: 1.5rem;
-            transition: color 0.4s ease, border-color 0.4s ease; /* Smooth transition */
-        }
-
-        body.dark-mode h2 {
-            color: #ffcc80; /* Lighter orange for headings in dark mode */
-            border-left-color: #ffcc80; /* Lighter orange border in dark mode */
-        }
-
-        /* --- Generic Section and Element Styles (Light/Dark Mode) --- */
-        .main-sections { /* Wrapper for all content sections, allows flexible height */
-            flex-grow: 1; /* Allows sections to take up available vertical space */
-            padding: 0 2rem; /* Padding for the main content area */
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            padding-top: 80px; /* Space for profile pic */
         }
 
         section {
-            max-width: 900px;
-            margin: 0 auto 2rem auto; /* Center sections within their padded area */
-            padding: 0 1.5rem; /* Internal padding for sections */
-            background-color: transparent; /* Ensure sections themselves are transparent */
-            border: none;
-            box-shadow: none;
-            border-radius: 0;
-        }
-        #about p {
-            text-align: justify;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-light);
+            transition: border-color 0.4s ease;
         }
 
-        /* Generic card entry for sections that DO use dropdowns (Experience) */
-        .card-entry {
+        body.dark-mode section {
+            border-color: var(--border-dark);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            color: var(--secondary-color);
             margin-bottom: 1rem;
-            background: white; /* Default light background */
-            border: 1px solid #ddd; /* Default light border */
-            color: #333; /* Default text color */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-radius: 8px; /* Rounded corners for consistency */
-            padding: 1rem;
-            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+            transition: color 0.4s ease;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
         }
 
-        body.dark-mode .card-entry {
-            background-color: #2c2c2c;
-            border-color: #444;
-            color: #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        body.dark-mode h2 {
+            color: var(--primary-color);
         }
 
-        .card-entry:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        /* Generic Card Styles */
+        .card-entry,
+        .skill-card,
+        .education-card,
+        .certification-card,
+        .award-card,
+        .article-card,
+        .testimonial-card,
+        .hobbies-card {
+            background: var(--card-bg-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px var(--shadow-light);
+            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
         }
-        body.dark-mode .card-entry:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Stronger hover shadow in dark mode */
+
+        body.dark-mode .card-entry,
+        body.dark-mode .skill-card,
+        body.dark-mode .education-card,
+        body.dark-mode .certification-card,
+        body.dark-mode .award-card,
+        body.dark-mode .article-card,
+        body.dark-mode .testimonial-card,
+        body.dark-mode .hobbies-card {
+            background-color: var(--card-bg-dark);
+            box-shadow: 0 8px 25px var(--shadow-dark);
+        }
+
+        .card-entry:hover,
+        .skill-card:hover,
+        .education-card:hover,
+        .certification-card:hover,
+        .award-card:hover,
+        .article-card:hover,
+        .testimonial-card:hover,
+        .hobbies-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        body.dark-mode .card-entry:hover,
+        body.dark-mode .skill-card:hover,
+        body.dark-mode .education-card:hover,
+        body.dark-mode .certification-card:hover,
+        body.dark-mode .award-card:hover,
+        body.dark-mode .article-card:hover,
+        body.dark-mode .testimonial-card:hover,
+        body.dark-mode .hobbies-card:hover {
+            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+        }
+
+        /* --- Navigation Styles --- */
+        .navigation-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg-light);
+            box-shadow: 0 2px 10px var(--shadow-light);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        body.dark-mode .navigation-bar {
+            background-color: var(--card-bg-dark);
+            box-shadow: 0 2px 10px var(--shadow-dark);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .navigation-bar a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        
+        .navigation-bar a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .navigation-bar a:hover::after,
+        .navigation-bar a.active::after {
+            width: 100%;
+        }
+
+        .navigation-bar a.active {
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .navigation-bar a {
+            color: var(--text-dark);
+        }
+        
+        .mode-toggle-icons {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+        
+        .mode-toggle-icons:hover {
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .mode-toggle-icons {
+            color: var(--text-dark);
+        }
+        body.dark-mode .mode-toggle-icons:hover {
+            color: var(--primary-color);
+        }
+
+        .mode-toggle-icons .dark-mode-icon { display: none; }
+        body.dark-mode .mode-toggle-icons .dark-mode-icon { display: inline-block; }
+        body.dark-mode .mode-toggle-icons .light-mode-icon { display: none; }
+
+        /* --- Specific Section Styles --- */
+        .skills-grid, .education-grid, .certifications-grid, .awards-grid, .articles-grid, .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--secondary-color);
+            transition: color 0.4s ease;
+        }
+
+        body.dark-mode .skill-card h3 {
+            color: var(--primary-color);
+        }
+
+        .skill-card h3 i {
+            color: var(--primary-color);
+            transition: color 0.4s ease;
+        }
+        body.dark-mode .skill-card h3 i {
+            color: var(--primary-color);
+        }
+
+        .skill-card ul {
+            padding-left: 1.2rem;
+            margin: 0;
+            list-style: disc;
+        }
+        
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            text-align: center;
         }
 
         .card-header {
@@ -365,1040 +354,691 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            padding-bottom: 0.5rem; /* Add some space below the header */
         }
 
         .card-title {
-            font-weight: bold;
-            color: #0a2540; /* Default blue for title */
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--secondary-color);
             transition: color 0.4s ease;
-            /* Changed to block for easier company name styling */
+        }
+        
+        .card-title .card-company {
             display: block;
+            font-weight: normal;
+            font-size: 1rem;
+            color: #757575;
+            margin-top: 0.2rem;
+            transition: color 0.4s ease;
         }
-
+        
         body.dark-mode .card-title {
-            color: #f5f5f5; /* Light text for title in dark mode */
+            color: var(--text-dark);
         }
-
-        /* New: Style for company name below the job title */
-        .card-company {
-            font-weight: normal; /* Less bold than title */
-            font-size: 0.9em; /* Slightly smaller text */
-            color: #555; /* A bit lighter color */
-            margin-top: 0.2em; /* Small space above company name */
-            transition: color 0.4s ease;
-        }
-
-        body.dark-mode .card-company {
-            color: #bbb; /* Lighter color in dark mode */
-        }
-
-        .card-title i {
-            margin-right: 8px; /* Space between icon and text in card titles */
-            color: #ff6f00; /* Orange icon color in titles */
-            transition: color 0.4s ease;
-        }
-
-        body.dark-mode .card-title i {
-            color: #ffcc80; /* Lighter orange icon in dark mode titles */
+        body.dark-mode .card-title .card-company {
+            color: #bdbdbd;
         }
 
         .dropdown-btn {
             background: none;
             border: none;
-            font-size: 1rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            color: #ff6f00; /* Orange dropdown button */
-            transition: color 0.4s ease;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
         }
-
-        body.dark-mode .dropdown-btn {
-            color: #ffcc80; /* Lighter orange dropdown button in dark mode */
-        }
-
-        .dropdown-btn:focus {
-            outline: none;
-        }
-
-        .card-details { /* Renamed from .exp-details to be generic */
-            max-height: 0; /* Start hidden */
-            overflow: hidden; /* Hide overflow during transition */
-            transition: max-height 0.7s ease-out, padding-top 0.7s ease-out; /* Smooth transition for height and padding */
-            padding-top: 0; /* No padding when closed */
+        
+        .card-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-out, padding 0.7s ease-out;
+            padding-top: 0;
+            line-height: 1.6;
         }
 
         .card-details.open {
-            max-height: 500px; /* Adjust this value if content is taller */
-            padding-top: 0.5rem; /* Add padding when open */
+            max-height: 1000px;
+            padding-top: 1rem;
         }
 
-        /* Specific styles for lists within cards if needed */
         .card-details ul {
             margin: 0;
             padding-left: 1.2rem;
+            list-style: disc;
+        }
+        
+        .testimonial-card {
+            border-left: 4px solid var(--primary-color);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            line-height: 1.6;
         }
 
-        .card-details li {
-            list-style-type: disc;
-            margin-bottom: 0.4rem;
-        }
-        .card-details li:last-child {
-            margin-bottom: 0; /* Remove margin from last list item */
-        }
-
-        /* --- Skills Section Styles (no dropdowns, just grid cards) --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 0.5rem; /* Changed from 1rem to 0.5rem to reduce the gap */
-        }
-
-        /* IMPORTANT: Ensure skill-cards DO NOT have dropdown behavior */
-        .skill-card .card-header { /* Targeting the header within a skill-card */
-            display: block; /* Remove flex, so button doesn't align */
-            cursor: default; /* No pointer cursor */
-            padding-bottom: 0; /* No extra padding for header if it had it from .card-header */
-        }
-
-        .skill-card .dropdown-btn {
-            display: none; /* Hide dropdown button for all skill cards */
-        }
-        .skill-card .card-details {
-            max-height: none; /* Always open */
-            overflow: visible; /* No hidden overflow */
-            padding-top: 0.5rem; /* Consistent padding below title */
-            transition: none; /* No transition on these, they're always open */
-            min-height: 40px; /* Added: Set a minimum height for the details content */
-            display: flex; /* Added: Use flexbox to vertically align content if it's short */
-            align-items: center; /* Added: Vertically center the content */
-        }
-
-
-        .skill-card {
-            background: white;
-            border: 1px solid #ddd;
-            color: #333;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 1rem;
-            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        body.dark-mode .skill-card {
-            background-color: #2c2c2c;
-            border-color: #444;
-            color: #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-        body.dark-mode .skill-card:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-        }
-
-        .skill-card h3 {
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            color: #0a2540;
+        .testimonial-card .author {
+            display: block;
+            font-weight: 700;
+            font-style: normal;
+            color: var(--primary-color);
+            margin-top: 1rem;
             transition: color 0.4s ease;
         }
-        body.dark-mode .skill-card h3 {
-            color: #f5f5f5;
-        }
-
-        .skill-card h3 i {
-            margin-right: 8px;
-            color: #ff6f00;
-            transition: color 0.4s ease;
-        }
-        body.dark-mode .skill-card h3 i {
-            color: #ffcc80;
-        }
-
-        /* Styling for lists within hobby cards */
-        .hobbies-card {
-            width: fit-content; /* Make the card width fit its content */
-            justify-self: start; /* Align to the start (left) of the grid cell */
-            /* Ensure its content (list) also shrinks to fit */
-            padding: 1rem; /* Re-apply padding if it was removed by previous width changes */
-            background: white; /* Ensure background is set */
-            border: 1px solid #ddd; /* Ensure border is set */
-            border-radius: 8px; /* Ensure border-radius is set */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        body.dark-mode .hobbies-card {
-            background-color: #2c2c2c;
-            border-color: #444;
-            color: #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        body.dark-mode .testimonial-card .author {
+            color: var(--primary-color);
         }
 
         .hobbies-card ul {
-            list-style: none; /* Remove default bullet points */
-            padding: 0;      /* Remove default left padding */
-            margin: 0;       /* Remove default top/bottom margin */
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-
         .hobbies-card li {
-            margin-bottom: 0.4rem; /* Space between list items */
-            display: flex; /* Use flexbox to align icon and text */
-            align-items: center; /* Vertically center icon and text */
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
         }
-
-        .hobbies-card li:last-child {
-            margin-bottom: 0; /* Remove margin from the last item */
-        }
-
-        /* Style for icons within hobby list items */
         .hobbies-card li i {
-            margin-right: 8px; /* Space between icon and text */
-            color: #ff6f00; /* Icon color for hobbies */
-            font-size: 1.1rem; /* Slightly larger icon size */
-            display: inline-block; /* Ensure icon is visible */
-        }
-
-
-        /* --- Education/Certification/Awards Section Styles (no dropdowns, just grid cards) --- */
-        .education-grid, .certifications-grid, .awards-grid, .articles-grid { /* Added .articles-grid */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust min-width as needed */
-            gap: 1rem; /* Space between cards */
-            margin-top: 1rem;
-        }
-        /* New: Testimonials Section Styles (no dropdowns, just grid cards) */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem; /* Space between cards */
-            margin-top: 1rem;
-        }
-
-
-        .education-card, .certification-card, .award-card, .article-card { /* Added .article-card */
-            background: white;
-            border: 1px solid #ddd;
-            color: #333;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 1rem;
-            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .testimonial-card {
-            background: white;
-            border: 1px solid #ddd;
-            color: #333;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 1.5rem; /* Increased padding for better readability */
-            transition: transform 0.3s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        body.dark-mode .education-card, body.dark-mode .certification-card, body.dark-mode .award-card, body.dark-mode .article-card {
-            background-color: #2c2c2c;
-            border-color: #444;
-            color: #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .testimonial-card {
-            background-color: #2c2c2c;
-            border-color: #444;
-            color: #f5f5f5;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        .education-card:hover, .certification-card:hover, .award-card:hover, .article-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-
-        body.dark-mode .education-card:hover, body.dark-mode .certification-card:hover, body.dark-mode .award-card:hover, body.dark-mode .article-card:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-        }
-        body.dark-mode .testimonial-card:hover {
-             box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-        }
-
-        .education-card p, .certification-card p, .award-card p, .article-card p {
-            margin: 0; /* Remove default paragraph margin */
-            line-height: 1.4; /* Improve line spacing */
-        }
-        .testimonial-card p {
-            margin: 0 0 1rem 0; /* Add bottom margin for paragraphs */
-            line-height: 1.6; /* Improved line spacing */
-            font-style: italic; /* Italicize the quote text */
-        }
-        .testimonial-card p:last-child {
-            margin-bottom: 0;
-        }
-        .education-card p i, .certification-card p i, .award-card p i, .article-card a i {
-            margin-right: 8px; /* Space between icon and text in card */
-            color: #0a2540; /* Blue icon for education/certifications */
-            transition: color 0.4s ease;
-        }
-        body.dark-mode .education-card p i, body.dark-mode .certification-card p i, body.dark-mode .award-card p i, body.dark-mode .article-card a i {
-            color: #ffcc80; /* Lighter orange icon in dark mode */
-        }
-        .education-card p strong, .certification-card p strong, .award-card p strong, .article-card a { /* Style for bolding */
-            font-size: 1.1em;
-            color: #0a2540; /* Default link color to match heading */
-            text-decoration: none; /* Remove underline from links */
-            transition: color 0.4s ease;
-        }
-        .testimonial-card .author {
-            display: block; /* Make the author name a block element for its own line */
-            font-weight: bold;
-            font-style: normal; /* Override the italic style for the name */
-            color: #0a2540; /* Match the title color */
-            margin-top: 1rem; /* Space above the name */
-            transition: color 0.4s ease;
-        }
-
-        body.dark-mode .article-card a {
-             color: #f5f5f5; /* Light text color for links in dark mode */
-        }
-        body.dark-mode .testimonial-card .author {
-            color: #f5f5f5; /* Light color for the author name in dark mode */
-        }
-
-        .article-card a:hover {
-            text-decoration: underline; /* Add underline on hover */
-            color: #ff6f00; /* Orange hover effect for links */
-        }
-        body.dark-mode .article-card a:hover {
-            color: #ffcc80; /* Lighter orange in dark mode */
+            margin-right: 0.8rem;
+            color: var(--primary-color);
         }
 
         /* --- Contact Form Styles --- */
         #contact form {
             max-width: 700px;
-            margin: 0 auto; /* Center the form within the section */
-            padding: 1rem;
-            background: white; /* Add background to stand out */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--card-bg-light);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px var(--shadow-light);
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
         body.dark-mode #contact form {
-            background-color: #2c2c2c;
-            border-color: #444;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            background-color: var(--card-bg-dark);
+            box-shadow: 0 8px 25px var(--shadow-dark);
         }
 
-        #contact input,
-        #contact textarea {
-            width: calc(100% - 1rem); /* Account for padding */
-            padding: 0.5rem;
-            margin-bottom: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
             font-size: 1rem;
-            box-sizing: border-box; /* Include padding in width calculation */
-            background-color: #f9f9f9; /* Light background for fields */
-            color: #333;
+            box-sizing: border-box;
+            background-color: var(--bg-light);
+            color: var(--text-light);
             transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
         }
-        body.dark-mode #contact input,
-        body.dark-mode #contact textarea {
-            background-color: #3a3a3a;
+        body.dark-mode #contact input, body.dark-mode #contact textarea {
+            background-color: #383838;
             border-color: #555;
-            color: #f5f5f5;
+            color: var(--text-dark);
         }
-        #contact input:focus,
-        #contact textarea:focus {
-            border-color: #ff6f00; /* Highlight border on focus */
+
+        #contact input:focus, #contact textarea:focus {
+            border-color: var(--primary-color);
             outline: none;
-            box-shadow: 0 0 5px rgba(255,111,0,0.5);
-        }
-        body.dark-mode #contact input:focus,
-        body.dark-mode #contact textarea:focus {
-            border-color: #ffcc80;
-            box-shadow: 0 0 5px rgba(255,204,128,0.5);
+            box-shadow: 0 0 8px rgba(0, 137, 123, 0.5);
         }
 
-
-        #contact input[type="submit"] { /* Target submit button specifically */
-            background-color: #0a2540;
+        #contact input[type="submit"] {
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem; /* Increased padding for better button size */
-            border-radius: 4px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1rem; /* Slightly larger font for readability */
-            width: auto; /* Allow button to size naturally based on padding/content */
-            display: block; /* Make it a block element to allow margin: auto */
-            margin: 0.5rem auto 0 auto; /* Center the button */
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            width: auto;
+            display: block;
+            margin: 1rem auto 0 auto;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         #contact input[type="submit"]:hover {
-            background-color: #ff6f00; /* Orange hover effect */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #004d40;
+            transform: translateY(-3px);
         }
         body.dark-mode #contact input[type="submit"] {
-            background-color: #1a1a1a;
-            color: #ffcc80;
+            background-color: #005a50;
         }
         body.dark-mode #contact input[type="submit"]:hover {
-            background-color: #ffcc80;
-            color: #1a1a1a;
+            background-color: var(--primary-color);
         }
-
-        /* Resume Download Button (standalone) */
+        
         .resume-download {
-            margin-top: 2rem; /* More space to separate it visually */
-            text-align: center; /* Center the button */
+            margin-top: 2rem;
+            text-align: center;
         }
-
         .resume-download a {
-            background: #0a2540; /* Blue button background */
+            background: var(--primary-color);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             text-decoration: none;
-            display: inline-block; /* Crucial for controlling its width */
-            transition: background-color 0.4s ease, color 0.4s ease;
+            display: inline-block;
+            transition: background-color 0.4s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+        body.dark-mode .resume-download a {
+            background-color: #005a50;
+        }
+        .resume-download a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        body.dark-mode .resume-download a:hover {
+            background-color: var(--primary-color);
         }
 
-        body.dark-mode .resume-download a {
-            background-color: #1a1a1a; /* Darker background for download button */
-            color: #ffcc80; /* Lighter text for download button */
-        }
 
         /* --- Footer Styles --- */
         footer {
-            background: #0a2540;
+            background: var(--secondary-color);
             color: white;
-            padding: 1rem;
-            margin-top: 2rem;
-            width: 100%; /* Ensure footer spans full width of its parent */
-            box-sizing: border-box; /* Include padding in width calculation */
-            transition: background-color 0.4s ease, color 0.4s ease;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.4s ease;
+            text-align: center;
         }
-
         body.dark-mode footer {
-            background-color: #1a1a1a; /* Darker footer in dark mode */
-            color: #f5f5f5; /* Light text for footer */
+            background-color: #1a237e;
         }
-        
-        /* New: Footer layout to match the requested style */
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* Allow content to wrap on smaller screens */
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .footer-content .copyright {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-            text-align: left; /* Align copyright text to the left */
-        }
-
         .footer-social-icons {
             display: flex;
-            gap: 1.2rem; /* Space between icons */
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
-
         .footer-social-icons a {
             color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: color 0.3s ease;
         }
-
+        body.dark-mode .footer-social-icons a {
+            color: var(--text-dark);
+        }
         .footer-social-icons a:hover {
-            color: #ff6f00; /* Orange hover effect for icons */
+            color: var(--primary-color);
         }
 
-        body.dark-mode .footer-social-icons a:hover {
-            color: #ffcc80; /* Lighter orange in dark mode */
-        }
-
-        /* Horizontal line for the footer */
-        footer hr {
-            border: 0;
-            height: 1px;
-            background-color: #555;
-            margin: 0 0 1rem 0;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
         /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
-            .sidebar {
-                position: static; /* Sidebar becomes static (flows with content) */
-                width: 100%; /* Takes full width on small screens */
-                height: auto; /* Height adjusts to content */
-                flex-direction: row; /* Layout items horizontally */
-                justify-content: center; /* Center items */
-                gap: 0.8rem;
-                padding: 1rem;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Shadow on bottom */
+            .navigation-bar {
+                position: static;
+                box-shadow: none;
             }
-            .sidebar a:first-of-type {
-                margin-top: 0 !important; /* Override the desktop margin for mobile */
+            .navigation-bar a {
+                padding: 0.5rem;
             }
-            .sidebar .toggle-btn {
-                margin-top: 0; /* Remove top margin when sidebar is horizontal */
-            }
-            /* Ensure links have proper horizontal padding */
-            .sidebar a {
-                padding: 0.5rem 0.5rem; /* Adjusted padding for horizontal layout */
-            }
-            .sidebar a i {
-                 margin-right: 0.5rem; /* Slightly reduce space between icon and text if needed */
-            }
-
-
             .main-content-area {
-                margin-left: 0; /* Remove left margin on small screens */
-                padding: 1rem 0; /* Adjust padding around the whole content area */
+                padding-top: 40px;
             }
-
-            .main-sections {
-                padding: 0 1rem; /* Ensure sections have horizontal padding on mobile */
+            header {
+                padding: 2rem 1rem;
+                margin-bottom: 2rem;
             }
-            section {
-                 padding: 0 0.5rem; /* Even smaller internal padding for sections on very small screens */
+            .profile-pic {
+                position: static;
+                margin: 1rem auto 0 auto;
+                width: 100px;
+                height: 100px;
+                transform: none;
             }
-            /* Adjust the gap in the skills, education, certification grids */
-            .skills-grid, .education-grid, .certifications-grid, .awards-grid, .articles-grid, .testimonials-grid {
-                gap: 0.8rem; /* Slightly smaller gap between cards on mobile */
+            h2 {
+                font-size: 1.8rem;
             }
-            /* Adjust padding for individual cards if they look too large */
-            .card-entry, .skill-card, .education-card, .certification-card, .hobbies-card, .award-card, .article-card, .testimonial-card {
-                padding: 0.8rem; /* Slightly reduced padding inside cards on mobile */
-            }
-             #contact input[type="submit"] {
-                font-size: 1rem; /* Adjust font size for mobile */
-                padding: 0.7rem 1.2rem; /* Adjust padding for mobile */
-            }
-             .footer-content {
-                flex-direction: column; /* Stack elements vertically on mobile */
-                text-align: center;
-                gap: 1rem;
-            }
-            .footer-content .copyright {
-                text-align: center;
-                margin-bottom: 0.5rem; /* Add some space below the copyright text */
+            .footer-social-icons {
+                margin-top: 0.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <a href="#about"><i class="fas fa-user"></i>Summary</a>
-            <a href="#skills"><i class="fas fa-code"></i>Skills</a>
-            <a href="#experience"><i class="fas fa-briefcase"></i>Experience</a>
-            <a href="#certifications"><i class="fas fa-certificate"></i>Certifications</a>
-            <a href="#awards"><i class="fas fa-trophy"></i>Awards</a>
-            <a href="#articles"><i class="fas fa-newspaper"></i>Articles</a> <a href="#hobbies"><i class="fas fa-heart"></i>Hobbies</a>
-            <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
-            <a href="#testimonials"><i class="fas fa-quote-right"></i>Testimonials</a>
-            <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+    <div class="navigation-bar">
+        <div class="nav-container">
+            <a href="#about">Summary</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#awards">Awards</a>
+            <a href="#articles">Articles</a>
+            <a href="#hobbies">Hobbies</a>
+            <a href="#education">Education</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
             <div class="mode-toggle-icons" onclick="toggleMode()">
-                <i class="fas fa-sun light-mode-icon active-icon"></i>
+                <i class="fas fa-sun light-mode-icon"></i>
                 <i class="fas fa-moon dark-mode-icon"></i>
             </div>
         </div>
+    </div>
 
-        <div class="main-content-area">
-            <header>
-                <div class="header-text-content">
-                    <h1>Sharma Mukkavilli</h1>
-                    <p>Team Lead – Demand Generation</p>
-                    <p class="header-info">
-                        <a href="mailto:connectsharma.m@gmail.com"><i class="fas fa-envelope"></i> connectsharma.m@gmail.com</a>
-                        <span>|</span>
-                        <i class="fas fa-phone"></i><span class="phone-number"> 7893-427-724</span>
-                        <span>|</span>
-                        <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
-                    </p>
+    <header>
+        <div class="header-text-content">
+            <h1>Sharma Mukkavilli</h1>
+            <p>Team Lead – Demand Generation</p>
+            <div class="header-info">
+                <a href="mailto:connectsharma.m@gmail.com"><i class="fas fa-envelope"></i> connectsharma.m@gmail.com</a>
+                <i class="fas fa-phone"></i><span class="phone-number"> 7893-427-724</span>
+                <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+        </div>
+        <img src="smukkavilli.png" alt="Sharma Mukkavilli Profile" class="profile-pic">
+    </header>
+
+    <div class="main-content-area">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I’m a Marketing and research professional with over 7 years of experience in demand generation and campaign strategy. I lead cross-functional teams, coordinate and host webinars, and enjoy building marketing programs that are grounded in data and focused on results. My work often involves persona development, SEO, competitive analysis, and performance tracking using tools like Power BI, SmartLead, and LinkedIn Campaign Manager. </p>
+            <p>I hold an MBA in Marketing and Finance (graduated in the top 10 of my class) and a B.Tech in Computer Science. I’m passionate about turning market insights into clear, effective strategies that help improve lead quality, campaign efficiency, and overall ROI.</p>
+            <p>Outside of work, I enjoy playing cricket and chess, swimming, and getting lost in a good novel.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-tie"></i>Team Leadership</h3>
+                    </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>Team Lead</li>
+                            <li>Cross-functional Team Leadership</li>
+                            <li>Strategic Planning</li>
+                        </ul>
+                    </div>
                 </div>
-                <img src="smukkavilli.png" alt="Sharma Mukkavilli Profile" class="profile-pic">
-            </header>
 
-            <div class="main-sections">
-                <section id="about">
-                    <h2>About Me</h2>
-                    <p>I’m a Marketing and research professional with over 7 years of experience in demand generation and campaign strategy. I lead cross-functional teams, coordinate and host webinars, and enjoy building marketing programs that are grounded in data and focused on results. My work often involves persona development, SEO, competitive analysis, and performance tracking using tools like Power BI, SmartLead, and LinkedIn Campaign Manager. </p>
-                    <p>I hold an MBA in Marketing and Finance (graduated in the top 10 of my class) and a B.Tech in Computer Science. I’m passionate about turning market insights into clear, effective strategies that help improve lead quality, campaign efficiency, and overall ROI.</p>
-                    <p>Outside of work, I enjoy playing cricket and chess, swimming, and getting lost in a good novel.</p>
-                </section>
-
-               <section id="skills">
-                    <h2>Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-user-tie"></i>Team Leadership</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>Team Lead</li>
-                                    <li>Cross-functional Team Leadership</li>
-                                    <li>Strategic Planning</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-chart-pie"></i>Analysis & Reporting</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>Microsoft Office Suite & Access</li>
-                                    <li>Power BI</li>
-                                    <li>Zoho Analytics</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-bullhorn"></i>Campaign Management</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>LinkedIn Ad Campaign Manager</li>
-                                    <li>Email and Outbound Marketing</li>
-                                    <li>Lead Generation</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-search"></i>Market Intelligence</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>Market Research Analyst</li>
-                                    <li>Competitive Intelligence</li>
-                                    <li>Persona Analysis</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-calendar-alt"></i>Event Management</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>Event Planning & Execution</li>
-                                    <li>Budget Management</li>
-                                    <li>Vendor Coordination</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-video"></i>Webinar Specialist</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>GoTo Webinars, WebEx, Microsoft Teams</li>
-                                    <li>Webinar Coordination & Hosting</li>
-                                    <li>Post-Webinar Analytics</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-sync-alt"></i>CRM & Automation</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>Zoho CRM</li>
-                                    <li>Marketing Automation</li>
-                                    <li>ABM Trailblazer - ZoomInfo, Lusha, RocketReach</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-code-branch"></i>Web & Database Basics</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>HTML</li>
-                                    <li>CSS</li>
-                                    <li>SQL</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="skill-card">
-                            <div class="card-header">
-                                <span class="card-title"><h3><i class="fas fa-share-alt"></i>Social Media</h3></span>
-                            </div>
-                            <div class="card-details open">
-                                <ul>
-                                    <li>Hootsuite</li>
-                                    <li>Buffer</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i>Analysis & Reporting</h3>
                     </div>
-                </section>
-
-                <section id="experience">
-                    <h2>Professional Experience</h2>
-                    <div class="card-entry">
-                        <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">
-                                Team Lead – Demand Generation & Events (Mar 2023 – Present)
-                                <span class="card-company">Miracle Software Systems, Inc.</span>
-                            </span>
-                            <button class="dropdown-btn">
-                                <i class="fas fa-chevron-up"></i>
-                            </button>
-                        </div>
-                        <div class="card-details open">
-                            <ul>
-                                <li><b>Team Leadership</b>- Managed 8-member team for digital marketing execution and timely delivery</li>
-                                <li><b>Lead Generation</b>- Added 1,000+ decision-makers and 25+ accounts monthly using Lusha, RocketReach, ZoomInfo</li>
-                                <li><b>Email & LinkedIn Campaigns</b>- Launched campaigns via Zoho, Mailchimp, Constant Contact with engagement tracking</li>
-                                <li><b>Sales Enablement</b>- Created persona documents, battle cards, and competitive summaries for sales teams</li>
-                                <li><b>Analytics & Reporting</b>- Built performance reports using Power BI, Zoho Analytics, LinkedIn Campaign Manager</li>
-                                <li><b>Event Management</b>- Coordinated various events across USA such as IBM Think, Microsoft Ignite, SAP SAPPHIRE, GCP Next and ASUG events along with multiple internal and external webinars.</li>
-                                <li><b>Social Media Management</b>- Managed LinkedIn, Facebook, Twitter presence with Hootsuite and Buffer</li>
-                                <li><b>Market Research</b>- Conducted research for content strategy using internal and external data sources</li>
-                                <li><b>SEO Support</b>- Performed keyword research and content optimization with dev/design teams</li>
-                                <li><b>CRM Management</b>- Maintained Zoho CRM accuracy, reduced bounce rates, ensured clean segmentation</li>
-                            </ul>
-                        </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>Microsoft Office Suite & Access</li>
+                            <li>Power BI</li>
+                            <li>Zoho Analytics</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="card-entry">
-                        <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">
-                                Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)
-                                <span class="card-company">Miracle Software Systems, Inc.</span>
-                            </span>
-                            <button class="dropdown-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="card-details">
-                            <ul>
-                                <li><b>Secondary Research</b>- Analyzed companies, competitors, and industry trends using LinkedIn, Crunchbase, Hoovers, SalesIntel, ZoomInfo</li>
-                                <li><b>Contact Acquisition</b>- Collected 200+ decision-maker contacts weekly for outbound campaigns and database growth</li>
-                                <li><b>Business Development</b>- Identified new opportunities using LinkedIn Sales Navigator and email outreach</li>
-                                <li><b>Webinar Operations</b>- Managed setup, invitations, reminders, and follow-ups via GoTo Webinar and Zoho Webinars</li>
-                                <li><b>Performance Tracking</b>- Tracked registrations, attendance, and feedback with detailed reporting for internal teams</li>
-                                <li><b>Campaign Targeting</b>- Coordinated email campaigns by segmenting contacts based on industry, technology, and engagement</li>
-                                <li><b>SEO Collaboration</b>- Supported keyword research and content updates for on-page and email optimization</li>
-                                <li><b>Event Coordination</b> Managed logistics and attendee follow-ups for internal and external events</li>
-                                <li><b>Engagement Analysis</b>- Monitored digital response trends to identify campaign improvement opportunities</li>
-                                <li><b>Cross-team Collaboration</b>- Worked with sales and marketing teams to improve data quality and share market insights</li>
-                            </ul>
-                        </div>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bullhorn"></i>Campaign Management</h3>
                     </div>
-
-                    <div class="card-entry">
-                        <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">
-                                Partnerships Executive (Aug 2017 – Oct 2019)
-                                <span class="card-company">Miracle Software Systems, Inc.</span>
-                            </span>
-                            <button class="dropdown-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="card-details">
-                            <ul>
-                                <li><b>Partner Identification</b>- Actively sought partners aligned with organizational goals and objectives</li>
-                                <li><b>Primary Liaison</b>- Served as main contact for partners, addressing inquiries and fostering collaborative relationships</li>
-                                <li><b>Strategic Planning</b>- Formulated targeted strategies including networking events and joint promotions for mutual benefit</li>
-                                <li><b>Cross-functional Collaboration</b>- Aligned partnership activities with business strategies across departments</li>
-                                <li><b>Joint Marketing Campaigns</b>- Coordinated marketing initiatives ensuring cohesive approach between teams</li>
-                                <li><b>Relationship Management</b>- Cultivated and maintained strong relationships with key partners, ensuring ongoing satisfaction</li>
-                                <li><b>Performance Analysis</b>- Analyzed partnership metrics and provided strategic insights to senior management</li>
-                                <li><b>Event Coordination</b>- Managed logistics for large-scale partner conferences and networking events in North America</li>
-                                <li><b>Travel Management</b>- Handled all aspects of attendee travel and logistics for international conferences</li>
-                                <li><b>Vendor Coordination</b>- Managed event item shipping, vendor relations, and budget adherence</li>
-                            </ul>
-                        </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>LinkedIn Ad Campaign Manager</li>
+                            <li>Email and Outbound Marketing</li>
+                            <li>Lead Generation</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="card-entry">
-                        <div class="card-header" onclick="toggleDetails(this)">
-                            <span class="card-title">
-                                Graduate Apprentice Trainee (2013 – 2014)
-                                <span class="card-company">Hindustan Shipyard Limited</span>
-                            </span>
-                            <button class="dropdown-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
-                        <div class="card-details">
-                            <ul>
-                                <li>Worked with project managers on shipyard timelines.</li>
-                                <li>Used MS Projects to improve project paths.</li>
-                                <li>Presented updates and attended client meetings.</li>
-                            </ul>
-                        </div>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-search"></i>Market Intelligence</h3>
                     </div>
-                </section>
-
-                <section id="certifications">
-                    <h2>Certifications</h2>
-                    <div class="certifications-grid">
-                        <div class="certification-card">
-                            <p><i class="fas fa-award"></i> <strong>Become an AI-Powered Marketer</strong><br/>
-                            Semrush<br/>
-                            Issued May 2025</p>
-                        </div>
-                        <div class="certification-card">
-                            <p><i class="fas fa-award"></i> <strong>Hubspot Academy Social Media Marketing</strong><br/>
-                            HubSpot Academy<br/>
-                            Issued Apr 2025</p>
-                        </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>Market Research Analyst</li>
+                            <li>Competitive Intelligence</li>
+                            <li>Persona Analysis</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
 
-                <section id="awards">
-                    <h2>Awards</h2>
-                    <div class="awards-grid">
-                        <div class="award-card">
-                            <p><i class="fas fa-trophy"></i> <strong>Best Performer for Quarter #3</strong><br/>
-                            2023 - Oct 2023</p>
-                        </div>
-                        <div class="award-card">
-                            <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
-                            Sep 2018</p>
-                        </div>
-                        <div class="award-card">
-                            <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
-                            Aug 2021</p>
-                        </div>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt"></i>Event Management</h3>
                     </div>
-                </section>
-
-                <section id="articles">
-                    <h2>LinkedIn Articles</h2>
-                    <div class="articles-grid">
-                        <div class="article-card">
-                            <p>
-                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_google-android-chromeos-activity-7353801112182829057-sw6e" target="_blank">
-                                    <i class="fab fa-linkedin"></i> Google Android & ChromeOS
-                                </a>
-                            </p>
-                        </div>
-                        <div class="article-card">
-                            <p>
-                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_airtel-perplexityai-productivitytools-activity-7352997759995580417-EeF9" target="_blank">
-                                    <i class="fab fa-linkedin"></i> Perplexity AI & Productivity Tools
-                                </a>
-                            </p>
-                        </div>
-                        <div class="article-card">
-                            <p>
-                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_googleio2025-ondeviceai-opensource-activity-7335360673540964353-G0dY" target="_blank">
-                                    <i class="fab fa-linkedin"></i> Highlights from Google I/O 2025
-                                </a>
-                            </p>
-                        </div>
-                        <div class="article-card">
-                            <p>
-                                <a href="https://www.linkedin.com/posts/sharma-mukkavilli_sunitawilliams-nasa-starliner-activity-7308172758025154560-Ts9v" target="_blank">
-                                    <i class="fab fa-linkedin"></i> Sunita Williams & NASA's Starliner
-                                </a>
-                            </p>
-                        </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>Event Planning & Execution</li>
+                            <li>Budget Management</li>
+                            <li>Vendor Coordination</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
 
-                <section id="hobbies">
-                    <h2>Hobbies</h2>
-                    <div class="skill-card hobbies-card">
-                        <div class="card-header">
-                        </div>
-                        <div class="card-details open">
-                            <ul>
-                                <li><i class="fas fa-baseball-ball"></i> Playing Cricket </li>
-                                <li><i class="fas fa-swimmer"></i> Swimming </li>
-                                <li><i class="fas fa-book-open"></i> Reading Novels </li>
-                                <li><i class="fas fa-chess-knight"></i> Chess </li>
-                            </ul>
-                        </div>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-video"></i>Webinar Specialist</h3>
                     </div>
-                </section>
-
-                <section id="education">
-                    <h2>Education</h2>
-                    <div class="education-grid">
-                        <div class="education-card">
-                            <p><i class="fas fa-graduation-cap"></i> <strong>MBA</strong><br/>
-                            In Marketing and Finance<br/>
-                            MVGR College of Engineering – 82.65%</p>
-                        </div>
-                        <div class="education-card">
-                            <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
-                            In Computer Science<br/>
-                            Al-Aman College of Engineering – 61.94%</p>
-                        </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>GoTo Webinars, WebEx, Microsoft Teams</li>
+                            <li>Webinar Coordination & Hosting</li>
+                            <li>Post-Webinar Analytics</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
 
-                <section id="testimonials">
-                    <h2>Testimonials</h2>
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <p>"I had the pleasure of working with Sharma for the last 6 years at Miracle Software Systems, Inc, and I can confidently recommend him as a dedicated and talented professional. Sharma's commitment towards his work is truly commendable. During our time working together, he consistently demonstrated a strong work ethic and a keen attention to detail. Sharma takes on challenges with enthusiasm and consistently delivers his best. He is very good at leading the team."</p>
-                            <span class="author">Gary Sala</span>
-                        </div>
-                        <div class="testimonial-card">
-                            <p>"As a skilled Market Research Analyst, Sharma Mukkavilli shows strong dedication in conducting comprehensive market research and consistently delivers valuable insights. He is a continuous learner, a diligent hard worker, and has ability to find effective solutions to complex situations. With a proactive approach, he fosters a collaborative environment, empowering team members to take on challenges and excel in their roles. His journey, from a valuable team member to a Team Lead, stands as a testament of his work."</p>
-                            <span class="author">Sowmya Maremanda</span>
-                        </div>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sync-alt"></i>CRM & Automation</h3>
                     </div>
-                </section>
+                    <div class="card-details open">
+                        <ul>
+                            <li>Zoho CRM</li>
+                            <li>Marketing Automation</li>
+                            <li>ABM Trailblazer - ZoomInfo, Lusha, RocketReach</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <section id="contact">
-                    <h2>Contact Me</h2>
-                    <form action="https://formsubmit.co/connectsharma.m@gmail.com" method="POST">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="submit" value="Send">
-                    </form>
-                </section>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code-branch"></i>Web & Database Basics</h3>
+                    </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="resume-download">
-                    <a href="SharmaMukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
+                <div class="skill-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-share-alt"></i>Social Media</h3>
+                    </div>
+                    <div class="card-details open">
+                        <ul>
+                            <li>Hootsuite</li>
+                            <li>Buffer</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <footer>
-                <div class="footer-content">
-                    <p class="copyright">&copy; 2025 Sharma Mukkavilli. All rights reserved.</p>
-                    <div class="footer-social-icons">
-                        <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank" aria-label="LinkedIn Profile">
-                          <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.twitter.com/im_harish_harry" target = "_blank" aria-label="Twitter Profile">
-                          <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="mailto:connectsharma.m@gmail.com" aria-label="Email Address">
-                          <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="card-entry">
+                <div class="card-header" onclick="toggleDetails(this)">
+                    <span class="card-title">
+                        Team Lead – Demand Generation & Events (Mar 2023 – Present)
+                        <span class="card-company">Miracle Software Systems, Inc.</span>
+                    </span>
+                    <button class="dropdown-btn">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
                 </div>
-            </footer>
+                <div class="card-details open">
+                    <ul>
+                        <li><b>Team Leadership</b>- Managed 8-member team for digital marketing execution and timely delivery</li>
+                        <li><b>Lead Generation</b>- Added 1,000+ decision-makers and 25+ accounts monthly using Lusha, RocketReach, ZoomInfo</li>
+                        <li><b>Email & LinkedIn Campaigns</b>- Launched campaigns via Zoho, Mailchimp, Constant Contact with engagement tracking</li>
+                        <li><b>Sales Enablement</b>- Created persona documents, battle cards, and competitive summaries for sales teams</li>
+                        <li><b>Analytics & Reporting</b>- Built performance reports using Power BI, Zoho Analytics, LinkedIn Campaign Manager</li>
+                        <li><b>Event Management</b>- Coordinated various events across USA such as IBM Think, Microsoft Ignite, SAP SAPPHIRE, GCP Next and ASUG events along with multiple internal and external webinars.</li>
+                        <li><b>Social Media Management</b>- Managed LinkedIn, Facebook, Twitter presence with Hootsuite and Buffer</li>
+                        <li><b>Market Research</b>- Conducted research for content strategy using internal and external data sources</li>
+                        <li><b>SEO Support</b>- Performed keyword research and content optimization with dev/design teams</li>
+                        <li><b>CRM Management</b>- Maintained Zoho CRM accuracy, reduced bounce rates, ensured clean segmentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-entry">
+                <div class="card-header" onclick="toggleDetails(this)">
+                    <span class="card-title">
+                        Sr. IT Market Research Analyst (Oct 2019 – Mar 2023)
+                        <span class="card-company">Miracle Software Systems, Inc.</span>
+                    </span>
+                    <button class="dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="card-details">
+                    <ul>
+                        <li><b>Secondary Research</b>- Analyzed companies, competitors, and industry trends using LinkedIn, Crunchbase, Hoovers, SalesIntel, ZoomInfo</li>
+                        <li><b>Contact Acquisition</b>- Collected 200+ decision-maker contacts weekly for outbound campaigns and database growth</li>
+                        <li><b>Business Development</b>- Identified new opportunities using LinkedIn Sales Navigator and email outreach</li>
+                        <li><b>Webinar Operations</b>- Managed setup, invitations, reminders, and follow-ups via GoTo Webinar and Zoho Webinars</li>
+                        <li><b>Performance Tracking</b>- Tracked registrations, attendance, and feedback with detailed reporting for internal teams</li>
+                        <li><b>Campaign Targeting</b>- Coordinated email campaigns by segmenting contacts based on industry, technology, and engagement</li>
+                        <li><b>SEO Collaboration</b>- Supported keyword research and content updates for on-page and email optimization</li>
+                        <li><b>Event Coordination</b> Managed logistics and attendee follow-ups for internal and external events</li>
+                        <li><b>Engagement Analysis</b>- Monitored digital response trends to identify campaign improvement opportunities</li>
+                        <li><b>Cross-team Collaboration</b>- Worked with sales and marketing teams to improve data quality and share market insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-entry">
+                <div class="card-header" onclick="toggleDetails(this)">
+                    <span class="card-title">
+                        Partnerships Executive (Aug 2017 – Oct 2019)
+                        <span class="card-company">Miracle Software Systems, Inc.</span>
+                    </span>
+                    <button class="dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="card-details">
+                    <ul>
+                        <li><b>Partner Identification</b>- Actively sought partners aligned with organizational goals and objectives</li>
+                        <li><b>Primary Liaison</b>- Served as main contact for partners, addressing inquiries and fostering collaborative relationships</li>
+                        <li><b>Strategic Planning</b>- Formulated targeted strategies including networking events and joint promotions for mutual benefit</li>
+                        <li><b>Cross-functional Collaboration</b>- Aligned partnership activities with business strategies across departments</li>
+                        <li><b>Joint Marketing Campaigns</b>- Coordinated marketing initiatives ensuring cohesive approach between teams</li>
+                        <li><b>Relationship Management</b>- Cultivated and maintained strong relationships with key partners, ensuring ongoing satisfaction</li>
+                        <li><b>Performance Analysis</b>- Analyzed partnership metrics and provided strategic insights to senior management</li>
+                        <li><b>Event Coordination</b>- Managed logistics for large-scale partner conferences and networking events in North America</li>
+                        <li><b>Travel Management</b>- Handled all aspects of attendee travel and logistics for international conferences</li>
+                        <li><b>Vendor Coordination</b>- Managed event item shipping, vendor relations, and budget adherence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card-entry">
+                <div class="card-header" onclick="toggleDetails(this)">
+                    <span class="card-title">
+                        Graduate Apprentice Trainee (2013 – 2014)
+                        <span class="card-company">Hindustan Shipyard Limited</span>
+                    </span>
+                    <button class="dropdown-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="card-details">
+                    <ul>
+                        <li>Worked with project managers on shipyard timelines.</li>
+                        <li>Used MS Projects to improve project paths.</li>
+                        <li>Presented updates and attended client meetings.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <p><i class="fas fa-award"></i> <strong>Become an AI-Powered Marketer</strong><br/>
+                    Semrush<br/>
+                    Issued May 2025</p>
+                </div>
+                <div class="certification-card">
+                    <p><i class="fas fa-award"></i> <strong>Hubspot Academy Social Media Marketing</strong><br/>
+                    HubSpot Academy<br/>
+                    Issued Apr 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>Awards</h2>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <p><i class="fas fa-trophy"></i> <strong>Best Performer for Quarter #3</strong><br/>
+                    2023 - Oct 2023</p>
+                </div>
+                <div class="award-card">
+                    <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
+                    Sep 2018</p>
+                </div>
+                <div class="award-card">
+                    <p><i class="fas fa-trophy"></i> <strong>Star Performer for the Month</strong><br/>
+                    Aug 2021</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="articles">
+            <h2>LinkedIn Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <p>
+                        <a href="https://www.linkedin.com/posts/sharma-mukkavilli_google-android-chromeos-activity-7353801112182829057-sw6e" target="_blank" aria-label="LinkedIn Article: Google Android & ChromeOS">
+                            <i class="fab fa-linkedin"></i> Google Android & ChromeOS
+                        </a>
+                    </p>
+                </div>
+                <div class="article-card">
+                    <p>
+                        <a href="https://www.linkedin.com/posts/sharma-mukkavilli_airtel-perplexityai-productivitytools-activity-7352997759995580417-EeF9" target="_blank" aria-label="LinkedIn Article: Perplexity AI & Productivity Tools">
+                            <i class="fab fa-linkedin"></i> Perplexity AI & Productivity Tools
+                        </a>
+                    </p>
+                </div>
+                <div class="article-card">
+                    <p>
+                        <a href="https://www.linkedin.com/posts/sharma-mukkavilli_googleio2025-ondeviceai-opensource-activity-7335360673540964353-G0dY" target="_blank" aria-label="LinkedIn Article: Highlights from Google I/O 2025">
+                            <i class="fab fa-linkedin"></i> Highlights from Google I/O 2025
+                        </a>
+                    </p>
+                </div>
+                <div class="article-card">
+                    <p>
+                        <a href="https://www.linkedin.com/posts/sharma-mukkavilli_sunitawilliams-nasa-starliner-activity-7308172758025154560-Ts9v" target="_blank" aria-label="LinkedIn Article: Sunita Williams & NASA's Starliner">
+                            <i class="fab fa-linkedin"></i> Sunita Williams & NASA's Starliner
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <h2>Hobbies</h2>
+            <div class="hobbies-card">
+                <div class="card-details open">
+                    <ul>
+                        <li><i class="fas fa-baseball-ball"></i> Playing Cricket </li>
+                        <li><i class="fas fa-swimmer"></i> Swimming </li>
+                        <li><i class="fas fa-book-open"></i> Reading Novels </li>
+                        <li><i class="fas fa-chess-knight"></i> Chess </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <p><i class="fas fa-graduation-cap"></i> <strong>MBA</strong><br/>
+                    In Marketing and Finance<br/>
+                    MVGR College of Engineering – 82.65%</p>
+                </div>
+                <div class="education-card">
+                    <p><i class="fas fa-graduation-cap"></i> <strong>B.Tech</strong><br/>
+                    In Computer Science<br/>
+                    Al-Aman College of Engineering – 61.94%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"I had the pleasure of working with Sharma for the last 6 years at Miracle Software Systems, Inc, and I can confidently recommend him as a dedicated and talented professional. Sharma's commitment towards his work is truly commendable. During our time working together, he consistently demonstrated a strong work ethic and a keen attention to detail. Sharma takes on challenges with enthusiasm and consistently delivers his best. He is very good at leading the team."</p>
+                    <span class="author">Gary Sala</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"As a skilled Market Research Analyst, Sharma Mukkavilli shows strong dedication in conducting comprehensive market research and consistently delivers valuable insights. He is a continuous learner, a diligent hard worker, and has ability to find effective solutions to complex situations. With a proactive approach, he fosters a collaborative environment, empowering team members to take on challenges and excel in their roles. His journey, from a valuable team member to a Team Lead, stands as a testament of his work."</p>
+                    <span class="author">Sowmya Maremanda</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form action="https://formsubmit.co/connectsharma.m@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <input type="hidden" name="_captcha" value="false">
+                <input type="submit" value="Send">
+            </form>
+        </section>
+
+        <div class="resume-download">
+            <a href="SharmaMukkavilli_Resume.pdf" download>Download Resume (PDF)</a>
         </div>
     </div>
 
+    <footer>
+        <p class="copyright">&copy; 2025 Sharma Mukkavilli. All rights reserved.</p>
+        <div class="footer-social-icons">
+            <a href="https://www.linkedin.com/in/sharma-mukkavilli" target="_blank" aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.twitter.com/im_harish_harry" target="_blank" aria-label="Twitter Profile">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:connectsharma.m@gmail.com" aria-label="Email Address">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+
     <script>
         function toggleMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-
-            const sunIcon = document.querySelector('.light-mode-icon');
-            const moonIcon = document.querySelector('.dark-mode-icon');
-
-            if (body.classList.contains('dark-mode')) {
-                sunIcon.classList.remove('active-icon');
-                moonIcon.classList.add('active-icon');
-                // If using the hide/show method in CSS, no direct JS display change needed
-            } else {
-                sunIcon.classList.add('active-icon');
-                moonIcon.classList.remove('active-icon');
-                // If using the hide/show method in CSS, no direct JS display change needed
-            }
+            document.body.classList.toggle('dark-mode');
         }
 
-        // Function to highlight active sidebar link based on scroll position
+        function toggleDetails(element) {
+            const details = element.nextElementSibling;
+            const icon = element.querySelector('.dropdown-btn i');
+            details.classList.toggle('open');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
         function highlightActiveLink() {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.sidebar a');
-            let currentActive = null;
+            const navLinks = document.querySelectorAll('.navigation-bar a');
+            const offset = 100;
 
-            // Use a smaller, more dynamic offset for better accuracy.
-            // The viewport height divided by a factor (e.g., 3 or 4) can work well.
-            const viewportMid = window.innerHeight / 2; // Midpoint of the viewport
-
+            let currentActive = '';
+            
             sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                // A section is "active" if its top is above the viewport midpoint
-                // and its bottom is below the viewport midpoint.
-                if (rect.top <= viewportMid && rect.bottom >= viewportMid) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - offset && pageYOffset < sectionTop + sectionHeight - offset) {
                     currentActive = section.getAttribute('id');
                 }
             });
 
-            // Fallback for when no section is exactly at the midpoint (e.g., at the very top or bottom)
-            // If scrolled to the very top, make 'about' active.
-            if (window.scrollY === 0 && sections.length > 0) {
-                currentActive = sections[0].getAttribute('id');
-            }
-            // If scrolled to the very bottom, make the last section active.
-            const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (totalScrollHeight > 0 && Math.abs(window.scrollY - totalScrollHeight) < 5) { // Small tolerance
-                currentActive = sections[sections.length - 1].getAttribute('id');
-            }
-
-
             navLinks.forEach(link => {
-                link.classList.remove('active'); // Remove active from all links first
-                // Check if the link's href matches the current active section ID
-                if (currentActive && link.getAttribute('href').includes(currentActive)) {
-                    link.classList.add('active'); // Add active to the current one
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(currentActive)) {
+                    link.classList.add('active');
                 }
             });
         }
-
-        // Smooth scroll for sidebar links (improved to use behavior and adjust scroll target)
-        document.querySelectorAll('.sidebar a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    // Calculate the scroll position: target's top position minus an offset.
-                    // This offset prevents the section title from being hidden by the fixed header.
-                    // const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
-                    const scrollOffset = 100; // Adjust as needed to provide padding below header
-                    window.scrollTo({
-                        top: targetElement.offsetTop - scrollOffset,
-                        behavior: 'smooth'
-                    });
-                }
-
-                // Manually trigger highlight after a small delay to allow scroll to start
-                setTimeout(highlightActiveLink, 300); // Increased delay for smoother transition
-            });
-        });
-
-
-        // Initial call and event listener for scroll
+        
         document.addEventListener('DOMContentLoaded', () => {
-            highlightActiveLink(); // Call on load for initial state
-
-            // Initialize the first experience section as open by default
+            highlightActiveLink();
             const teamLeadExpCard = document.querySelector('#experience .card-entry:first-of-type');
             if (teamLeadExpCard) {
                 const details = teamLeadExpCard.querySelector('.card-details');
@@ -1410,23 +1050,8 @@
                 }
             }
         });
-        window.addEventListener('scroll', highlightActiveLink); // Call on scroll
-
-        // Toggle Details for any card with .card-header and .card-details (used by Experience)
-        function toggleDetails(element) {
-            const details = element.nextElementSibling;
-            const icon = element.querySelector('.dropdown-btn i');
-
-            details.classList.toggle('open');
-
-            if (details.classList.contains('open')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
-        }
+        
+        window.addEventListener('scroll', highlightActiveLink);
     </script>
 </body>
 </html>
